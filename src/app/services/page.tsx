@@ -1,0 +1,105 @@
+
+import { Cpu, Database, Globe, Layers, MessageSquare, Rocket } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
+const detailedServices = [
+  {
+    id: 'automation',
+    title: 'AI Automation',
+    description: 'Transform manual workflows into intelligent, automated systems that learn and adapt.',
+    features: ['Custom Workflow Mapping', 'Process Optimization', 'Error-Resistant Loops', 'Human-in-the-loop Systems'],
+    icon: Cpu
+  },
+  {
+    id: 'data',
+    title: 'Data Annotation',
+    description: 'High-precision labeling services for diverse datasets to power your machine learning models.',
+    features: ['Image & Video Tagging', 'Text Classification', 'Entity Extraction', 'QA Validation'],
+    icon: Layers
+  },
+  {
+    id: 'scraping',
+    title: 'Web Scraping',
+    description: 'Robust, enterprise-grade data extraction from any web source at massive scale.',
+    features: ['Anti-Bot Evasion', 'Dynamic Content Parsing', 'Structured Data Delivery', 'Monitoring Alerts'],
+    icon: Globe
+  },
+  {
+    id: 'chatbot',
+    title: 'AI Chatbot Development',
+    description: 'Conversational agents powered by the latest LLMs for support, sales, and internal ops.',
+    features: ['Multilingual Support', 'Integration with CRM', 'Context-Aware Responses', 'Tone Customization'],
+    icon: MessageSquare
+  },
+  {
+    id: 'genai',
+    title: 'GenAI Integrations',
+    description: 'Seamlessly integrate generative AI capabilities into your existing product stack.',
+    features: ['API Strategy', 'Prompt Engineering', 'Fine-tuning Models', 'Rate Limit Management'],
+    icon: Database
+  },
+  {
+    id: 'landing',
+    title: 'Landing Page Development',
+    description: 'High-conversion, modern landing pages for AI products that communicate value clearly.',
+    features: ['Fast Performance', 'Modern UI/UX', 'SEO Optimization', 'Interactive Demos'],
+    icon: Rocket
+  }
+];
+
+export default function ServicesPage() {
+  return (
+    <div className="pt-32 pb-24 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-24">
+          <h1 className="text-5xl md:text-7xl font-headline font-bold mb-8">Our Specialized <br /> <span className="text-gradient-gold">Services</span></h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            From data acquisition to high-level automation, we provide the technical foundation 
+            your AI strategy needs to succeed.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+          {detailedServices.map((service) => (
+            <div key={service.id} id={service.id} className="glass p-10 rounded-3xl border-white/5 hover:border-primary/30 transition-all group">
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <service.icon className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                {service.description}
+              </p>
+              <ul className="space-y-4 mb-10">
+                {service.features.map((feat, i) => (
+                  <li key={i} className="flex items-center text-sm text-muted-foreground">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary/50 mr-3" />
+                    {feat}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/contact">
+                <Button variant="outline" className="w-full border-primary/20 hover:bg-primary/10 hover:text-primary">
+                  Learn More
+                </Button>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center p-16 rounded-[3rem] bg-secondary/20 border border-white/5">
+          <h3 className="text-3xl font-headline font-bold mb-6">Need a custom AI solution?</h3>
+          <p className="text-muted-foreground mb-10 max-w-2xl mx-auto">
+            Our technical team specializes in bespoke AI architecture tailored to 
+            unique business challenges. Let's discuss your requirements.
+          </p>
+          <Link href="/contact">
+            <Button size="lg" className="bg-primary text-primary-foreground gold-glow px-12 h-14 text-lg">
+              Talk to an Expert
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}

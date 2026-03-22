@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-bg",
+      "description": "Abstract neural network visualization with glowing nodes",
+      "imageUrl": "https://picsum.photos/seed/visoma-hero/1200/800",
+      "imageHint": "neural network"
+    },
+    {
+      "id": "service-automation",
+      "description": "Conceptual image for AI automation",
+      "imageUrl": "https://picsum.photos/seed/visoma-auto/600/400",
+      "imageHint": "automation ai"
+    },
+    {
+      "id": "service-data",
+      "description": "Large scale data visualization",
+      "imageUrl": "https://picsum.photos/seed/visoma-data/600/400",
+      "imageHint": "big data"
+    },
+    {
+      "id": "case-study-1",
+      "description": "AI Support automation dashboard",
+      "imageUrl": "https://picsum.photos/seed/visoma-case-1/800/600",
+      "imageHint": "dashboard software"
+    },
+    {
+      "id": "about-vision",
+      "description": "Futuristic laboratory or office space",
+      "imageUrl": "https://picsum.photos/seed/visoma-about/1200/600",
+      "imageHint": "futuristic office"
+    }
+  ]
 }
