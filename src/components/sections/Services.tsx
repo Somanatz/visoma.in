@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Cpu, Search, BarChart3, Gavel, ArrowRight } from 'lucide-react';
+import { Cpu, Search, BarChart3, Gavel, Database, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -15,6 +15,16 @@ const services = [
     animationClass: 'group-hover:rotate-180 transition-transform duration-700',
     color: 'text-blue-400',
     bg: 'bg-blue-400/10'
+  },
+  {
+    slug: 'data-services',
+    title: 'Data Services',
+    description: 'High-precision data acquisition and preparation. From large-scale collections to specialized annotation, we fuel your models with quality.',
+    details: ['Data Labeling & Annotation', 'Image & Video Collections', 'Precision Data Contributions'],
+    icon: Database,
+    animationClass: 'group-hover:translate-y-[-4px] group-hover:scale-110 transition-all duration-500',
+    color: 'text-purple-400',
+    bg: 'bg-purple-400/10'
   },
   {
     slug: 'seo-services',
@@ -67,16 +77,13 @@ export default function Services() {
               key={idx}
               className="group glass p-8 md:p-12 rounded-[2.5rem] border-white/5 hover:border-primary/30 transition-all duration-500 relative overflow-hidden"
             >
-              {/* Background Glow */}
               <div className={cn("absolute -top-24 -right-24 w-64 h-64 blur-[100px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 rounded-full", service.bg)} />
 
               <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 relative z-10">
-                {/* Icon Container */}
                 <div className={cn("w-20 h-20 rounded-3xl flex items-center justify-center shrink-0 bg-white/5 border border-white/10 group-hover:border-primary/30", service.color)}>
                   <service.icon className={cn("w-10 h-10", service.animationClass)} />
                 </div>
 
-                {/* Content */}
                 <div className="flex-1 space-y-6">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <h4 className="text-3xl font-bold group-hover:text-primary transition-colors">{service.title}</h4>
@@ -89,7 +96,6 @@ export default function Services() {
                     {service.description}
                   </p>
 
-                  {/* "Box inside Box" Section */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
                     {service.details.map((detail, dIdx) => (
                       <div 
@@ -106,14 +112,12 @@ export default function Services() {
                   </div>
                 </div>
 
-                {/* Action Link - Navigates to detail page */}
                 <Link href={`/services/${service.slug}`} className="hidden lg:block shrink-0">
                   <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow">
                     <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
                 
-                {/* Mobile Action Link */}
                 <Link href={`/services/${service.slug}`} className="lg:hidden w-full">
                   <div className="mt-8 p-4 rounded-xl border border-primary/20 text-primary font-bold text-center hover:bg-primary hover:text-primary-foreground transition-all">
                     View Technical Details

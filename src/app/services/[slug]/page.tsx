@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useParams, useRouter } from 'next/navigation';
-import { Cpu, Search, BarChart3, Gavel, CheckCircle2, ArrowLeft, Layers, Shield, Zap } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { Cpu, Search, BarChart3, Gavel, Database, CheckCircle2, ArrowLeft, Layers, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -22,6 +22,21 @@ const servicesData: Record<string, any> = {
       { title: 'Edge Computing', desc: 'Deploying intelligence closer to the source for ultra-low latency applications.' }
     ],
     internshipInfo: 'Our IT internship program offers hands-on experience in cloud architecture and AI deployment pipelines, mentored by senior technical leads.'
+  },
+  'data-services': {
+    title: 'Data Services & Preparation',
+    icon: Database,
+    color: 'text-purple-400',
+    bg: 'bg-purple-400/10',
+    description: 'The foundation of every great model is high-quality data. We provide the specialized services needed to collect, label, and annotate data at enterprise scale.',
+    longDescription: 'Visoma offers end-to-end data preparation services. Whether you need custom image collections, complex text annotations, or large-scale data contributions, our managed pipelines ensure the highest accuracy and diversity for your AI training needs.',
+    features: [
+      { title: 'Data Contributions', desc: 'Crowdsourced and expert-verified data gathering across diverse domains and languages.' },
+      { title: 'Precision Labeling', desc: 'High-accuracy classification and semantic segmentation for vision and NLP models.' },
+      { title: 'Image Collections', desc: 'Bespoke datasets tailored to specific edge-case scenarios and environmental variables.' },
+      { title: 'Complex Annotations', desc: 'Multi-layered labeling including bounding boxes, keypoints, and sentiment scoring.' }
+    ],
+    internshipInfo: 'Data interns learn the nuances of quality assurance, bias detection in datasets, and the operational mechanics of large-scale labeling pipelines.'
   },
   'seo-services': {
     title: 'SEO & Growth Intelligence',
@@ -90,13 +105,11 @@ export default function ServiceDetailPage() {
   return (
     <div className="pt-32 pb-24 px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
-        {/* Breadcrumb / Back */}
         <Link href="/services" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-12">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Services</span>
         </Link>
 
-        {/* Hero Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
           <div className="space-y-8">
             <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10", service.color)}>
@@ -142,7 +155,6 @@ export default function ServiceDetailPage() {
           </div>
         </div>
 
-        {/* Technical Features "Box inside Box" style */}
         <div className="mb-32">
           <div className="mb-16">
             <h2 className="text-3xl font-headline font-bold mb-4">Technical Capabilities</h2>
@@ -166,7 +178,6 @@ export default function ServiceDetailPage() {
           </div>
         </div>
 
-        {/* Internship Block */}
         <div className="glass p-12 rounded-[3rem] border-primary/20 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">

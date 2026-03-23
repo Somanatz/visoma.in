@@ -1,45 +1,45 @@
 
 "use client";
 
-import { Cpu, Search, BarChart3, Gavel, Rocket, Database } from 'lucide-react';
+import { Cpu, Search, BarChart3, Gavel, Rocket, Database, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const detailedServices = [
   {
-    id: 'it',
+    id: 'it-services',
     title: 'IT Services',
     description: 'Transform manual workflows into intelligent, automated systems that learn and adapt.',
     features: ['AI Infrastructure', 'Custom Workflow Mapping', 'Internships Available', 'Data Pipeline Scaling'],
     icon: Cpu
   },
   {
-    id: 'seo',
+    id: 'data-services',
+    title: 'Data Services',
+    description: 'High-quality datasets for training and fine-tuning state-of-the-art AI models.',
+    features: ['Data Contributions', 'Precision Labeling', 'Image Collections', 'Manual Annotation'],
+    icon: Database
+  },
+  {
+    id: 'seo-services',
     title: 'SEO Services',
     description: 'High-conversion, modern landing pages for AI products that communicate value clearly.',
     features: ['Generative Ad Copy', 'SEO Optimization', 'Internships Available', 'Performance Monitoring'],
     icon: Search
   },
   {
-    id: 'financial',
+    id: 'financial-services',
     title: 'Financial Services',
     description: 'Advanced technical solutions for asset analysis and automated risk auditing.',
     features: ['Market Intelligence', 'Portfolio Optimization', 'Internships Available', 'Risk Assessment'],
     icon: BarChart3
   },
   {
-    id: 'legal',
+    id: 'legal-services',
     title: 'Legal Services',
     description: 'Precision AI tools for legal research and document discovery automation.',
     features: ['Contract Analysis', 'Discovery Automation', 'Internships Available', 'Security Compliance'],
     icon: Gavel
-  },
-  {
-    id: 'genai',
-    title: 'GenAI Integrations',
-    description: 'Seamlessly integrate generative AI capabilities into your existing product stack.',
-    features: ['API Strategy', 'Prompt Engineering', 'Internships Available', 'Rate Limit Management'],
-    icon: Database
   },
   {
     id: 'scraping',
@@ -80,7 +80,7 @@ export default function ServicesPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contact">
+              <Link href={`/services/${service.id === 'scraping' ? 'it-services' : service.id}`}>
                 <Button variant="outline" className="w-full border-primary/20 hover:bg-primary/10 hover:text-primary">
                   Learn More
                 </Button>
