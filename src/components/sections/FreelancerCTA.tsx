@@ -2,7 +2,7 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
-import { UserPlus, Globe, Award } from 'lucide-react';
+import { UserPlus, Globe, Award, Banknote } from 'lucide-react';
 import Link from 'next/link';
 
 export default function FreelancerCTA() {
@@ -16,11 +16,11 @@ export default function FreelancerCTA() {
             <div>
               <h2 className="text-4xl md:text-5xl font-headline font-bold mb-6">
                 Work Remotely. <br />
-                <span className="text-gradient-gold">Build the Future.</span>
+                <span className="text-gradient-gold">Earn Globally.</span>
               </h2>
               <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-                Register as a freelancer to work on high-impact remote projects. 
-                Join our elite network of experts and contribute to cutting-edge AI and data initiatives from anywhere in the world.
+                Register as a freelancer to work on high-impact remote projects and earn competitive rates. 
+                Join our elite network of experts and contribute to cutting-edge AI and data initiatives from anywhere.
               </p>
               
               <div className="space-y-4 mb-10">
@@ -32,9 +32,9 @@ export default function FreelancerCTA() {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Award className="w-5 h-5 text-primary" />
+                    <Banknote className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="font-medium">Direct exposure to elite AI projects</span>
+                  <span className="font-medium">Work on projects and earn consistently</span>
                 </div>
               </div>
 
@@ -64,7 +64,7 @@ export default function FreelancerCTA() {
                   </div>
                   <div className="mt-8 flex justify-between items-center">
                     <div className="h-8 w-24 bg-primary/20 rounded-full" />
-                    <div className="text-primary font-bold">Active Gig</div>
+                    <div className="text-primary font-bold">Active Opportunity</div>
                   </div>
                 </div>
               </div>

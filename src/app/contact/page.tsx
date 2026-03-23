@@ -22,7 +22,6 @@ export default function ContactPage() {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
     toast({
       title: "Message Sent",
       description: `We've received your ${data.inquiryType.toLowerCase()} and will get back to you shortly.`,
