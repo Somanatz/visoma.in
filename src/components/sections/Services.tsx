@@ -3,9 +3,11 @@
 
 import { Cpu, Search, BarChart3, Gavel, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const services = [
   {
+    slug: 'it-services',
     title: 'IT Services',
     description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems. We architect the core of your digital transformation.',
     details: ['Neural Network Design', 'AWS/GCP Cloud Architecture', 'High-Throughput Data Streams'],
@@ -15,6 +17,7 @@ const services = [
     bg: 'bg-blue-400/10'
   },
   {
+    slug: 'seo-services',
     title: 'SEO Services',
     description: 'Data-driven search optimization and high-conversion ad strategies. We ensure your AI products reach the right audience at the right time.',
     details: ['Semantic Keyword Clusters', 'Generative Ad Copywriting', 'Technical SEO Audits'],
@@ -24,6 +27,7 @@ const services = [
     bg: 'bg-orange-400/10'
   },
   {
+    slug: 'financial-services',
     title: 'Financial Services',
     description: 'Advanced market analysis and predictive risk assessment. Precision tools for auditing and asset optimization in the machine era.',
     details: ['Portfolio Intelligence', 'Automated Risk Auditing', 'Predictive Market Modeling'],
@@ -33,6 +37,7 @@ const services = [
     bg: 'bg-emerald-400/10'
   },
   {
+    slug: 'legal-services',
     title: 'Legal Services',
     description: 'Secure LLM-based contract analysis and precision legal research. We bridge the gap between high-speed AI and regulatory compliance.',
     details: ['Contract Intelligence', 'Discovery Automation', 'Compliance Monitoring'],
@@ -84,22 +89,36 @@ export default function Services() {
                     {service.description}
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                  {/* "Box inside Box" Section */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
                     {service.details.map((detail, dIdx) => (
-                      <div key={dIdx} className="flex items-center gap-3 text-sm font-medium text-foreground/80">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        {detail}
+                      <div 
+                        key={dIdx} 
+                        className="p-6 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3 text-sm font-bold text-foreground mb-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                          Core Capability
+                        </div>
+                        <p className="text-sm text-muted-foreground">{detail}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Action Link */}
-                <div className="hidden lg:block">
-                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {/* Action Link - Navigates to detail page */}
+                <Link href={`/services/${service.slug}`} className="hidden lg:block shrink-0">
+                  <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow">
+                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </div>
+                </Link>
+                
+                {/* Mobile Action Link */}
+                <Link href={`/services/${service.slug}`} className="lg:hidden w-full">
+                  <div className="mt-8 p-4 rounded-xl border border-primary/20 text-primary font-bold text-center hover:bg-primary hover:text-primary-foreground transition-all">
+                    View Technical Details
+                  </div>
+                </Link>
               </div>
             </div>
           ))}
