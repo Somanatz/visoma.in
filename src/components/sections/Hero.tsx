@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from '@/components/ui/button';
@@ -8,14 +7,20 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 px-6">
-      {/* Background Elements */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] opacity-20" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] opacity-20" />
+      {/* Google Lens Style Dynamic Background */}
+      <div className="lens-bg">
+        <div className="lens-blob blob-1" />
+        <div className="lens-blob blob-2" />
+        <div className="lens-blob blob-3" />
       </div>
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none" />
+      {/* Static Glows */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] opacity-10" />
+      </div>
+
+      {/* Grid Pattern overlay */}
+      <div className="absolute inset-0 z-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         <div className="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full mb-8 animate-float">
