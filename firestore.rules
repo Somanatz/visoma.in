@@ -1,3 +1,4 @@
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -5,6 +6,7 @@ service cloud.firestore {
     /**
      * VISOMA CORE SECURITY RULES
      * Updated: Enforced robust Query-Aware Permissions for public content.
+     * Force Redeploy: Added explicit list rule for blogPosts to ensure public visibility.
      */
 
     // --- Helper Functions ---
@@ -47,8 +49,10 @@ service cloud.firestore {
     }
 
     match /blogPosts/{blogPostId} {
-      // Standard QAP: Query must filter by isPublished == true for public access
-      allow read: if isAdmin() || (resource.data.isPublished == true);
+      // Standard QAP: Query must filter by isPublished == true for public access.
+      // Split read into get/list for absolute clarity.
+      allow get: if isAdmin() || (resource.data.isPublished == true);
+      allow list: if isAdmin() || (request.query.limit <= 100 && resource.data.isPublished == true);
       allow write: if isAdmin();
     }
 

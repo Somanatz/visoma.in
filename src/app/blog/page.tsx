@@ -1,11 +1,11 @@
+
 "use client";
 
 import { useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, where, orderBy } from 'firebase/firestore';
+import { collection, query, where } from 'firebase/firestore';
 import { useFirestore } from '@/firebase';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
 import { Calendar, User, ArrowRight, Info } from 'lucide-react';
 import { format } from 'date-fns';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -15,11 +15,12 @@ export default function BlogPage() {
 
   const blogQuery = useMemoFirebase(() => {
     if (!firestore) return null;
-    // Note: If this fails with a permission error even with 'where', check if an index exists.
+    // We remove orderBy('publicationDate', 'desc') temporarily to ensure the page works
+    // even if a composite index (isPublished + publicationDate) hasn't been built yet.
+    // We sort client-side in displayPosts instead.
     return query(
       collection(firestore, 'blogPosts'),
-      where('isPublished', '==', true),
-      orderBy('publicationDate', 'desc')
+      where('isPublished', '==', true)
     );
   }, [firestore]);
 
@@ -46,7 +47,12 @@ export default function BlogPage() {
     }
   ];
 
-  const displayPosts = (posts && posts.length > 0) ? posts : (isLoading ? [] : fallbackPosts);
+  // Client-side sorting as a fallback for missing composite indexes
+  const sortedPosts = posts ? [...posts].sort((a, b) => {
+    return new Date(b.publicationDate).getTime() - new Date(a.publicationDate).getTime();
+  }) : null;
+
+  const displayPosts = (sortedPosts && sortedPosts.length > 0) ? sortedPosts : (isLoading ? [] : fallbackPosts);
 
   return (
     <div className="pt-32 pb-24 px-6">
