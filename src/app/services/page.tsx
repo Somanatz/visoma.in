@@ -1,36 +1,38 @@
 
-import { Cpu, Database, Globe, Layers, MessageSquare, Rocket } from 'lucide-react';
+"use client";
+
+import { Cpu, Search, BarChart3, Gavel, Rocket, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const detailedServices = [
   {
-    id: 'automation',
-    title: 'AI Automation',
+    id: 'it',
+    title: 'IT Services',
     description: 'Transform manual workflows into intelligent, automated systems that learn and adapt.',
-    features: ['Custom Workflow Mapping', 'Process Optimization', 'Error-Resistant Loops', 'Human-in-the-loop Systems'],
+    features: ['AI Infrastructure', 'Custom Workflow Mapping', 'Process Optimization', 'Data Pipeline Scaling'],
     icon: Cpu
   },
   {
-    id: 'data',
-    title: 'Data Annotation',
-    description: 'High-precision labeling services for diverse datasets to power your machine learning models.',
-    features: ['Image & Video Tagging', 'Text Classification', 'Entity Extraction', 'QA Validation'],
-    icon: Layers
+    id: 'seo',
+    title: 'SEO Services',
+    description: 'High-conversion, modern landing pages for AI products that communicate value clearly.',
+    features: ['Generative Ad Copy', 'SEO Optimization', 'Interactive Demos', 'Performance Monitoring'],
+    icon: Search
   },
   {
-    id: 'scraping',
-    title: 'Web Scraping',
-    description: 'Robust, enterprise-grade data extraction from any web source at massive scale.',
-    features: ['Anti-Bot Evasion', 'Dynamic Content Parsing', 'Structured Data Delivery', 'Monitoring Alerts'],
-    icon: Globe
+    id: 'financial',
+    title: 'Financial Services',
+    description: 'Advanced technical solutions for asset analysis and automated risk auditing.',
+    features: ['Market Intelligence', 'Portfolio Optimization', 'Automated Auditing', 'Risk Assessment'],
+    icon: BarChart3
   },
   {
-    id: 'chatbot',
-    title: 'AI Chatbot Development',
-    description: 'Conversational agents powered by the latest LLMs for support, sales, and internal ops.',
-    features: ['Multilingual Support', 'Integration with CRM', 'Context-Aware Responses', 'Tone Customization'],
-    icon: MessageSquare
+    id: 'legal',
+    title: 'Legal Services',
+    description: 'Precision AI tools for legal research and document discovery automation.',
+    features: ['Contract Analysis', 'Discovery Automation', 'LLM Research Tools', 'Security Compliance'],
+    icon: Gavel
   },
   {
     id: 'genai',
@@ -40,10 +42,10 @@ const detailedServices = [
     icon: Database
   },
   {
-    id: 'landing',
-    title: 'Landing Page Development',
-    description: 'High-conversion, modern landing pages for AI products that communicate value clearly.',
-    features: ['Fast Performance', 'Modern UI/UX', 'SEO Optimization', 'Interactive Demos'],
+    id: 'scraping',
+    title: 'Web Scraping',
+    description: 'Robust, enterprise-grade data extraction from any web source at massive scale.',
+    features: ['Anti-Bot Evasion', 'Dynamic Content Parsing', 'Structured Data Delivery', 'Monitoring Alerts'],
     icon: Rocket
   }
 ];
@@ -56,7 +58,7 @@ export default function ServicesPage() {
           <h1 className="text-5xl md:text-7xl font-headline font-bold mb-8">Our Specialized <br /> <span className="text-gradient-gold">Services</span></h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             From data acquisition to high-level automation, we provide the technical foundation 
-            your AI strategy needs to succeed.
+            your strategy needs to succeed.
           </p>
         </div>
 
@@ -88,9 +90,9 @@ export default function ServicesPage() {
         </div>
 
         <div className="text-center p-16 rounded-[3rem] bg-secondary/20 border border-white/5">
-          <h3 className="text-3xl font-headline font-bold mb-6">Need a custom AI solution?</h3>
+          <h3 className="text-3xl font-headline font-bold mb-6">Need a custom solution?</h3>
           <p className="text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Our technical team specializes in bespoke AI architecture tailored to 
+            Our technical team specializes in bespoke architecture tailored to 
             unique business challenges. Let's discuss your requirements.
           </p>
           <Link href="/contact">

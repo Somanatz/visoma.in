@@ -4,6 +4,7 @@ import Trust from '@/components/sections/Trust';
 import Services from '@/components/sections/Services';
 import Architecture from '@/components/sections/Architecture';
 import CTA from '@/components/sections/CTA';
+import FreelancerCTA from '@/components/sections/FreelancerCTA';
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         </div>
       </section>
 
+      <FreelancerCTA />
       <CTA />
     </div>
   );

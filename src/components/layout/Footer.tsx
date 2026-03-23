@@ -15,17 +15,17 @@ const footerSections = [
   {
     title: 'Services',
     links: [
-      { name: 'AI Automation', href: '/services#automation' },
-      { name: 'Data Annotation', href: '/services#data' },
-      { name: 'Web Scraping', href: '/services#scraping' },
-      { name: 'GenAI Integrations', href: '/services#genai' },
+      { name: 'IT Services', href: '/services' },
+      { name: 'SEO Services', href: '/services' },
+      { name: 'Financial Services', href: '/services' },
+      { name: 'Legal Services', href: '/services' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { name: 'Documentation', href: '#' },
-      { name: 'AI Trends', href: '/blog' },
+      { name: 'Talent Portal', href: '/auth' },
+      { name: 'Client Login', href: '#' },
       { name: 'Privacy Policy', href: '#' },
       { name: 'Terms of Service', href: '#' },
     ],

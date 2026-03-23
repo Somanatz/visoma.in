@@ -1,26 +1,28 @@
 
-import { Cpu, Database, Globe, Layers } from 'lucide-react';
+"use client";
+
+import { Cpu, Search, BarChart3, Gavel } from 'lucide-react';
 
 const services = [
   {
-    title: 'AI Automation Systems',
-    description: 'Custom AI workflows designed to automate complex business operations and reduce manual overhead.',
+    title: 'IT Services',
+    description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems tailored for enterprise scalability.',
     icon: Cpu,
   },
   {
-    title: 'AI Data Annotation',
-    description: 'High-quality labeled datasets for ML training, ensuring your models reach peak performance.',
-    icon: Layers,
+    title: 'SEO Services',
+    description: 'Data-driven search optimization and high-conversion ad strategies powered by generative intelligence.',
+    icon: Search,
   },
   {
-    title: 'Web Scraping & Pipelines',
-    description: 'Large-scale data extraction systems and robust pipelines that transform raw data into intelligence.',
-    icon: Globe,
+    title: 'Financial Services',
+    description: 'Advanced market analysis, automated auditing, and predictive risk assessment for high-stakes investment portfolios.',
+    icon: BarChart3,
   },
   {
-    title: 'GenAI Integrations',
-    description: 'Leveraging LLMs and Generative AI to create personalized experiences and intelligent features.',
-    icon: Database,
+    title: 'Legal Services',
+    description: 'Secure LLM-based contract analysis, discovery automation, and precision legal research for modern law firms.',
+    icon: Gavel,
   }
 ];
 
@@ -29,8 +31,8 @@ export default function Services() {
     <section className="py-24 px-6 bg-background relative overflow-hidden" id="services">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Core Expertise</h2>
-          <h3 className="text-4xl md:text-5xl font-headline font-bold">Our Specialized Services</h3>
+          <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Our Expertise</h2>
+          <h3 className="text-4xl md:text-5xl font-headline font-bold">Comprehensive Service Hierarchy</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
