@@ -2,6 +2,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
@@ -18,12 +19,13 @@ const navLinks = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    // Initialize in case the page is already scrolled on mount
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -37,14 +39,20 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-headline font-bold text-gradient-gold tracking-tight">
-            Visoma
-          </span>
+        <Link href="/" className="flex items-center">
+          <div className="relative h-12 w-40">
+            <Image 
+              src="/logo.png" 
+              alt="Visoma Logo" 
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
+          {mounted && navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}

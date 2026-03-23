@@ -1,5 +1,6 @@
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 
 const footerSections = [
@@ -20,6 +21,7 @@ const footerSections = [
       { name: 'SEO & Growth', href: '/services' },
       { name: 'Financial Intelligence', href: '/services' },
       { name: 'Legal Tech', href: '/services' },
+      { name: 'Data Services', href: '/services' },
     ],
   },
   {
@@ -39,9 +41,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
-              <span className="text-3xl font-headline font-bold text-gradient-gold">Visoma</span>
+              <div className="relative h-16 w-52">
+                <Image 
+                  src="/logo.png" 
+                  alt="Visoma Logo" 
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </Link>
-            <p className="text-muted-foreground max-w-sm mb-6">
+            <p className="text-muted-foreground max-w-sm mb-6 mt-4">
               Building the future of AI infrastructure. Specializing in data pipelines, 
               automation systems, and scalable machine learning for modern enterprises.
             </p>
