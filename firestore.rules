@@ -1,0 +1,227 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * VISOMA CORE SECURITY RULES
+     * 
+     * Core Philosophy:
+     * This ruleset enforces a hybrid access model. Public-facing content (Services, Solutions, Case Studies, 
+     * Blog Posts, and Skills) is generally readable by all users to support SEO and lead generation. 
+     * Sensitive data, such as Contact Inquiries and Freelancer Profiles, is protected by strict 
+     * authorization checks. Administrative access is managed through a dedicated 'roles_admin' 
+     * collection (DBAC - Database Access Control).
+     * 
+     * Data Structure:
+     * - Public Marketing Content: Top-level collections (/services, /solutions, /blogPosts, etc.).
+     * - User-Owned Freelancer Data: Nested under /freelancerProfiles/{userId}/...
+     * - Administrative/Internal Data: /contactInquiries and /roles_admin.
+     * 
+     * Key Security Decisions:
+     * 1. Admin Role: Check for the existence of a document in /roles_admin/{userId} to grant admin rights.
+     * 2. Public Readability: Most marketing content is public, but Blog Posts require an 'isPublished' flag.
+     * 3. Ownership Model: Freelancers own their profiles and sub-resources (Education, Experience, Projects).
+     * 4. Denormalization: To avoid costly get() calls, sub-entities like Education include a denormalized 
+     *    'freelancerAvailabilityStatus' to determine if they should be visible to the public.
+     * 5. Relationship Integrity: Rules enforce that the 'userId' or 'freelancerId' in a document matches 
+     *    the authenticated user and the document path.
+     */
+
+    // --- Helper Functions ---
+
+    /** @description Checks if the user is authenticated. */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /** @description Checks if the authenticated user has an entry in the admin roles collection. */
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
+    }
+
+    /** @description Checks if the user's UID matches the provided ID. */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /** @description Checks ownership and ensures the document exists for updates/deletes. */
+    function isExistingOwner(userId) {
+      return resource != null && isOwner(userId);
+    }
+
+    /** @description Validates that the internal ID field matches the intended owner on creation. */
+    function isCreatingCorrectOwner(userIdField) {
+      return request.resource.data[userIdField] == request.auth.uid;
+    }
+
+    // --- Collection Rules ---
+
+    /**
+     * @description Marketing services offered by the company.
+     * @path /services/{serviceId}
+     * @allow (get) Public access for any visitor.
+     * @deny (create) Non-admin users attempting to add services.
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /services/{serviceId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Specialized industry solutions.
+     * @path /solutions/{solutionId}
+     * @allow (get) Public access for any visitor.
+     * @deny (update) Any non-admin user.
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /solutions/{solutionId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Publicly visible case studies of past work.
+     * @path /caseStudies/{caseStudyId}
+     * @allow (list) Publicly list all case studies.
+     * @deny (delete) Any user without admin privileges.
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /caseStudies/{caseStudyId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Blog posts for thought leadership.
+     * @path /blogPosts/{blogPostId}
+     * @allow (get) Any user if the post is published.
+     * @deny (get) Anonymous user if 'isPublished' is false.
+     * @principle Conditional Public Read (Draft vs Published) + Admin All.
+     */
+    match /blogPosts/{blogPostId} {
+      allow get, list: if (resource.data.isPublished == true) || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Tags for blog post organization.
+     * @path /blogTags/{blogTagId}
+     * @allow (get) Public access.
+     * @deny (create) Authenticated non-admin.
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /blogTags/{blogTagId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Contact form and consultation submissions.
+     * @path /contactInquiries/{inquiryId}
+     * @allow (create) Any user (including anonymous) can submit an inquiry.
+     * @deny (list) Even the user who submitted it (only admins can read).
+     * @principle Public Write-Only with Admin Read/Update/Delete.
+     */
+    match /contactInquiries/{inquiryId} {
+      allow create: if true;
+      allow get, list, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Singleton document for general company and About page info.
+     * @path /companyInfo/visoma
+     * @allow (get) Public access.
+     * @deny (update) Anonymous user or non-admin user.
+     * @principle Singleton Public Read with Admin-Only Update.
+     */
+    match /companyInfo/visoma {
+      allow get: if true;
+      allow list: if false; // Singleton does not need listing
+      allow create, delete: if false; // Immutable singleton path
+      allow update: if isAdmin();
+    }
+
+    /**
+     * @description Freelancer profiles for gig workers.
+     * @path /freelancerProfiles/{freelancerId}
+     * @allow (update) The profile owner (freelancerId == auth.uid).
+     * @deny (get) Public user if availabilityStatus is not 'Available'.
+     * @principle Ownership-based Writes + Conditional Public Read.
+     */
+    match /freelancerProfiles/{freelancerId} {
+      allow get, list: if (resource.data.availabilityStatus == 'Available') || isOwner(freelancerId) || isAdmin();
+      allow create: if isOwner(freelancerId) && isCreatingCorrectOwner('userId');
+      allow update: if (isExistingOwner(freelancerId) && request.resource.data.userId == resource.data.userId) || isAdmin();
+      allow delete: if isExistingOwner(freelancerId) || isAdmin();
+    }
+
+    /**
+     * @description Education records for a freelancer.
+     * @path /freelancerProfiles/{freelancerId}/education/{educationId}
+     * @allow (create) The freelancer adding to their own profile.
+     * @deny (list) Public user if the freelancer's denormalized status is not 'Available'.
+     * @principle Authorization Independence via denormalization.
+     */
+    match /freelancerProfiles/{freelancerId}/education/{educationId} {
+      allow get, list: if (resource.data.freelancerAvailabilityStatus == 'Available') || isOwner(freelancerId) || isAdmin();
+      allow create: if isOwner(freelancerId) && isCreatingCorrectOwner('freelancerId');
+      allow update: if (isExistingOwner(freelancerId) && request.resource.data.freelancerId == resource.data.freelancerId) || isAdmin();
+      allow delete: if isExistingOwner(freelancerId) || isAdmin();
+    }
+
+    /**
+     * @description Experience records for a freelancer.
+     * @path /freelancerProfiles/{freelancerId}/experience/{experienceId}
+     * @allow (get) Publicly visible if freelancer is 'Available'.
+     * @deny (update) Attempting to change the 'freelancerId' link.
+     * @principle Relational integrity and Ownership.
+     */
+    match /freelancerProfiles/{freelancerId}/experience/{experienceId} {
+      allow get, list: if (resource.data.freelancerAvailabilityStatus == 'Available') || isOwner(freelancerId) || isAdmin();
+      allow create: if isOwner(freelancerId) && isCreatingCorrectOwner('freelancerId');
+      allow update: if (isExistingOwner(freelancerId) && request.resource.data.freelancerId == resource.data.freelancerId) || isAdmin();
+      allow delete: if isExistingOwner(freelancerId) || isAdmin();
+    }
+
+    /**
+     * @description Project portfolio for a freelancer.
+     * @path /freelancerProfiles/{freelancerId}/projects/{projectId}
+     * @allow (list) Owner viewing their own project list.
+     * @deny (create) Mismatched freelancerId in data vs path.
+     * @principle Path-based ownership with relational validation.
+     */
+    match /freelancerProfiles/{freelancerId}/projects/{projectId} {
+      allow get, list: if (resource.data.freelancerAvailabilityStatus == 'Available') || isOwner(freelancerId) || isAdmin();
+      allow create: if isOwner(freelancerId) && isCreatingCorrectOwner('freelancerId');
+      allow update: if (isExistingOwner(freelancerId) && request.resource.data.freelancerId == resource.data.freelancerId) || isAdmin();
+      allow delete: if isExistingOwner(freelancerId) || isAdmin();
+    }
+
+    /**
+     * @description Global list of skills.
+     * @path /skills/{skillId}
+     * @allow (get) Public read access.
+     * @deny (create) Authenticated non-admin.
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /skills/{skillId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Administrative roles assignment.
+     * @path /roles_admin/{userId}
+     * @allow (get) Admin checking another admin's status.
+     * @deny (create) Any user (only server-side or existing admins can manage).
+     * @principle Database Access Control (DBAC) isolation.
+     */
+    match /roles_admin/{userId} {
+      allow get: if isSignedIn(); // Allow get for internal existence checks
+      allow list: if isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+  }
+}
