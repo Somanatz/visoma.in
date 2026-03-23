@@ -1,28 +1,45 @@
 
 "use client";
 
-import { Cpu, Search, BarChart3, Gavel } from 'lucide-react';
+import { Cpu, Search, BarChart3, Gavel, ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const services = [
   {
     title: 'IT Services',
-    description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems. Internships available.',
+    description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems. We architect the core of your digital transformation.',
+    details: ['Neural Network Design', 'AWS/GCP Cloud Architecture', 'High-Throughput Data Streams'],
     icon: Cpu,
+    animationClass: 'group-hover:rotate-180 transition-transform duration-700',
+    color: 'text-blue-400',
+    bg: 'bg-blue-400/10'
   },
   {
     title: 'SEO Services',
-    description: 'Data-driven search optimization and high-conversion ad strategies. Internship opportunities in digital strategy.',
+    description: 'Data-driven search optimization and high-conversion ad strategies. We ensure your AI products reach the right audience at the right time.',
+    details: ['Semantic Keyword Clusters', 'Generative Ad Copywriting', 'Technical SEO Audits'],
     icon: Search,
+    animationClass: 'group-hover:scale-125 transition-transform duration-500',
+    color: 'text-orange-400',
+    bg: 'bg-orange-400/10'
   },
   {
     title: 'Financial Services',
-    description: 'Advanced market analysis and predictive risk assessment. Internships available for data analysts.',
+    description: 'Advanced market analysis and predictive risk assessment. Precision tools for auditing and asset optimization in the machine era.',
+    details: ['Portfolio Intelligence', 'Automated Risk Auditing', 'Predictive Market Modeling'],
     icon: BarChart3,
+    animationClass: 'group-hover:translate-y-[-4px] transition-transform duration-300',
+    color: 'text-emerald-400',
+    bg: 'bg-emerald-400/10'
   },
   {
     title: 'Legal Services',
-    description: 'Secure LLM-based contract analysis and precision legal research. Legal tech internships available.',
+    description: 'Secure LLM-based contract analysis and precision legal research. We bridge the gap between high-speed AI and regulatory compliance.',
+    details: ['Contract Intelligence', 'Discovery Automation', 'Compliance Monitoring'],
     icon: Gavel,
+    animationClass: 'group-hover:rotate-[-20deg] transition-transform duration-300',
+    color: 'text-amber-400',
+    bg: 'bg-amber-400/10'
   }
 ];
 
@@ -30,24 +47,60 @@ export default function Services() {
   return (
     <section className="py-24 px-6 bg-background relative overflow-hidden" id="services">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
+        <div className="mb-20">
           <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Our Expertise</h2>
-          <h3 className="text-4xl md:text-5xl font-headline font-bold">Comprehensive Service Hierarchy</h3>
+          <h3 className="text-4xl md:text-5xl font-headline font-bold mb-6">Comprehensive Service Hierarchy</h3>
+          <p className="text-xl text-muted-foreground max-w-2xl">
+            Each layer of our service stack is designed to provide internships for emerging talent while 
+            delivering enterprise-grade solutions to our partners.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex flex-col gap-12">
           {services.map((service, idx) => (
             <div 
               key={idx}
-              className="glass p-8 rounded-2xl group hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 cursor-default"
+              className="group glass p-8 md:p-12 rounded-[2.5rem] border-white/5 hover:border-primary/30 transition-all duration-500 relative overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-6 h-6 text-primary" />
+              {/* Background Glow */}
+              <div className={cn("absolute -top-24 -right-24 w-64 h-64 blur-[100px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 rounded-full", service.bg)} />
+
+              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 relative z-10">
+                {/* Icon Container */}
+                <div className={cn("w-20 h-20 rounded-3xl flex items-center justify-center shrink-0 bg-white/5 border border-white/10 group-hover:border-primary/30", service.color)}>
+                  <service.icon className={cn("w-10 h-10", service.animationClass)} />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 space-y-6">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <h4 className="text-3xl font-bold group-hover:text-primary transition-colors">{service.title}</h4>
+                    <span className="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
+                      Internships Available
+                    </span>
+                  </div>
+                  
+                  <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl">
+                    {service.description}
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                    {service.details.map((detail, dIdx) => (
+                      <div key={dIdx} className="flex items-center gap-3 text-sm font-medium text-foreground/80">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        {detail}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Link */}
+                <div className="hidden lg:block">
+                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </div>
-              <h4 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">{service.title}</h4>
-              <p className="text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
             </div>
           ))}
         </div>
