@@ -2,7 +2,7 @@
 "use client";
 
 import { useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, where } from 'firebase/firestore';
+import { collection, query, where, limit } from 'firebase/firestore';
 import { useFirestore } from '@/firebase';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,12 +15,12 @@ export default function BlogPage() {
 
   const blogQuery = useMemoFirebase(() => {
     if (!firestore) return null;
-    // We remove orderBy('publicationDate', 'desc') temporarily to ensure the page works
-    // even if a composite index (isPublished + publicationDate) hasn't been built yet.
-    // We sort client-side in displayPosts instead.
+    // We explicitly filter by isPublished and add a limit to match common security rules patterns.
+    // Client-side sorting is used as a fallback for missing composite indexes.
     return query(
       collection(firestore, 'blogPosts'),
-      where('isPublished', '==', true)
+      where('isPublished', '==', true),
+      limit(20)
     );
   }, [firestore]);
 
@@ -47,7 +47,7 @@ export default function BlogPage() {
     }
   ];
 
-  // Client-side sorting as a fallback for missing composite indexes
+  // Client-side sorting
   const sortedPosts = posts ? [...posts].sort((a, b) => {
     return new Date(b.publicationDate).getTime() - new Date(a.publicationDate).getTime();
   }) : null;
@@ -67,9 +67,9 @@ export default function BlogPage() {
         {error && (
           <Alert className="mb-12 border-primary/20 bg-primary/5">
             <Info className="h-4 w-4 text-primary" />
-            <AlertTitle className="text-primary">Note</AlertTitle>
+            <AlertTitle className="text-primary">Live Feed Synchronizing</AlertTitle>
             <AlertDescription className="text-muted-foreground">
-              Showing featured articles. Connection to real-time intelligence feed is being optimized.
+              Showing featured articles from our archive while we optimize our real-time intelligence feed.
             </AlertDescription>
           </Alert>
         )}
