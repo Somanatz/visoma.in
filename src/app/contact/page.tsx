@@ -5,18 +5,27 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { toast } from '@/hooks/use-toast';
 import { Mail, MapPin, Phone } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export default function ContactPage() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, control } = useForm({
+    defaultValues: {
+      inquiryType: 'General Inquiry',
+      name: '',
+      email: '',
+      company: '',
+      message: ''
+    }
+  });
 
   const onSubmit = (data: any) => {
     console.log(data);
     toast({
-      title: "Inquiry Sent",
-      description: "We've received your message and will get back to you within 24 hours.",
+      title: "Message Sent",
+      description: `We've received your ${data.inquiryType.toLowerCase()} and will get back to you shortly.`,
     });
     reset();
   };
@@ -28,46 +37,56 @@ export default function ContactPage() {
           <h1 className="text-5xl md:text-6xl font-headline font-bold mb-6">Let's Build the Future</h1>
           <p className="text-xl text-muted-foreground max-w-2xl">
             Get in touch to discuss your AI, Data, or Automation needs. 
-            We typically respond within one business day.
+            Select your inquiry type below to get started.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div className="glass p-8 md:p-12 rounded-3xl">
+          <div className="glass p-8 md:p-12 rounded-3xl border-primary/10 shadow-xl">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              
+              <div className="space-y-2">
+                <Label htmlFor="inquiryType">Inquiry Type</Label>
+                <Controller
+                  name="inquiryType"
+                  control={control}
+                  render={({ field }) => (
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <SelectTrigger className="bg-white/5 border-white/10 h-12">
+                        <SelectValue placeholder="Select inquiry type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="General Inquiry">General Inquiry</SelectItem>
+                        <SelectItem value="Service Request">Service Request</SelectItem>
+                        <SelectItem value="General Support">General Support</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" {...register('name', { required: true })} placeholder="John Doe" className="bg-white/5 border-white/10" />
+                  <Input id="name" {...register('name', { required: true })} placeholder="John Doe" className="bg-white/5 border-white/10 h-12" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" {...register('email', { required: true })} placeholder="john@company.com" className="bg-white/5 border-white/10" />
+                  <Input id="email" type="email" {...register('email', { required: true })} placeholder="john@company.com" className="bg-white/5 border-white/10 h-12" />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="company">Company</Label>
-                <Input id="company" {...register('company')} placeholder="Tech Solutions Inc." className="bg-white/5 border-white/10" />
+                <Input id="company" {...register('company')} placeholder="Tech Solutions Inc." className="bg-white/5 border-white/10 h-12" />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">How can we help?</Label>
-                <Textarea id="message" {...register('message', { required: true })} placeholder="Tell us about your project..." className="bg-white/5 border-white/10 min-h-[150px]" />
+                <Label htmlFor="message">Your Message</Label>
+                <Textarea id="message" {...register('message', { required: true })} placeholder="How can we help you architect your next solution?" className="bg-white/5 border-white/10 min-h-[180px]" />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="budget">Estimated Budget</Label>
-                  <Input id="budget" {...register('budget')} placeholder="$50k - $100k" className="bg-white/5 border-white/10" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="timeline">Timeline</Label>
-                  <Input id="timeline" {...register('timeline')} placeholder="3-6 months" className="bg-white/5 border-white/10" />
-                </div>
-              </div>
-
-              <Button type="submit" className="w-full h-14 bg-primary text-primary-foreground text-lg gold-glow">
+              <Button type="submit" className="w-full h-14 bg-primary text-primary-foreground text-lg font-bold gold-glow">
                 Send Message
               </Button>
             </form>
@@ -81,8 +100,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-1">Email Us</h3>
-                  <p className="text-muted-foreground">General Enquiries: <a href="mailto:info@visoma.in" className="text-primary">info@visoma.in</a></p>
-                  <p className="text-muted-foreground">Support: <a href="mailto:support@visoma.in" className="text-primary">support@visoma.in</a></p>
+                  <p className="text-muted-foreground">General Enquiries: <a href="mailto:info@visoma.in" className="text-primary hover:underline transition-all">info@visoma.in</a></p>
+                  <p className="text-muted-foreground">Support: <a href="mailto:support@visoma.in" className="text-primary hover:underline transition-all">support@visoma.in</a></p>
                 </div>
               </div>
 
@@ -109,19 +128,19 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="glass p-8 rounded-2xl">
-              <h4 className="font-bold mb-4">Why Visoma?</h4>
+            <div className="glass p-8 rounded-2xl border-white/5 bg-secondary/10">
+              <h4 className="font-bold mb-4 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-primary" />
+                Why Visoma?
+              </h4>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li className="flex items-center space-x-2">
-                  <div className="w-1 h-1 bg-primary rounded-full" />
                   <span>Deep expertise in LLMs and RAG systems</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <div className="w-1 h-1 bg-primary rounded-full" />
                   <span>Scalable data pipelines built on AWS/GCP</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <div className="w-1 h-1 bg-primary rounded-full" />
                   <span>Proven track record with high-growth AI startups</span>
                 </li>
               </ul>
