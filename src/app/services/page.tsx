@@ -10,42 +10,42 @@ const detailedServices = [
     id: 'it',
     title: 'IT Services',
     description: 'Transform manual workflows into intelligent, automated systems that learn and adapt.',
-    features: ['AI Infrastructure', 'Custom Workflow Mapping', 'Process Optimization', 'Data Pipeline Scaling'],
+    features: ['AI Infrastructure', 'Custom Workflow Mapping', 'Internships Available', 'Data Pipeline Scaling'],
     icon: Cpu
   },
   {
     id: 'seo',
     title: 'SEO Services',
     description: 'High-conversion, modern landing pages for AI products that communicate value clearly.',
-    features: ['Generative Ad Copy', 'SEO Optimization', 'Interactive Demos', 'Performance Monitoring'],
+    features: ['Generative Ad Copy', 'SEO Optimization', 'Internships Available', 'Performance Monitoring'],
     icon: Search
   },
   {
     id: 'financial',
     title: 'Financial Services',
     description: 'Advanced technical solutions for asset analysis and automated risk auditing.',
-    features: ['Market Intelligence', 'Portfolio Optimization', 'Automated Auditing', 'Risk Assessment'],
+    features: ['Market Intelligence', 'Portfolio Optimization', 'Internships Available', 'Risk Assessment'],
     icon: BarChart3
   },
   {
     id: 'legal',
     title: 'Legal Services',
     description: 'Precision AI tools for legal research and document discovery automation.',
-    features: ['Contract Analysis', 'Discovery Automation', 'LLM Research Tools', 'Security Compliance'],
+    features: ['Contract Analysis', 'Discovery Automation', 'Internships Available', 'Security Compliance'],
     icon: Gavel
   },
   {
     id: 'genai',
     title: 'GenAI Integrations',
     description: 'Seamlessly integrate generative AI capabilities into your existing product stack.',
-    features: ['API Strategy', 'Prompt Engineering', 'Fine-tuning Models', 'Rate Limit Management'],
+    features: ['API Strategy', 'Prompt Engineering', 'Internships Available', 'Rate Limit Management'],
     icon: Database
   },
   {
     id: 'scraping',
     title: 'Web Scraping',
     description: 'Robust, enterprise-grade data extraction from any web source at massive scale.',
-    features: ['Anti-Bot Evasion', 'Dynamic Content Parsing', 'Structured Data Delivery', 'Monitoring Alerts'],
+    features: ['Anti-Bot Evasion', 'Dynamic Content Parsing', 'Internships Available', 'Monitoring Alerts'],
     icon: Rocket
   }
 ];

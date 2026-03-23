@@ -6,22 +6,22 @@ import { Cpu, Search, BarChart3, Gavel } from 'lucide-react';
 const services = [
   {
     title: 'IT Services',
-    description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems tailored for enterprise scalability.',
+    description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems. Internships available.',
     icon: Cpu,
   },
   {
     title: 'SEO Services',
-    description: 'Data-driven search optimization and high-conversion ad strategies powered by generative intelligence.',
+    description: 'Data-driven search optimization and high-conversion ad strategies. Internship opportunities in digital strategy.',
     icon: Search,
   },
   {
     title: 'Financial Services',
-    description: 'Advanced market analysis, automated auditing, and predictive risk assessment for high-stakes investment portfolios.',
+    description: 'Advanced market analysis and predictive risk assessment. Internships available for data analysts.',
     icon: BarChart3,
   },
   {
     title: 'Legal Services',
-    description: 'Secure LLM-based contract analysis, discovery automation, and precision legal research for modern law firms.',
+    description: 'Secure LLM-based contract analysis and precision legal research. Legal tech internships available.',
     icon: Gavel,
   }
 ];

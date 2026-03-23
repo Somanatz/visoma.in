@@ -11,8 +11,8 @@ const navLinks = [
   { name: 'Solutions', href: '/solutions' },
   { name: 'Portfolio', href: '/portfolio' },
   { name: 'Blog', href: '/blog' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Careers', href: '/careers' },
+  { name: 'Freelance Portal', href: '/auth' },
 ];
 
 export default function Navbar() {
