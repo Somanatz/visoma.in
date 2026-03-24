@@ -1,976 +1,145 @@
+
 {
   "entities": {
     "Service": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Service",
       "type": "object",
-      "description": "Represents a service offered by Visoma, such as AI Automation, Web Scraping, or specific solutions like Legal services and Investments. It includes core details and features for each offering.",
+      "description": "Represents a service offered by Visoma, such as AI Automation, Web Scraping, or specific solutions like Legal services and Investments.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Service entity."
-        },
-        "name": {
-          "type": "string",
-          "description": "The public-facing name of the service (e.g., 'AI Automation Systems', 'Legal Services', 'SEO Optimised Ads')."
-        },
-        "slug": {
-          "type": "string",
-          "description": "A URL-friendly identifier for the service, typically derived from its name."
-        },
-        "overview": {
-          "type": "string",
-          "description": "A high-level description of what the service entails."
-        },
-        "features": {
-          "type": "array",
-          "description": "A list of key features or components included in the service.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "useCases": {
-          "type": "array",
-          "description": "Examples of how the service can be applied or scenarios where it's beneficial.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "processDescription": {
-          "type": "string",
-          "description": "A detailed explanation of the typical process involved in delivering this service."
-        },
-        "callToActionText": {
-          "type": "string",
-          "description": "Suggested text for a call to action button related to this service."
-        },
-        "iconUrl": {
-          "type": "string",
-          "description": "URL to an icon representing the service.",
-          "format": "uri"
-        },
-        "isFeatured": {
-          "type": "boolean",
-          "description": "Indicates if the service should be highlighted, e.g., on the homepage."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the service record was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the service record was last updated.",
-          "format": "date-time"
-        }
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "overview": { "type": "string" },
+        "features": { "type": "array", "items": { "type": "string" } },
+        "useCases": { "type": "array", "items": { "type": "string" } },
+        "processDescription": { "type": "string" },
+        "callToActionText": { "type": "string" },
+        "iconUrl": { "type": "string", "format": "uri" },
+        "isFeatured": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "name",
-        "slug",
-        "overview",
-        "features",
-        "useCases",
-        "callToActionText"
-      ]
+      "required": ["id", "name", "slug", "overview", "features", "useCases", "callToActionText"]
     },
     "Solution": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Solution",
       "type": "object",
-      "description": "Represents an industry or domain where Visoma offers specialized solutions, like 'AI Startups' or 'E-commerce'. This is distinct from general services.",
+      "description": "Represents an industry or domain where Visoma offers specialized solutions.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Solution entity."
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the industry or solution domain (e.g., 'AI Startups', 'SaaS', 'E-commerce')."
-        },
-        "slug": {
-          "type": "string",
-          "description": "A URL-friendly identifier for the solution, typically derived from its name."
-        },
-        "description": {
-          "type": "string",
-          "description": "An overview of how Visoma helps clients in this specific industry or with this type of solution."
-        },
-        "associatedServiceIds": {
-          "type": "array",
-          "description": "References to Services relevant to this solution. (Relationship: Solution N:N Service)",
-          "items": {
-            "type": "string"
-          }
-        },
-        "isFeatured": {
-          "type": "boolean",
-          "description": "Indicates if the solution should be highlighted, e.g., on a solutions overview page."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the solution record was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the solution record was last updated.",
-          "format": "date-time"
-        }
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "associatedServiceIds": { "type": "array", "items": { "type": "string" } },
+        "isFeatured": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "name",
-        "slug",
-        "description",
-        "associatedServiceIds"
-      ]
+      "required": ["id", "name", "slug", "description", "associatedServiceIds"]
     },
     "CaseStudy": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "CaseStudy",
       "type": "object",
-      "description": "Details a real-world project demonstrating Visoma's impact and capabilities for a client.",
+      "description": "Details a real-world project demonstrating Visoma's impact.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the CaseStudy entity."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the case study (e.g., 'AI Support Automation')."
-        },
-        "slug": {
-          "type": "string",
-          "description": "A URL-friendly identifier for the case study."
-        },
-        "problemDescription": {
-          "type": "string",
-          "description": "A description of the challenge or problem the client was facing."
-        },
-        "solutionDescription": {
-          "type": "string",
-          "description": "A detailed explanation of the solution Visoma provided."
-        },
-        "technologyUsed": {
-          "type": "array",
-          "description": "A list of key technologies or platforms utilized in the solution (e.g., 'GPT', 'Retrieval', 'AWS').",
-          "items": {
-            "type": "string"
-          }
-        },
-        "resultsAchieved": {
-          "type": "string",
-          "description": "Quantifiable or descriptive outcomes and benefits realized by the client."
-        },
-        "solutionId": {
-          "type": "string",
-          "description": "Reference to the Solution (industry/domain) this case study belongs to. (Relationship: Solution 1:N CaseStudy)"
-        },
-        "thumbnailUrl": {
-          "type": "string",
-          "description": "URL to a thumbnail image for the case study.",
-          "format": "uri"
-        },
-        "clientName": {
-          "type": "string",
-          "description": "The name or title of the client (e.g., 'CTO, AI Startup')."
-        },
-        "clientIndustry": {
-          "type": "string",
-          "description": "The industry of the client who benefited from the case study."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the case study record was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the case study record was last updated.",
-          "format": "date-time"
-        }
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "problemDescription": { "type": "string" },
+        "solutionDescription": { "type": "string" },
+        "technologyUsed": { "type": "array", "items": { "type": "string" } },
+        "resultsAchieved": { "type": "string" },
+        "solutionId": { "type": "string" },
+        "thumbnailUrl": { "type": "string", "format": "uri" },
+        "clientName": { "type": "string" },
+        "clientIndustry": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "title",
-        "slug",
-        "problemDescription",
-        "solutionDescription",
-        "technologyUsed",
-        "resultsAchieved",
-        "solutionId"
-      ]
+      "required": ["id", "title", "slug", "problemDescription", "solutionDescription", "technologyUsed", "resultsAchieved", "solutionId"]
     },
     "BlogPost": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "BlogPost",
       "type": "object",
-      "description": "Represents an article or post published on Visoma's blog, providing thought leadership and insights.",
+      "description": "Represents an article or post published on Visoma's blog.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the BlogPost entity."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the blog post."
-        },
-        "slug": {
-          "type": "string",
-          "description": "A URL-friendly identifier for the blog post."
-        },
-        "content": {
-          "type": "string",
-          "description": "The full rich text content of the blog post."
-        },
-        "authorName": {
-          "type": "string",
-          "description": "The name of the author of the blog post."
-        },
-        "publicationDate": {
-          "type": "string",
-          "description": "The date and time the blog post was published.",
-          "format": "date-time"
-        },
-        "summary": {
-          "type": "string",
-          "description": "A brief summary or excerpt of the blog post."
-        },
-        "thumbnailUrl": {
-          "type": "string",
-          "description": "URL to a thumbnail image for the blog post.",
-          "format": "uri"
-        },
-        "tagIds": {
-          "type": "array",
-          "description": "References to BlogTags associated with this post. (Relationship: BlogPost N:N BlogTag)",
-          "items": {
-            "type": "string"
-          }
-        },
-        "isPublished": {
-          "type": "boolean",
-          "description": "Indicates if the blog post is currently visible to the public."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the blog post record was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the blog post record was last updated.",
-          "format": "date-time"
-        }
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "content": { "type": "string" },
+        "authorName": { "type": "string" },
+        "publicationDate": { "type": "string", "format": "date-time" },
+        "summary": { "type": "string" },
+        "thumbnailUrl": { "type": "string", "format": "uri" },
+        "tagIds": { "type": "array", "items": { "type": "string" } },
+        "isPublished": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "title",
-        "slug",
-        "content",
-        "authorName",
-        "publicationDate",
-        "summary",
-        "tagIds",
-        "isPublished"
-      ]
+      "required": ["id", "title", "slug", "content", "authorName", "publicationDate", "summary", "tagIds", "isPublished"]
     },
     "BlogTag": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "BlogTag",
       "type": "object",
-      "description": "Represents a tag or category used to organize blog posts (e.g., 'AI', 'Automation').",
+      "description": "Represents a tag or category used to organize blog posts.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the BlogTag entity."
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the tag (e.g., 'LLMs', 'Data')."
-        },
-        "slug": {
-          "type": "string",
-          "description": "A URL-friendly identifier for the tag."
-        },
-        "description": {
-          "type": "string",
-          "description": "A brief description of the tag's topic."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the blog tag record was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the blog tag record was last updated.",
-          "format": "date-time"
-        }
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" }
       },
-      "required": [
-        "id",
-        "name",
-        "slug"
-      ]
+      "required": ["id", "name", "slug"]
     },
     "ContactInquiry": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "ContactInquiry",
       "type": "object",
-      "description": "Stores information submitted by users through the contact or 'Book Consultation' form.",
+      "description": "Stores information submitted by users through contact forms.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the ContactInquiry entity."
-        },
-        "name": {
-          "type": "string",
-          "description": "The full name of the person submitting the inquiry."
-        },
-        "email": {
-          "type": "string",
-          "description": "The email address of the person submitting the inquiry.",
-          "format": "email"
-        },
-        "company": {
-          "type": "string",
-          "description": "The company name associated with the inquiry, if provided."
-        },
-        "message": {
-          "type": "string",
-          "description": "The main message or inquiry text from the user."
-        },
-        "budget": {
-          "type": "string",
-          "description": "An optional indication of the project budget (e.g., '€10k-€50k', 'TBD')."
-        },
-        "timeline": {
-          "type": "string",
-          "description": "An optional indication of the desired project timeline (e.g., '3-6 months', 'Immediate')."
-        },
-        "submissionDate": {
-          "type": "string",
-          "description": "The date and time when the inquiry was submitted.",
-          "format": "date-time"
-        },
-        "isProcessed": {
-          "type": "boolean",
-          "description": "Internal flag indicating if the inquiry has been reviewed or acted upon."
-        }
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "company": { "type": "string" },
+        "message": { "type": "string" },
+        "submissionDate": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "name",
-        "email",
-        "message",
-        "submissionDate"
-      ]
+      "required": ["id", "name", "email", "message", "submissionDate"]
     },
     "CompanyInfo": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "CompanyInfo",
       "type": "object",
-      "description": "Stores dynamic content for the 'About' page and general company information that might be edited.",
+      "description": "Stores dynamic content for the 'About' page.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the CompanyInfo entity. (Expected to be a singleton, e.g., '1')"
-        },
-        "missionStatement": {
-          "type": "string",
-          "description": "Visoma's core mission statement."
-        },
-        "visionStatement": {
-          "type": "string",
-          "description": "Visoma's long-term vision."
-        },
-        "expertiseHighlights": {
-          "type": "array",
-          "description": "Key areas of expertise or differentiators for Visoma.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "whyVisomaDescription": {
-          "type": "string",
-          "description": "A compelling description of why clients should choose Visoma."
-        },
-        "address": {
-          "type": "string",
-          "description": "The physical address of Visoma."
-        },
-        "phoneNumber": {
-          "type": "string",
-          "description": "Visoma's primary contact phone number."
-        },
-        "email": {
-          "type": "string",
-          "description": "Visoma's primary contact email address (e.g., info@visoma.in).",
-          "format": "email"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the company info was last updated.",
-          "format": "date-time"
-        }
+        "id": { "type": "string" },
+        "missionStatement": { "type": "string" },
+        "visionStatement": { "type": "string" },
+        "expertiseHighlights": { "type": "array", "items": { "type": "string" } },
+        "whyVisomaDescription": { "type": "string" },
+        "address": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "updatedAt": { "type": "string", "format": "date-time" }
       },
-      "required": [
-        "id",
-        "missionStatement",
-        "visionStatement",
-        "expertiseHighlights",
-        "whyVisomaDescription",
-        "email"
-      ]
-    },
-    "FreelancerProfile": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "FreelancerProfile",
-      "type": "object",
-      "description": "Represents a profile for a gig worker or freelancer using Visoma's job platform, detailing their personal and professional information.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the FreelancerProfile entity."
-        },
-        "userId": {
-          "type": "string",
-          "description": "Reference to an external authentication system's user ID for this freelancer."
-        },
-        "firstName": {
-          "type": "string",
-          "description": "The first name of the freelancer."
-        },
-        "lastName": {
-          "type": "string",
-          "description": "The last name of the freelancer."
-        },
-        "email": {
-          "type": "string",
-          "description": "The contact email address of the freelancer.",
-          "format": "email"
-        },
-        "headline": {
-          "type": "string",
-          "description": "A short professional headline (e.g., 'Experienced AI Engineer')."
-        },
-        "bio": {
-          "type": "string",
-          "description": "A longer biography or 'About Me' section for the freelancer."
-        },
-        "profileImageUrl": {
-          "type": "string",
-          "description": "URL to the freelancer's profile picture.",
-          "format": "uri"
-        },
-        "websiteUrl": {
-          "type": "string",
-          "description": "Optional URL to the freelancer's personal website or portfolio.",
-          "format": "uri"
-        },
-        "linkedinUrl": {
-          "type": "string",
-          "description": "Optional URL to the freelancer's LinkedIn profile.",
-          "format": "uri"
-        },
-        "availabilityStatus": {
-          "type": "string",
-          "description": "The current availability status of the freelancer (e.g., 'Available', 'Busy', 'Not Accepting New Projects')."
-        },
-        "hourlyRate": {
-          "type": "number",
-          "description": "The freelancer's preferred hourly rate, if applicable."
-        },
-        "location": {
-          "type": "string",
-          "description": "The freelancer's primary location (city, country)."
-        },
-        "skillIds": {
-          "type": "array",
-          "description": "References to skills possessed by this freelancer. (Relationship: FreelancerProfile N:N Skill)",
-          "items": {
-            "type": "string"
-          }
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the freelancer profile was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the freelancer profile was last updated.",
-          "format": "date-time"
-        }
-      },
-      "required": [
-        "id",
-        "userId",
-        "firstName",
-        "lastName",
-        "email",
-        "headline",
-        "bio",
-        "availabilityStatus",
-        "skillIds"
-      ]
-    },
-    "Education": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Education",
-      "type": "object",
-      "description": "Records educational background for a FreelancerProfile.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Education entity."
-        },
-        "freelancerId": {
-          "type": "string",
-          "description": "Reference to the FreelancerProfile this education record belongs to. (Relationship: FreelancerProfile 1:N Education)"
-        },
-        "institutionName": {
-          "type": "string",
-          "description": "The name of the educational institution."
-        },
-        "degree": {
-          "type": "string",
-          "description": "The degree or qualification obtained (e.g., 'Master of Science', 'Bachelor of Arts')."
-        },
-        "fieldOfStudy": {
-          "type": "string",
-          "description": "The primary field of study or major."
-        },
-        "startDate": {
-          "type": "string",
-          "description": "The start date of the education period.",
-          "format": "date"
-        },
-        "endDate": {
-          "type": "string",
-          "description": "The end date of the education period, if completed. Null if ongoing.",
-          "format": "date"
-        },
-        "description": {
-          "type": "string",
-          "description": "Additional details about achievements, honors, or coursework."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the education record was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the education record was last updated.",
-          "format": "date-time"
-        }
-      },
-      "required": [
-        "id",
-        "freelancerId",
-        "institutionName",
-        "degree",
-        "fieldOfStudy",
-        "startDate"
-      ]
-    },
-    "Experience": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Experience",
-      "type": "object",
-      "description": "Records work experience for a FreelancerProfile.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Experience entity."
-        },
-        "freelancerId": {
-          "type": "string",
-          "description": "Reference to the FreelancerProfile this experience record belongs to. (Relationship: FreelancerProfile 1:N Experience)"
-        },
-        "jobTitle": {
-          "type": "string",
-          "description": "The job title held (e.g., 'Senior Data Scientist', 'AI Consultant')."
-        },
-        "companyName": {
-          "type": "string",
-          "description": "The name of the company where the experience was gained."
-        },
-        "location": {
-          "type": "string",
-          "description": "The location of the company or work."
-        },
-        "startDate": {
-          "type": "string",
-          "description": "The start date of the employment period.",
-          "format": "date"
-        },
-        "endDate": {
-          "type": "string",
-          "description": "The end date of the employment period, if applicable. Null if current.",
-          "format": "date"
-        },
-        "isCurrent": {
-          "type": "boolean",
-          "description": "Indicates if this is the freelancer's current role."
-        },
-        "description": {
-          "type": "string",
-          "description": "Details about responsibilities, achievements, and projects in this role."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the experience record was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the experience record was last updated.",
-          "format": "date-time"
-        }
-      },
-      "required": [
-        "id",
-        "freelancerId",
-        "jobTitle",
-        "companyName",
-        "startDate",
-        "isCurrent"
-      ]
-    },
-    "Skill": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Skill",
-      "type": "object",
-      "description": "Represents a specific skill that can be associated with FreelancerProfiles.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Skill entity."
-        },
-        "name": {
-          "type": "string",
-          "description": "The name of the skill (e.g., 'Python', 'Machine Learning', 'Data Annotation')."
-        },
-        "slug": {
-          "type": "string",
-          "description": "A URL-friendly identifier for the skill."
-        },
-        "description": {
-          "type": "string",
-          "description": "A brief description of the skill."
-        },
-        "category": {
-          "type": "string",
-          "description": "A category to group similar skills (e.g., 'Programming Languages', 'AI/ML')."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the skill record was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the skill record was last updated.",
-          "format": "date-time"
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "slug"
-      ]
-    },
-    "FreelancerProject": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "FreelancerProject",
-      "type": "object",
-      "description": "Details a project completed by a freelancer, showcasing their work and capabilities.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the FreelancerProject entity."
-        },
-        "freelancerId": {
-          "type": "string",
-          "description": "Reference to the FreelancerProfile this project belongs to. (Relationship: FreelancerProfile 1:N FreelancerProject)"
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the project."
-        },
-        "description": {
-          "type": "string",
-          "description": "A detailed description of the project, including its goals and outcomes."
-        },
-        "technologiesUsed": {
-          "type": "array",
-          "description": "A list of technologies and tools used in the project.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "projectUrl": {
-          "type": "string",
-          "description": "Optional URL to the live project, code repository, or detailed case study.",
-          "format": "uri"
-        },
-        "thumbnailUrl": {
-          "type": "string",
-          "description": "URL to a thumbnail image representing the project.",
-          "format": "uri"
-        },
-        "startDate": {
-          "type": "string",
-          "description": "The start date of the project.",
-          "format": "date"
-        },
-        "endDate": {
-          "type": "string",
-          "description": "The end date of the project, if completed. Null if ongoing.",
-          "format": "date"
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp when the project record was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp when the project record was last updated.",
-          "format": "date-time"
-        }
-      },
-      "required": [
-        "id",
-        "freelancerId",
-        "title",
-        "description",
-        "technologiesUsed",
-        "startDate"
-      ]
+      "required": ["id", "missionStatement", "visionStatement", "expertiseHighlights", "whyVisomaDescription", "email"]
     }
   },
   "auth": {
-    "providers": [
-      "password",
-      "anonymous"
-    ]
+    "providers": ["password", "anonymous"]
   },
   "firestore": {
-    "structure": [
-      {
-        "path": "/services/{serviceId}",
-        "definition": {
-          "entityName": "Service",
-          "schema": {
-            "$ref": "#/backend/entities/Service"
-          },
-          "description": "Publicly accessible services offered by Visoma. All documents in this collection are public read-only. Admins have full CRUD access.",
-          "params": [
-            {
-              "name": "serviceId",
-              "description": "Unique identifier for the service."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/solutions/{solutionId}",
-        "definition": {
-          "entityName": "Solution",
-          "schema": {
-            "$ref": "#/backend/entities/Solution"
-          },
-          "description": "Publicly accessible industry solutions offered by Visoma. All documents in this collection are public read-only. Admins have full CRUD access.",
-          "params": [
-            {
-              "name": "solutionId",
-              "description": "Unique identifier for the solution."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/caseStudies/{caseStudyId}",
-        "definition": {
-          "entityName": "CaseStudy",
-          "schema": {
-            "$ref": "#/backend/entities/CaseStudy"
-          },
-          "description": "Publicly accessible case studies demonstrating Visoma's work. All documents in this collection are public read-only. Admins have full CRUD access.",
-          "params": [
-            {
-              "name": "caseStudyId",
-              "description": "Unique identifier for the case study."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/blogPosts/{blogPostId}",
-        "definition": {
-          "entityName": "BlogPost",
-          "schema": {
-            "$ref": "#/backend/entities/BlogPost"
-          },
-          "description": "Blog posts for Visoma's thought leadership. Publicly readable if 'isPublished' is true. Admins have full CRUD access and can read unpublished drafts. Adheres to QAPs by expecting client queries to filter on 'isPublished'.",
-          "params": [
-            {
-              "name": "blogPostId",
-              "description": "Unique identifier for the blog post."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/blogTags/{blogTagId}",
-        "definition": {
-          "entityName": "BlogTag",
-          "schema": {
-            "$ref": "#/backend/entities/BlogTag"
-          },
-          "description": "Publicly accessible tags for categorizing blog posts. All documents in this collection are public read-only. Admins have full CRUD access.",
-          "params": [
-            {
-              "name": "blogTagId",
-              "description": "Unique identifier for the blog tag."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/contactInquiries/{inquiryId}",
-        "definition": {
-          "entityName": "ContactInquiry",
-          "schema": {
-            "$ref": "#/backend/entities/ContactInquiry"
-          },
-          "description": "Private collection for contact form submissions. Write-only for all users (anonymous or authenticated). Read-only for authenticated administrators.",
-          "params": [
-            {
-              "name": "inquiryId",
-              "description": "Unique identifier for the contact inquiry."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/companyInfo/visoma",
-        "definition": {
-          "entityName": "CompanyInfo",
-          "schema": {
-            "$ref": "#/backend/entities/CompanyInfo"
-          },
-          "description": "Singleton document containing general company information and 'About' page content. Publicly readable. Only authenticated administrators can update it."
-        }
-      },
-      {
-        "path": "/freelancerProfiles/{freelancerId}",
-        "definition": {
-          "entityName": "FreelancerProfile",
-          "schema": {
-            "$ref": "#/backend/entities/FreelancerProfile"
-          },
-          "description": "Profiles for gig workers. Owners (matching 'userId' to 'request.auth.uid') have full CRUD access. Publicly readable if 'availabilityStatus' is 'Available'. Admins have full CRUD access to all profiles. The 'freelancerId' parameter must match the document's 'userId' for owner-based access.",
-          "params": [
-            {
-              "name": "freelancerId",
-              "description": "Unique identifier for the freelancer profile, typically corresponding to the user's authentication UID."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/freelancerProfiles/{freelancerId}/education/{educationId}",
-        "definition": {
-          "entityName": "Education",
-          "schema": {
-            "$ref": "#/backend/entities/Education"
-          },
-          "description": "Educational background records for a specific freelancer. Owners (matching 'freelancerId' to 'request.auth.uid') have full CRUD access. Publicly readable if the parent freelancer's profile is 'Available'. Includes denormalized 'freelancerAvailabilityStatus' from the parent profile for authorization independence.",
-          "params": [
-            {
-              "name": "freelancerId",
-              "description": "The ID of the parent freelancer profile."
-            },
-            {
-              "name": "educationId",
-              "description": "Unique identifier for the education record."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/freelancerProfiles/{freelancerId}/experience/{experienceId}",
-        "definition": {
-          "entityName": "Experience",
-          "schema": {
-            "$ref": "#/backend/entities/Experience"
-          },
-          "description": "Work experience records for a specific freelancer. Owners (matching 'freelancerId' to 'request.auth.uid') have full CRUD access. Publicly readable if the parent freelancer's profile is 'Available'. Includes denormalized 'freelancerAvailabilityStatus' from the parent profile for authorization independence.",
-          "params": [
-            {
-              "name": "freelancerId",
-              "description": "The ID of the parent freelancer profile."
-            },
-            {
-              "name": "experienceId",
-              "description": "Unique identifier for the experience record."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/skills/{skillId}",
-        "definition": {
-          "entityName": "Skill",
-          "schema": {
-            "$ref": "#/backend/entities/Skill"
-          },
-          "description": "A global list of skills that can be associated with freelancer profiles. Publicly readable. Admins have full CRUD access.",
-          "params": [
-            {
-              "name": "skillId",
-              "description": "Unique identifier for the skill."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/freelancerProfiles/{freelancerId}/projects/{projectId}",
-        "definition": {
-          "entityName": "FreelancerProject",
-          "schema": {
-            "$ref": "#/backend/entities/FreelancerProject"
-          },
-          "description": "Project records for a specific freelancer. Owners (matching 'freelancerId' to 'request.auth.uid') have full CRUD access. Publicly readable if the parent freelancer's profile is 'Available'. Includes denormalized 'freelancerAvailabilityStatus' from the parent profile for authorization independence.",
-          "params": [
-            {
-              "name": "freelancerId",
-              "description": "The ID of the parent freelancer profile."
-            },
-            {
-              "name": "projectId",
-              "description": "Unique identifier for the freelancer project."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/roles_admin/{userId}",
-        "definition": {
-          "entityName": "user",
-          "schema": {
-            "$ref": "#/backend/entities/user"
-          },
-          "description": "Dedicated collection for administrative roles. The mere existence of a document signifies that the 'userId' is an administrator. Used for DBAC (Database Access Control). Only admins or system processes can manage this collection."
-        }
-      }
-    ],
-    "reasoning": "The Firestore data structure for Visoma is designed following the core principles of authorization independence, structural segregation, and clear access modeling to ensure security, scalability, and debuggability. All publicly accessible content, such as Services, Solutions, Case Studies, Blog Posts (when published), Blog Tags, Skills, and Company Info, resides in top-level collections, allowing for simple, unrestricted public read access via security rules. This segregation ensures that the default security posture for these collections is 'public read', directly supporting Query-Aware Permissions (QAPs) as rules do not need to filter content based on visibility flags; clients are expected to query for published content, and rules validate this. \n\nFor user-owned data, specifically freelancer profiles and their associated sub-entities (education, experience, projects), a path-based ownership model is adopted. Freelancer profiles are stored under `/freelancerProfiles/{freelancerId}`, where `freelancerId` corresponds to the authenticated user's `uid`. Nested collections for `education`, `experience`, and `projects` follow this hierarchy: `/freelancerProfiles/{freelancerId}/education/{educationId}`, etc.\n\n**Authorization Independence** is critically achieved for these hierarchical structures through denormalization. While `Education`, `Experience`, and `FreelancerProject` entities naturally contain `freelancerId` as a foreign key, their public visibility depends on the parent `FreelancerProfile`'s `availabilityStatus`. To eliminate `get()` calls in security rules, the `freelancerAvailabilityStatus` attribute is denormalized and copied into each of these subcollection documents. This means that a change to a freelancer's `availabilityStatus` would trigger a Cloud Function to update this denormalized field in all their associated `education`, `experience`, and `project` records. This design allows security rules for subcollections to evaluate access rights purely based on the document's own data (`resource.data`) and the request context (`request.auth.uid`), enabling atomic operations and simplifying rule logic. \n\nAdmin roles are implemented using a dedicated top-level collection, `/roles_admin/{userId}`, where the mere existence of a document for a given `userId` grants administrative privileges. This 'existence over content' approach for roles is robust and avoids custom claims, aligning with the DBAC principle. Contact inquiries are stored in a private, admin-only collection (`/contactInquiries`) to ensure sensitive submissions are only accessible to authorized personnel, while allowing any user to create new inquiries."
+    "/services/{serviceId}": { "schema": { "$ref": "#/entities/Service" }, "description": "Public services." },
+    "/solutions/{solutionId}": { "schema": { "$ref": "#/entities/Solution" }, "description": "Public solutions." },
+    "/caseStudies/{caseStudyId}": { "schema": { "$ref": "#/entities/CaseStudy" }, "description": "Public case studies." },
+    "/blogPosts/{blogPostId}": { "schema": { "$ref": "#/entities/BlogPost" }, "description": "Blog posts." },
+    "/blogTags/{blogTagId}": { "schema": { "$ref": "#/entities/BlogTag" }, "description": "Blog tags." },
+    "/contactInquiries/{inquiryId}": { "schema": { "$ref": "#/entities/ContactInquiry" }, "description": "Contact submissions." },
+    "/companyInfo/visoma": { "schema": { "$ref": "#/entities/CompanyInfo" }, "description": "Company singleton." },
+    "/roles_admin/{userId}": { "schema": { "type": "object" }, "description": "Admin roles." }
   }
 }

@@ -27,7 +27,7 @@ const footerSections = [
   {
     title: 'Resources',
     links: [
-      { name: 'Freelance Portal', href: '/auth' },
+      { name: 'Case Studies', href: '/portfolio' },
       { name: 'Privacy Policy', href: '#' },
       { name: 'Terms of Service', href: '#' },
     ],

@@ -66,13 +66,6 @@ const defaultSolutions = [
     icon: Search,
     color: 'text-orange-400',
     slug: 'seo-ads'
-  },
-  {
-    name: 'Freelance Job Portal',
-    description: 'A dedicated platform connecting top-tier gig workers with AI projects.',
-    icon: Briefcase,
-    color: 'text-primary',
-    slug: 'jobs'
   }
 ];
 
@@ -119,9 +112,9 @@ export default function SolutionsPage() {
                 <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
                   {sol.description}
                 </p>
-                <Link href={sol.name === 'Freelance Job Portal' || sol.slug === 'jobs' ? '/auth' : '/contact'}>
+                <Link href='/contact'>
                   <Button variant="link" className="p-0 text-primary group-hover:underline">
-                    {sol.name === 'Freelance Job Portal' || sol.slug === 'jobs' ? 'Join as Freelancer' : 'Discuss Solution'}
+                    Discuss Solution
                   </Button>
                 </Link>
               </div>

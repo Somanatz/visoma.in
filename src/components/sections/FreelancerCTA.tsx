@@ -83,8 +83,8 @@ export default function FreelancerCTA() {
                 <span className="text-gradient-gold">Earn Globally.</span>
               </h2>
               <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-xl">
-                Register as a freelancer to work on high-impact remote projects and earn competitive rates. 
-                Join our elite network of experts and architect the future of intelligence.
+                Join our network of experts to work on high-impact remote projects and earn competitive rates. 
+                Partner with us to architect the future of intelligence.
               </p>
               
               <div className="space-y-6 mb-12">
@@ -102,10 +102,10 @@ export default function FreelancerCTA() {
                 </div>
               </div>
 
-              <Link href="/auth">
+              <Link href="/contact">
                 <Button size="lg" className="bg-primary text-primary-foreground gold-glow px-12 h-16 text-xl font-bold rounded-2xl">
                   <UserPlus className="w-6 h-6 mr-3" />
-                  Enter Talent Portal
+                  Join Our Talent Network
                 </Button>
               </Link>
             </div>
