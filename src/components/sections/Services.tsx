@@ -98,11 +98,14 @@ export default function Services() {
                         key={dIdx} 
                         className="p-6 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300"
                       >
-                        <div className="flex items-center gap-3 text-sm font-bold text-foreground mb-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          Core Capability
+                        <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80 mb-3">
+                          <div className="relative flex h-2 w-2">
+                            <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></div>
+                            <div className="relative inline-flex rounded-full h-2 w-2 bg-primary"></div>
+                          </div>
+                          {service.title}
                         </div>
-                        <p className="text-sm text-muted-foreground">{detail}</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{detail}</p>
                       </div>
                     ))}
                   </div>
