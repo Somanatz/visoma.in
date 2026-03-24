@@ -67,11 +67,20 @@
   to { transform: translateX(-50%); }
 }
 
+@keyframes infinite-scroll-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
 .animate-infinite-scroll {
   animation: infinite-scroll 40s linear infinite;
 }
 
-.animate-infinite-scroll:hover {
+.animate-infinite-scroll-reverse {
+  animation: infinite-scroll-reverse 40s linear infinite;
+}
+
+.animate-infinite-scroll:hover, .animate-infinite-scroll-reverse:hover {
   animation-play-state: paused;
 }
 

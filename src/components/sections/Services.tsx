@@ -250,7 +250,10 @@ export default function Services() {
 
                 {/* Infinite Marquee Scroll Section */}
                 <div className="relative overflow-hidden w-full">
-                  <div className="flex w-fit gap-6 animate-infinite-scroll">
+                  <div className={cn(
+                    "flex w-fit gap-6",
+                    idx % 2 === 0 ? "animate-infinite-scroll" : "animate-infinite-scroll-reverse"
+                  )}>
                     {[...service.items, ...service.items].map((item, dIdx) => (
                       <div 
                         key={dIdx} 
