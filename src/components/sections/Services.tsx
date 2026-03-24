@@ -4,79 +4,156 @@
 import { Cpu, Search, BarChart3, Gavel, Database, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const services = [
   {
     slug: 'it-services',
     title: 'IT Services',
-    description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems. We architect the core of your digital transformation.',
+    description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems.',
     items: [
-      { title: 'GenAI Integrations', desc: 'Seamlessly embedding generative models into your existing enterprise workflows.' },
-      { title: 'Prompt Design', desc: 'Engineering precise instructions to extract maximum performance from LLMs.' },
-      { title: 'Automation', desc: 'End-to-end process automation reducing manual overhead by up to 80%.' },
-      { title: 'Static Business Page', desc: 'Blazing fast, high-performance web presences optimized for conversion.' },
-      { title: 'Web Design', desc: 'Futuristic, minimal UI/UX tailored for high-trust technology brands.' },
-      { title: 'Chatbot', desc: 'Custom RAG-powered assistants with deep knowledge-base integration.' },
-      { title: 'AI services', desc: 'Bespoke machine learning solutions from computer vision to predictive analytics.' }
+      { 
+        title: 'GenAI Integrations', 
+        desc: 'Seamlessly embedding generative models into your existing enterprise workflows.',
+        img: 'https://picsum.photos/seed/genai/600/400'
+      },
+      { 
+        title: 'Prompt Design', 
+        desc: 'Engineering precise instructions to extract maximum performance from LLMs.',
+        img: 'https://picsum.photos/seed/prompt/600/400'
+      },
+      { 
+        title: 'Automation', 
+        desc: 'End-to-end process automation reducing manual overhead by up to 80%.',
+        img: 'https://picsum.photos/seed/automation/600/400'
+      },
+      { 
+        title: 'Static Business Page', 
+        desc: 'Blazing fast, high-performance web presences optimized for conversion.',
+        img: 'https://picsum.photos/seed/static/600/400'
+      },
+      { 
+        title: 'Web Design', 
+        desc: 'Futuristic, minimal UI/UX tailored for high-trust technology brands.',
+        img: 'https://picsum.photos/seed/design/600/400'
+      },
+      { 
+        title: 'Chatbot', 
+        desc: 'Custom RAG-powered assistants with deep knowledge-base integration.',
+        img: 'https://picsum.photos/seed/chatbot/600/400'
+      },
+      { 
+        title: 'AI Services', 
+        desc: 'Bespoke machine learning solutions from computer vision to predictive analytics.',
+        img: 'https://picsum.photos/seed/aiserv/600/400'
+      }
     ],
     icon: Cpu,
-    animationClass: 'group-hover:rotate-180 transition-transform duration-700',
     color: 'text-blue-400',
     bg: 'bg-blue-400/10'
   },
   {
     slug: 'data-services',
     title: 'Data Services',
-    description: 'High-precision data acquisition and preparation. From large-scale collections to specialized annotation, we fuel your models with quality.',
+    description: 'High-precision data acquisition and preparation. Fueling your models with quality.',
     items: [
-      { title: 'Data Labeling & Annotation', desc: 'High-accuracy classification and semantic segmentation for vision and NLP models.' },
-      { title: 'Image & Video Collections', desc: 'Bespoke datasets tailored to specific edge-case scenarios and environments.' },
-      { title: 'Precision Data Contributions', desc: 'Expert-verified data gathering across diverse domains and languages.' }
+      { 
+        title: 'Data Contributions', 
+        desc: 'Expert-verified data gathering across diverse domains and languages.',
+        img: 'https://picsum.photos/seed/datacontrib/600/400'
+      },
+      { 
+        title: 'Data Labeling', 
+        desc: 'High-accuracy classification and semantic segmentation for vision and NLP models.',
+        img: 'https://picsum.photos/seed/datalabel/600/400'
+      },
+      { 
+        title: 'Image Collections', 
+        desc: 'Bespoke datasets tailored to specific edge-case scenarios and environments.',
+        img: 'https://picsum.photos/seed/imgcoll/600/400'
+      },
+      { 
+        title: 'Manual Annotation', 
+        desc: 'Precision multi-layered labeling and specialist verification loops.',
+        img: 'https://picsum.photos/seed/annotate/600/400'
+      }
     ],
     icon: Database,
-    animationClass: 'group-hover:translate-y-[-4px] group-hover:scale-110 transition-all duration-500',
     color: 'text-purple-400',
     bg: 'bg-purple-400/10'
   },
   {
     slug: 'seo-services',
     title: 'SEO Services',
-    description: 'Data-driven search optimization and high-conversion ad strategies. We ensure your AI products reach the right audience.',
+    description: 'Data-driven search optimization and high-conversion ad strategies.',
     items: [
-      { title: 'Semantic Keyword Clusters', desc: 'Mapping the entire topical authority of your niche to dominate search intent.' },
-      { title: 'Generative Ad Copywriting', desc: 'Dynamic, high-conversion creative powered by fine-tuned language models.' },
-      { title: 'Technical SEO Audits', desc: 'Optimizing site architecture for maximum crawl efficiency and performance.' }
+      { 
+        title: 'Semantic Clusters', 
+        desc: 'Mapping the entire topical authority of your niche to dominate search intent.',
+        img: 'https://picsum.photos/seed/seo1/600/400'
+      },
+      { 
+        title: 'Generative Ad Copy', 
+        desc: 'Dynamic, high-conversion creative powered by fine-tuned language models.',
+        img: 'https://picsum.photos/seed/seo2/600/400'
+      },
+      { 
+        title: 'Technical SEO', 
+        desc: 'Optimizing site architecture for maximum crawl efficiency and performance.',
+        img: 'https://picsum.photos/seed/seo3/600/400'
+      }
     ],
     icon: Search,
-    animationClass: 'group-hover:scale-125 transition-transform duration-500',
     color: 'text-orange-400',
     bg: 'bg-orange-400/10'
   },
   {
     slug: 'financial-services',
     title: 'Financial Services',
-    description: 'Advanced market analysis and predictive risk assessment. Precision tools for auditing and asset optimization.',
+    description: 'Advanced market analysis and predictive risk assessment.',
     items: [
-      { title: 'Portfolio Intelligence', desc: 'Automated auditing and stress-testing for complex financial portfolios.' },
-      { title: 'Automated Risk Auditing', desc: 'Real-time monitoring systems to ensure all operations meet regulatory standards.' },
-      { title: 'Predictive Market Modeling', desc: 'Machine learning models designed to forecast asset performance with high precision.' }
+      { 
+        title: 'Portfolio Intelligence', 
+        desc: 'Automated auditing and stress-testing for complex portfolios.',
+        img: 'https://picsum.photos/seed/fin1/600/400'
+      },
+      { 
+        title: 'Risk Auditing', 
+        desc: 'Real-time monitoring systems to ensure all operations meet regulatory standards.',
+        img: 'https://picsum.photos/seed/fin2/600/400'
+      },
+      { 
+        title: 'Market Modeling', 
+        desc: 'Machine learning models designed to forecast asset performance.',
+        img: 'https://picsum.photos/seed/fin3/600/400'
+      }
     ],
     icon: BarChart3,
-    animationClass: 'group-hover:translate-y-[-4px] transition-transform duration-300',
     color: 'text-emerald-400',
     bg: 'bg-emerald-400/10'
   },
   {
     slug: 'legal-services',
-    title: 'Legal Services',
-    description: 'Secure LLM-based contract analysis and precision legal research. We bridge the gap between AI and regulatory compliance.',
+    title: 'Legal Tech',
+    description: 'Secure LLM-based contract analysis and precision legal research.',
     items: [
-      { title: 'Contract Intelligence', desc: 'High-speed parsing of thousands of documents to identify risks and deviations.' },
-      { title: 'Discovery Automation', desc: 'Semantic search across millions of records to find relevant evidence in seconds.' },
-      { title: 'Compliance Monitoring', desc: 'AI agents that track regulatory changes and flag potential internal conflicts.' }
+      { 
+        title: 'Contract Intelligence', 
+        desc: 'High-speed parsing of thousands of documents to identify risks.',
+        img: 'https://picsum.photos/seed/legal1/600/400'
+      },
+      { 
+        title: 'Discovery Automation', 
+        desc: 'Semantic search across millions of records to find evidence in seconds.',
+        img: 'https://picsum.photos/seed/legal2/600/400'
+      },
+      { 
+        title: 'Compliance Agents', 
+        desc: 'AI agents that track regulatory changes and flag internal conflicts.',
+        img: 'https://picsum.photos/seed/legal3/600/400'
+      }
     ],
     icon: Gavel,
-    animationClass: 'group-hover:rotate-[-20deg] transition-transform duration-300',
     color: 'text-amber-400',
     bg: 'bg-amber-400/10'
   }
@@ -90,7 +167,7 @@ export default function Services() {
           <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Our Expertise</h2>
           <h3 className="text-4xl md:text-5xl font-headline font-bold mb-6">Comprehensive Service Hierarchy</h3>
           <p className="text-xl text-muted-foreground max-w-2xl">
-            Each layer of our service stack is designed to deliver enterprise-grade solutions to our partners.
+            Technical foundations for high-impact intelligence across every sector.
           </p>
         </div>
 
@@ -102,52 +179,58 @@ export default function Services() {
             >
               <div className={cn("absolute -top-24 -right-24 w-64 h-64 blur-[100px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 rounded-full", service.bg)} />
 
-              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 relative z-10">
-                <div className={cn("w-20 h-20 rounded-3xl flex items-center justify-center shrink-0 bg-white/5 border border-white/10 group-hover:border-primary/30", service.color)}>
-                  <service.icon className={cn("w-10 h-10", service.animationClass)} />
+              <div className="flex flex-col gap-8 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-6">
+                    <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 group-hover:border-primary/30", service.color)}>
+                      <service.icon className="w-8 h-8" />
+                    </div>
+                    <div>
+                      <h4 className="text-3xl font-bold group-hover:text-primary transition-colors">{service.title}</h4>
+                      <p className="text-muted-foreground leading-relaxed mt-1">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                  <Link href={`/services/${service.slug}`} className="shrink-0">
+                    <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow">
+                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
                 </div>
 
-                <div className="flex-1 space-y-6">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <h4 className="text-3xl font-bold group-hover:text-primary transition-colors">{service.title}</h4>
-                  </div>
-                  
-                  <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl">
-                    {service.description}
-                  </p>
-
-                  {/* Details grid with left-to-right flow */}
-                  <div className="flex flex-wrap gap-6 pt-4">
+                {/* Horizontal Live Scroll Section */}
+                <div className="relative">
+                  <div className="flex overflow-x-auto gap-6 pb-6 no-scrollbar snap-x snap-mandatory">
                     {service.items.map((item, dIdx) => (
                       <div 
                         key={dIdx} 
-                        className="flex-1 min-w-[280px] p-6 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300"
+                        className="flex-shrink-0 w-[300px] h-[380px] relative rounded-3xl overflow-hidden snap-start border border-white/10 group/card"
                       >
-                        <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80 mb-3">
-                          <div className="relative flex h-2 w-2">
-                            <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></div>
-                            <div className="relative inline-flex rounded-full h-2 w-2 bg-primary"></div>
-                          </div>
-                          LIVE SYSTEM
+                        {/* Background Image */}
+                        <Image 
+                          src={item.img} 
+                          alt={item.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover/card:scale-110"
+                          data-ai-hint="technology background"
+                        />
+                        {/* Overlay for readability */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover/card:opacity-90 transition-opacity" />
+                        
+                        {/* Content */}
+                        <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                          <h5 className="font-bold text-2xl mb-3 text-white">{item.title}</h5>
+                          <p className="text-sm text-gray-300 leading-relaxed font-medium">
+                            {item.desc}
+                          </p>
                         </div>
-                        <h5 className="font-bold text-lg mb-2 text-foreground">{item.title}</h5>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                       </div>
                     ))}
                   </div>
+                  {/* Subtle fade effect on sides for scroll indicating */}
+                  <div className="absolute top-0 right-0 h-full w-20 bg-gradient-to-l from-background/40 to-transparent pointer-events-none" />
                 </div>
-
-                <Link href={`/services/${service.slug}`} className="hidden lg:block shrink-0 self-center">
-                  <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow">
-                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
-                
-                <Link href={`/services/${service.slug}`} className="lg:hidden w-full">
-                  <div className="mt-8 p-4 rounded-xl border border-primary/20 text-primary font-bold text-center hover:bg-primary hover:text-primary-foreground transition-all">
-                    View Technical Details
-                  </div>
-                </Link>
               </div>
             </div>
           ))}

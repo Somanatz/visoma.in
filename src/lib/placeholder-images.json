@@ -29,6 +29,30 @@
       "description": "Futuristic laboratory or office space",
       "imageUrl": "https://picsum.photos/seed/visoma-about/1200/600",
       "imageHint": "futuristic office"
+    },
+    {
+      "id": "tech-bg-1",
+      "description": "Glowing circuit board",
+      "imageUrl": "https://picsum.photos/seed/tech1/600/400",
+      "imageHint": "circuitry"
+    },
+    {
+      "id": "tech-bg-2",
+      "description": "Data flow lines",
+      "imageUrl": "https://picsum.photos/seed/tech2/600/400",
+      "imageHint": "data flow"
+    },
+    {
+      "id": "tech-bg-3",
+      "description": "Abstract AI eye",
+      "imageUrl": "https://picsum.photos/seed/tech3/600/400",
+      "imageHint": "artificial intelligence"
+    },
+    {
+      "id": "tech-bg-4",
+      "description": "Server room perspective",
+      "imageUrl": "https://picsum.photos/seed/tech4/600/400",
+      "imageHint": "server farm"
     }
   ]
 }
