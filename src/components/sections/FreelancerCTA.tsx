@@ -102,7 +102,7 @@ export default function FreelancerCTA() {
                 </div>
               </div>
 
-              <Link href="/contact">
+              <Link href="https://forms.gle/m4WZn8wdb1X3XuMZ8" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-primary text-primary-foreground gold-glow px-12 h-16 text-xl font-bold rounded-2xl">
                   <UserPlus className="w-6 h-6 mr-3" />
                   Join Our Talent Network
