@@ -61,6 +61,20 @@
   animation: float 6s ease-in-out infinite;
 }
 
+/* Infinite Scroll Animation */
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 40s linear infinite;
+}
+
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
+}
+
 /* Google Lens Dynamic Background Effect */
 @keyframes mesh-pulse {
   0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
@@ -112,4 +126,13 @@
   right: 15%;
   animation: mesh-pulse 12s ease-in-out infinite alternate;
   animation-delay: -5s;
+}
+
+/* Hide Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
