@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 const opportunities = [
   {
     status: 'Active Now',
-    rate: '$95/hr',
+    rate: '$20/hr',
     title: 'Senior LLM Engineer',
     desc: 'Architecting RAG pipelines for Enterprise-scale Knowledge Bases.',
     color: 'border-primary/40',
@@ -19,19 +19,43 @@ const opportunities = [
   },
   {
     status: 'Upcoming',
-    rate: '$65/hr',
-    title: 'Data Scientist',
+    rate: '$18/hr',
+    title: 'Data Science Specialist',
     desc: 'Predictive Risk Modeling for Global FinTech platforms.',
     color: 'border-blue-400/40',
     glow: 'rgba(96, 165, 250, 0.3)',
   },
   {
     status: 'High Demand',
-    rate: '$80/hr',
-    title: 'Legal Tech Expert',
+    rate: '$19/hr',
+    title: 'Legal Tech Consultant',
     desc: 'Automating Discovery and Analysis for specialized law firms.',
     color: 'border-purple-400/40',
     glow: 'rgba(192, 132, 252, 0.3)',
+  },
+  {
+    status: 'New Role',
+    rate: '$17/hr',
+    title: 'SEO Growth Strategist',
+    desc: 'Optimizing semantic content clusters for AI-driven search.',
+    color: 'border-orange-400/40',
+    glow: 'rgba(251, 146, 60, 0.3)',
+  },
+  {
+    status: 'Active Now',
+    rate: '$15/hr',
+    title: 'Data Annotation Expert',
+    desc: 'Precision labeling for medical imagery and NLP training sets.',
+    color: 'border-emerald-400/40',
+    glow: 'rgba(52, 211, 153, 0.3)',
+  },
+  {
+    status: 'Upcoming',
+    rate: '$20/hr',
+    title: 'Financial Intelligence Analyst',
+    desc: 'Building automated portfolio auditing systems for modern assets.',
+    color: 'border-cyan-400/40',
+    glow: 'rgba(34, 211, 238, 0.3)',
   }
 ];
 
@@ -41,7 +65,7 @@ export default function FreelancerCTA() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % opportunities.length);
-    }, 4500);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
 
@@ -74,7 +98,7 @@ export default function FreelancerCTA() {
                   <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20">
                     <Banknote className="w-6 h-6 text-primary" />
                   </div>
-                  <span className="text-lg font-bold">High-Value Consistent Payouts</span>
+                  <span className="text-lg font-bold">Consistent High-Value Payouts</span>
                 </div>
               </div>
 
@@ -87,7 +111,7 @@ export default function FreelancerCTA() {
             </div>
             
             <div className="relative h-[450px] flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-[400px] h-[260px]">
+              <div className="relative w-full max-w-[400px] h-[280px]">
                 <AnimatePresence mode="popLayout">
                   {opportunities.map((opp, i) => {
                     const isActive = i === index;
@@ -100,22 +124,22 @@ export default function FreelancerCTA() {
                         key={opp.title}
                         initial={{ opacity: 0, scale: 0.8, x: 100, rotateY: 20 }}
                         animate={{ 
-                          opacity: isActive ? 1 : 0.4, 
+                          opacity: isActive ? 1 : 0.6, 
                           scale: isActive ? 1 : 0.9,
-                          x: isActive ? 0 : 30,
-                          y: isActive ? 0 : 40,
-                          rotateY: isActive ? 0 : 15,
+                          x: isActive ? 0 : 40,
+                          y: isActive ? 0 : 50,
+                          rotateY: isActive ? 0 : 10,
                           zIndex: isActive ? 30 : 10,
                         }}
                         exit={{ opacity: 0, scale: 0.8, x: -100, rotateY: -20 }}
-                        transition={{ duration: 1, ease: [0.4, 0, 0.2, 1] }}
-                        className={`absolute inset-0 glass p-10 rounded-[2.5rem] border ${opp.color} shadow-2xl flex flex-col justify-between overflow-hidden`}
+                        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+                        className={`absolute inset-0 bg-[#102826] p-10 rounded-[2.5rem] border ${opp.color} shadow-2xl flex flex-col justify-between overflow-hidden`}
                         style={{
                           boxShadow: isActive ? `0 20px 50px -10px ${opp.glow}` : 'none'
                         }}
                       >
                         {/* Subtle Card Background Pattern */}
-                        <div className="absolute inset-0 bg-white/[0.02] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05),transparent)] pointer-events-none" />
+                        <div className="absolute inset-0 bg-white/[0.02] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
                         
                         <div className="flex justify-between items-start relative z-10">
                           <Badge className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-white/10 text-muted-foreground'} px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none`}>
@@ -125,8 +149,8 @@ export default function FreelancerCTA() {
                         </div>
                         
                         <div className="relative z-10">
-                          <h4 className="text-3xl font-bold mb-4 tracking-tight">{opp.title}</h4>
-                          <p className="text-base text-muted-foreground leading-relaxed font-medium">
+                          <h4 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight">{opp.title}</h4>
+                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-medium">
                             {opp.desc}
                           </p>
                         </div>
