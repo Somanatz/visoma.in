@@ -1,10 +1,50 @@
+
 "use client";
 
+import { useState, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Hero() {
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  const words = useMemo(() => ['Modern Businesses', 'Startups', 'Individuals'], []);
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const currentWord = words[wordIndex];
+      
+      if (isDeleting) {
+        // Backspacing
+        setDisplayText(currentWord.substring(0, displayText.length - 1));
+        setTypingSpeed(50); // Faster deletion
+      } else {
+        // Typing
+        setDisplayText(currentWord.substring(0, displayText.length + 1));
+        setTypingSpeed(150); // Natural typing speed
+      }
+
+      // Handle transitions
+      if (!isDeleting && displayText === currentWord) {
+        // Word completed: hold for 2 seconds
+        setTypingSpeed(2000);
+        setIsDeleting(true);
+      } else if (isDeleting && displayText === '') {
+        // Deletion completed: move to next word
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % words.length);
+        setTypingSpeed(500); // Small pause before starting next word
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, wordIndex, typingSpeed, words]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 px-6">
       {/* Google Lens Style Dynamic Background */}
@@ -30,10 +70,13 @@ export default function Hero() {
           </span>
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-headline font-bold mb-8 leading-[1.1] tracking-tight">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-headline font-bold mb-8 leading-[1.1] tracking-tight min-h-[3.3em] md:min-h-[auto]">
           Build Intelligent <br />
           <span className="text-gradient-gold">AI Systems</span> for <br />
-          Modern Businesses
+          <span className="text-gradient-gold relative">
+            {displayText}
+            <span className="inline-block w-[4px] h-[0.8em] bg-primary ml-2 animate-pulse align-middle" />
+          </span>
         </h1>
 
         <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
