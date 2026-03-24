@@ -10,7 +10,15 @@ const services = [
     slug: 'it-services',
     title: 'IT Services',
     description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems. We architect the core of your digital transformation.',
-    details: ['Neural Network Design', 'AWS/GCP Cloud Architecture', 'High-Throughput Data Streams'],
+    items: [
+      { title: 'GenAI Integrations', desc: 'Seamlessly embedding generative models into your existing enterprise workflows.' },
+      { title: 'Prompt Design', desc: 'Engineering precise instructions to extract maximum performance from LLMs.' },
+      { title: 'Automation', desc: 'End-to-end process automation reducing manual overhead by up to 80%.' },
+      { title: 'Static Business Page', desc: 'Blazing fast, high-performance web presences optimized for conversion.' },
+      { title: 'Web Design', desc: 'Futuristic, minimal UI/UX tailored for high-trust technology brands.' },
+      { title: 'Chatbot', desc: 'Custom RAG-powered assistants with deep knowledge-base integration.' },
+      { title: 'AI services', desc: 'Bespoke machine learning solutions from computer vision to predictive analytics.' }
+    ],
     icon: Cpu,
     animationClass: 'group-hover:rotate-180 transition-transform duration-700',
     color: 'text-blue-400',
@@ -20,7 +28,11 @@ const services = [
     slug: 'data-services',
     title: 'Data Services',
     description: 'High-precision data acquisition and preparation. From large-scale collections to specialized annotation, we fuel your models with quality.',
-    details: ['Data Labeling & Annotation', 'Image & Video Collections', 'Precision Data Contributions'],
+    items: [
+      { title: 'Data Labeling & Annotation', desc: 'High-accuracy classification and semantic segmentation for vision and NLP models.' },
+      { title: 'Image & Video Collections', desc: 'Bespoke datasets tailored to specific edge-case scenarios and environments.' },
+      { title: 'Precision Data Contributions', desc: 'Expert-verified data gathering across diverse domains and languages.' }
+    ],
     icon: Database,
     animationClass: 'group-hover:translate-y-[-4px] group-hover:scale-110 transition-all duration-500',
     color: 'text-purple-400',
@@ -29,8 +41,12 @@ const services = [
   {
     slug: 'seo-services',
     title: 'SEO Services',
-    description: 'Data-driven search optimization and high-conversion ad strategies. We ensure your AI products reach the right audience at the right time.',
-    details: ['Semantic Keyword Clusters', 'Generative Ad Copywriting', 'Technical SEO Audits'],
+    description: 'Data-driven search optimization and high-conversion ad strategies. We ensure your AI products reach the right audience.',
+    items: [
+      { title: 'Semantic Keyword Clusters', desc: 'Mapping the entire topical authority of your niche to dominate search intent.' },
+      { title: 'Generative Ad Copywriting', desc: 'Dynamic, high-conversion creative powered by fine-tuned language models.' },
+      { title: 'Technical SEO Audits', desc: 'Optimizing site architecture for maximum crawl efficiency and performance.' }
+    ],
     icon: Search,
     animationClass: 'group-hover:scale-125 transition-transform duration-500',
     color: 'text-orange-400',
@@ -39,8 +55,12 @@ const services = [
   {
     slug: 'financial-services',
     title: 'Financial Services',
-    description: 'Advanced market analysis and predictive risk assessment. Precision tools for auditing and asset optimization in the machine era.',
-    details: ['Portfolio Intelligence', 'Automated Risk Auditing', 'Predictive Market Modeling'],
+    description: 'Advanced market analysis and predictive risk assessment. Precision tools for auditing and asset optimization.',
+    items: [
+      { title: 'Portfolio Intelligence', desc: 'Automated auditing and stress-testing for complex financial portfolios.' },
+      { title: 'Automated Risk Auditing', desc: 'Real-time monitoring systems to ensure all operations meet regulatory standards.' },
+      { title: 'Predictive Market Modeling', desc: 'Machine learning models designed to forecast asset performance with high precision.' }
+    ],
     icon: BarChart3,
     animationClass: 'group-hover:translate-y-[-4px] transition-transform duration-300',
     color: 'text-emerald-400',
@@ -49,8 +69,12 @@ const services = [
   {
     slug: 'legal-services',
     title: 'Legal Services',
-    description: 'Secure LLM-based contract analysis and precision legal research. We bridge the gap between high-speed AI and regulatory compliance.',
-    details: ['Contract Intelligence', 'Discovery Automation', 'Compliance Monitoring'],
+    description: 'Secure LLM-based contract analysis and precision legal research. We bridge the gap between AI and regulatory compliance.',
+    items: [
+      { title: 'Contract Intelligence', desc: 'High-speed parsing of thousands of documents to identify risks and deviations.' },
+      { title: 'Discovery Automation', desc: 'Semantic search across millions of records to find relevant evidence in seconds.' },
+      { title: 'Compliance Monitoring', desc: 'AI agents that track regulatory changes and flag potential internal conflicts.' }
+    ],
     icon: Gavel,
     animationClass: 'group-hover:rotate-[-20deg] transition-transform duration-300',
     color: 'text-amber-400',
@@ -92,26 +116,28 @@ export default function Services() {
                     {service.description}
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
-                    {service.details.map((detail, dIdx) => (
+                  {/* Details grid with left-to-right flow */}
+                  <div className="flex flex-wrap gap-6 pt-4">
+                    {service.items.map((item, dIdx) => (
                       <div 
                         key={dIdx} 
-                        className="p-6 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300"
+                        className="flex-1 min-w-[280px] p-6 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300"
                       >
                         <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80 mb-3">
                           <div className="relative flex h-2 w-2">
                             <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></div>
                             <div className="relative inline-flex rounded-full h-2 w-2 bg-primary"></div>
                           </div>
-                          {service.title}
+                          LIVE SYSTEM
                         </div>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{detail}</p>
+                        <h5 className="font-bold text-lg mb-2 text-foreground">{item.title}</h5>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <Link href={`/services/${service.slug}`} className="hidden lg:block shrink-0">
+                <Link href={`/services/${service.slug}`} className="hidden lg:block shrink-0 self-center">
                   <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow">
                     <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </div>
