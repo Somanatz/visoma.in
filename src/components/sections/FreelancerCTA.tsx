@@ -61,19 +61,9 @@ export default function FreelancerCTA() {
                     <span className="text-sm font-bold text-primary font-mono">$95/hr</span>
                   </div>
                   <h4 className="text-xl font-bold mb-3">Senior LLM Engineer</h4>
-                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-sm text-muted-foreground mb-2 leading-relaxed">
                     Architecting RAG pipelines for Enterprise-scale Knowledge Bases.
                   </p>
-                  <div className="flex items-center justify-between border-t border-white/5 pt-6">
-                    <div className="flex -space-x-2">
-                      {[1, 2, 3].map((i) => (
-                        <div key={i} className="w-8 h-8 rounded-full border-2 border-[#0B0F0E] bg-white/10" />
-                      ))}
-                    </div>
-                    <div className="text-[10px] font-bold text-primary uppercase tracking-widest">
-                      12 Applicants
-                    </div>
-                  </div>
                 </div>
 
                 {/* Card 2 - Upcoming Opportunity */}
