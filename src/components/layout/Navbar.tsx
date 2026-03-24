@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -46,9 +47,9 @@ export default function Navbar() {
               fill
               className="object-contain"
               priority
+              unoptimized
               onError={(e) => {
-                // Fallback text if logo is still missing
-                console.error("Logo failed to load at /logo.png");
+                console.error("Logo failed to load at /logo.png. Please ensure it is in the /public folder.");
               }}
             />
           </div>

@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
@@ -46,6 +47,7 @@ export default function Footer() {
                   alt="Visoma Logo" 
                   fill
                   className="object-contain"
+                  unoptimized
                 />
               </div>
             </Link>
