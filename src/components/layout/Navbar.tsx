@@ -39,20 +39,20 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <div className="relative h-12 w-40">
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative h-10 w-10">
             <Image 
               src="/logo.png" 
               alt="Visoma Logo" 
               fill
-              className="object-contain"
+              className="object-contain transition-transform duration-300 group-hover:scale-110"
               priority
               unoptimized
-              onError={(e) => {
-                console.error("Logo failed to load at /logo.png. Please ensure it is in the /public folder.");
-              }}
             />
           </div>
+          <span className="text-2xl font-headline font-bold tracking-wider text-gradient-gold">
+            VISOMA
+          </span>
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">
