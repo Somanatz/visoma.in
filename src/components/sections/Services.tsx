@@ -1,6 +1,6 @@
 "use client";
 
-import { Cpu, Search, BarChart3, Gavel, Database, ArrowRight } from 'lucide-react';
+import { Cpu, Search, BarChart3, Gavel, Database } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -229,7 +229,7 @@ export default function Services() {
               <div className={cn("absolute -top-24 -right-24 w-64 h-64 blur-[100px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 rounded-full", service.bg)} />
 
               <div className="flex flex-col gap-8 relative z-10">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                   <div className="flex items-center gap-6">
                     <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 group-hover:border-primary/30", service.color)}>
                       <service.icon className="w-8 h-8" />
@@ -242,8 +242,8 @@ export default function Services() {
                     </div>
                   </div>
                   <Link href={`/services/${service.slug}`} className="shrink-0">
-                    <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow">
-                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                    <div className="px-8 py-3 rounded-xl border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow text-xs font-bold uppercase tracking-[0.2em]">
+                      More Details
                     </div>
                   </Link>
                 </div>
@@ -261,7 +261,7 @@ export default function Services() {
                           alt={item.title}
                           fill
                           className="object-cover transition-transform duration-700 group-hover/card:scale-110"
-                          data-ai-hint="finance technology"
+                          data-ai-hint="technical capability"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover/card:opacity-95 transition-opacity" />
                         
