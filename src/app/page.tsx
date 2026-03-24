@@ -1,4 +1,3 @@
-
 import Hero from '@/components/sections/Hero';
 import Trust from '@/components/sections/Trust';
 import Services from '@/components/sections/Services';
@@ -11,8 +10,8 @@ export default function Home() {
     <div className="flex flex-col w-full">
       <Hero />
       <Trust />
-      <Services />
       <Architecture />
+      <Services />
       
       {/* Testimonials Sample */}
       <section className="py-24 px-6 bg-background">

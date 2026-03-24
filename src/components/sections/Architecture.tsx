@@ -51,8 +51,8 @@ const NodeCard = ({ node }: { node: typeof pipelineNodes[0] }) => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 10;
-    const rotateY = (centerX - x) / 10;
+    const rotateX = (y - centerY) / 15;
+    const rotateY = (centerX - x) / 15;
     setRotate({ x: rotateX, y: rotateY });
   };
 
@@ -113,14 +113,14 @@ const FlowConnector = ({ orientation = 'horizontal' }: { orientation?: 'horizont
   return (
     <div className={cn(
       "flex items-center justify-center shrink-0 overflow-hidden",
-      orientation === 'horizontal' ? "w-12 xl:w-24 h-full" : "w-full h-12"
+      orientation === 'horizontal' ? "w-12 xl:w-24 h-[2px]" : "w-[2px] h-12"
     )}>
       {orientation === 'horizontal' ? (
-        <div className="w-full h-[2px] bg-white/10 relative">
+        <div className="w-full h-full bg-white/10 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent w-full animate-flow-horizontal" />
         </div>
       ) : (
-        <div className="w-[2px] h-full bg-white/10 relative">
+        <div className="w-full h-full bg-white/10 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary to-transparent h-full animate-flow-vertical" />
         </div>
       )}
@@ -149,7 +149,7 @@ export default function Architecture() {
         </div>
 
         {/* Desktop Pipeline Flow */}
-        <div className="hidden lg:flex items-center justify-between">
+        <div className="hidden lg:flex items-center justify-center">
           {pipelineNodes.map((node, index) => (
             <React.Fragment key={node.id}>
               <NodeCard node={node} />
@@ -159,7 +159,7 @@ export default function Architecture() {
         </div>
 
         {/* Mobile Pipeline Flow */}
-        <div className="lg:hidden flex flex-col items-center space-y-0">
+        <div className="lg:hidden flex flex-col items-center justify-center">
           {pipelineNodes.map((node, index) => (
             <React.Fragment key={node.id}>
               <NodeCard node={node} />
