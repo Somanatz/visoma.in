@@ -180,6 +180,26 @@ const services = [
         title: 'Compliance Agents', 
         desc: 'AI agents that track regulatory changes and flag internal conflicts.',
         img: 'https://picsum.photos/seed/legal-comp/600/400'
+      },
+      { 
+        title: 'Digital Notary', 
+        desc: 'Secure and verified electronic notarization for official documentation.',
+        img: 'https://picsum.photos/seed/legal-notary/600/400'
+      },
+      { 
+        title: 'Lawyer Appointments', 
+        desc: 'Direct scheduling with specialized legal experts in our global network.',
+        img: 'https://picsum.photos/seed/legal-appoint/600/400'
+      },
+      { 
+        title: 'Legal Support', 
+        desc: '24/7 technical and administrative support for law firms and litigants.',
+        img: 'https://picsum.photos/seed/legal-support/600/400'
+      },
+      { 
+        title: 'Lawyer Consultation', 
+        desc: 'High-level strategic consultation for complex legal frameworks.',
+        img: 'https://picsum.photos/seed/legal-consult/600/400'
       }
     ],
     icon: Gavel,
