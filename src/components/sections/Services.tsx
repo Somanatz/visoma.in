@@ -83,8 +83,8 @@ const services = [
   },
   {
     slug: 'seo-services',
-    title: 'SEO Services',
-    description: 'Data-driven search optimization and high-conversion ad strategies.',
+    title: 'SEO & Growth Intelligence',
+    description: 'Data-driven search optimization, brand elevation, and high-conversion strategies.',
     items: [
       { 
         title: 'Semantic Clusters', 
@@ -100,6 +100,21 @@ const services = [
         title: 'Technical SEO', 
         desc: 'Optimizing site architecture for maximum crawl efficiency and performance.',
         img: 'https://picsum.photos/seed/coding-screen/600/400'
+      },
+      { 
+        title: 'Social Media Management', 
+        desc: 'Intelligent scheduling and growth strategies for modern digital presences.',
+        img: 'https://picsum.photos/seed/social-growth/600/400'
+      },
+      { 
+        title: 'Profile Promotions', 
+        desc: 'Targeted visibility campaigns to establish authority in your specific industry.',
+        img: 'https://picsum.photos/seed/visibility/600/400'
+      },
+      { 
+        title: 'Brand Creation', 
+        desc: 'Futuristic visual identities and brand voices designed for the AI-first world.',
+        img: 'https://picsum.photos/seed/branding/600/400'
       }
     ],
     icon: Search,
