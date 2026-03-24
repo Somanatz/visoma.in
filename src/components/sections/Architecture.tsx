@@ -1,8 +1,7 @@
-
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Layers, Cpu, Database, Cloud, Zap, ArrowRight, ArrowDown } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Cpu, Database, Cloud, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const pipelineNodes = [
@@ -40,7 +39,7 @@ const pipelineNodes = [
   },
 ];
 
-const NodeCard = ({ node, index }: { node: typeof pipelineNodes[0], index: number }) => {
+const NodeCard = ({ node }: { node: typeof pipelineNodes[0] }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -65,7 +64,7 @@ const NodeCard = ({ node, index }: { node: typeof pipelineNodes[0], index: numbe
   return (
     <div
       ref={cardRef}
-      className="relative z-10 w-full lg:w-64"
+      className="relative z-10 w-full lg:w-64 shrink-0"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
@@ -73,7 +72,7 @@ const NodeCard = ({ node, index }: { node: typeof pipelineNodes[0], index: numbe
     >
       <div
         className={cn(
-          "relative p-8 rounded-[2rem] bg-gradient-to-br from-card to-secondary/40 border border-white/5 transition-all duration-300 ease-out flex flex-col items-center text-center",
+          "relative p-8 rounded-[2.5rem] bg-gradient-to-br from-card to-secondary/40 border border-white/5 transition-all duration-300 ease-out flex flex-col items-center text-center",
           isHovered ? "shadow-2xl scale-105" : "shadow-xl"
         )}
         style={{
@@ -83,7 +82,7 @@ const NodeCard = ({ node, index }: { node: typeof pipelineNodes[0], index: numbe
         }}
       >
         <div className={cn(
-          "w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform bg-gradient-to-br",
+          "w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 transition-transform bg-gradient-to-br",
           node.color
         )}>
           <node.icon className="w-8 h-8 text-white" />
@@ -99,13 +98,32 @@ const NodeCard = ({ node, index }: { node: typeof pipelineNodes[0], index: numbe
         </div>
 
         {/* Gloss Effect */}
-        <div className="absolute inset-0 rounded-[2rem] overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
           <div className={cn(
             "absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent transition-opacity duration-500",
             isHovered ? "opacity-20" : "opacity-0"
           )} style={{ transform: `translate(${rotate.y * 2}px, ${rotate.x * 2}px)` }} />
         </div>
       </div>
+    </div>
+  );
+};
+
+const FlowConnector = ({ orientation = 'horizontal' }: { orientation?: 'horizontal' | 'vertical' }) => {
+  return (
+    <div className={cn(
+      "flex items-center justify-center shrink-0 overflow-hidden",
+      orientation === 'horizontal' ? "w-12 xl:w-24 h-full" : "w-full h-12"
+    )}>
+      {orientation === 'horizontal' ? (
+        <div className="w-full h-[2px] bg-white/10 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent w-full animate-flow-horizontal" />
+        </div>
+      ) : (
+        <div className="w-[2px] h-full bg-white/10 relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary to-transparent h-full animate-flow-vertical" />
+        </div>
+      )}
     </div>
   );
 };
@@ -130,118 +148,36 @@ export default function Architecture() {
           </p>
         </div>
 
-        <div className="relative">
-          {/* Desktop Connectors (SVG) */}
-          <div className="hidden lg:block absolute inset-0 pointer-events-none overflow-visible">
-            <svg className="w-full h-full" style={{ minHeight: '300px' }}>
-              <defs>
-                <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="50%" stopColor="#a855f7" />
-                  <stop offset="100%" stopColor="#10b981" />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-              </defs>
-              
-              {/* Path 1: Apps to Models */}
-              <path
-                d="M 256,150 L 320,150"
-                className="stroke-white/10"
-                strokeWidth="2"
-                fill="none"
-              />
-              <path
-                d="M 256,150 L 320,150"
-                className="stroke-blue-500/40"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="10 20"
-              >
-                <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2s" repeatCount="indefinite" />
-              </path>
+        {/* Desktop Pipeline Flow */}
+        <div className="hidden lg:flex items-center justify-between">
+          {pipelineNodes.map((node, index) => (
+            <React.Fragment key={node.id}>
+              <NodeCard node={node} />
+              {index < pipelineNodes.length - 1 && <FlowConnector orientation="horizontal" />}
+            </React.Fragment>
+          ))}
+        </div>
 
-              {/* Path 2: Models to Data */}
-              <path
-                d="M 512,150 L 576,150"
-                className="stroke-white/10"
-                strokeWidth="2"
-                fill="none"
-              />
-              <path
-                d="M 512,150 L 576,150"
-                className="stroke-purple-500/40"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="10 20"
-              >
-                <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2s" repeatCount="indefinite" />
-              </path>
-
-              {/* Path 3: Data to Infra */}
-              <path
-                d="M 768,150 L 832,150"
-                className="stroke-white/10"
-                strokeWidth="2"
-                fill="none"
-              />
-              <path
-                d="M 768,150 L 832,150"
-                className="stroke-emerald-500/40"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="10 20"
-              >
-                <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2s" repeatCount="indefinite" />
-              </path>
-
-              {/* Flowing particles */}
-              <circle r="3" fill="#3b82f6" filter="url(#glow)">
-                <animateMotion path="M 256,150 L 320,150" dur="1.5s" repeatCount="indefinite" />
-              </circle>
-              <circle r="3" fill="#a855f7" filter="url(#glow)">
-                <animateMotion path="M 512,150 L 576,150" dur="1.8s" repeatCount="indefinite" />
-              </circle>
-              <circle r="3" fill="#10b981" filter="url(#glow)">
-                <animateMotion path="M 768,150 L 832,150" dur="2.1s" repeatCount="indefinite" />
-              </circle>
-            </svg>
-          </div>
-
-          {/* Pipeline Nodes Container */}
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-0">
-            {pipelineNodes.map((node, index) => (
-              <React.Fragment key={node.id}>
-                <NodeCard node={node} index={index} />
-                
-                {/* Mobile Connectors */}
-                {index < pipelineNodes.length - 1 && (
-                  <div className="lg:hidden flex flex-col items-center py-4">
-                    <div className="w-0.5 h-12 bg-gradient-to-b from-white/10 to-primary/30 relative">
-                      <div className="absolute inset-0 bg-primary/40 animate-pulse" />
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
-                        <ArrowDown className="w-4 h-4 text-primary" />
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
+        {/* Mobile Pipeline Flow */}
+        <div className="lg:hidden flex flex-col items-center space-y-0">
+          {pipelineNodes.map((node, index) => (
+            <React.Fragment key={node.id}>
+              <NodeCard node={node} />
+              {index < pipelineNodes.length - 1 && <FlowConnector orientation="vertical" />}
+            </React.Fragment>
+          ))}
         </div>
 
         <div className="mt-24 text-center">
           <p className="text-sm font-bold tracking-[0.2em] text-muted-foreground uppercase mb-8">System Status: Fully Operational</p>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <div className="px-6 py-2 rounded-full border border-white/5 bg-white/5 flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest">Real-time Data Flowing</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-white">Real-time Data Flowing</span>
             </div>
             <div className="px-6 py-2 rounded-full border border-white/5 bg-white/5 flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest">Global Scale Optimized</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-white">Global Scale Optimized</span>
             </div>
           </div>
         </div>
@@ -249,4 +185,3 @@ export default function Architecture() {
     </section>
   );
 }
-

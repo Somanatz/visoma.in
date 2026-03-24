@@ -137,6 +137,25 @@
   animation-delay: -5s;
 }
 
+/* Pipeline Flow Animations */
+@keyframes flow-horizontal {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes flow-vertical {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-flow-horizontal {
+  animation: flow-horizontal 2s linear infinite;
+}
+
+.animate-flow-vertical {
+  animation: flow-vertical 2s linear infinite;
+}
+
 /* Hide Scrollbar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
