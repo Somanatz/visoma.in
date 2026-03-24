@@ -10,7 +10,7 @@ const detailedServices = [
     id: 'it-services',
     title: 'IT Services',
     description: 'Transform manual workflows into intelligent, automated systems that learn and adapt.',
-    features: ['AI Infrastructure', 'Custom Workflow Mapping', 'Internships Available', 'Data Pipeline Scaling'],
+    features: ['AI Infrastructure', 'Custom Workflow Mapping', 'Data Pipeline Scaling'],
     icon: Cpu
   },
   {
@@ -24,28 +24,28 @@ const detailedServices = [
     id: 'seo-services',
     title: 'SEO Services',
     description: 'High-conversion, modern landing pages for AI products that communicate value clearly.',
-    features: ['Generative Ad Copy', 'SEO Optimization', 'Internships Available', 'Performance Monitoring'],
+    features: ['Generative Ad Copy', 'SEO Optimization', 'Performance Monitoring'],
     icon: Search
   },
   {
     id: 'financial-services',
     title: 'Financial Services',
     description: 'Advanced technical solutions for asset analysis and automated risk auditing.',
-    features: ['Market Intelligence', 'Portfolio Optimization', 'Internships Available', 'Risk Assessment'],
+    features: ['Market Intelligence', 'Portfolio Optimization', 'Risk Assessment'],
     icon: BarChart3
   },
   {
     id: 'legal-services',
     title: 'Legal Services',
     description: 'Precision AI tools for legal research and document discovery automation.',
-    features: ['Contract Analysis', 'Discovery Automation', 'Internships Available', 'Security Compliance'],
+    features: ['Contract Analysis', 'Discovery Automation', 'Security Compliance'],
     icon: Gavel
   },
   {
     id: 'scraping',
     title: 'Web Scraping',
     description: 'Robust, enterprise-grade data extraction from any web source at massive scale.',
-    features: ['Anti-Bot Evasion', 'Dynamic Content Parsing', 'Internships Available', 'Monitoring Alerts'],
+    features: ['Anti-Bot Evasion', 'Dynamic Content Parsing', 'Monitoring Alerts'],
     icon: Rocket
   }
 ];

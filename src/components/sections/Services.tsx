@@ -66,8 +66,7 @@ export default function Services() {
           <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Our Expertise</h2>
           <h3 className="text-4xl md:text-5xl font-headline font-bold mb-6">Comprehensive Service Hierarchy</h3>
           <p className="text-xl text-muted-foreground max-w-2xl">
-            Each layer of our service stack is designed to provide internships for emerging talent while 
-            delivering enterprise-grade solutions to our partners.
+            Each layer of our service stack is designed to deliver enterprise-grade solutions to our partners.
           </p>
         </div>
 
@@ -87,9 +86,6 @@ export default function Services() {
                 <div className="flex-1 space-y-6">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <h4 className="text-3xl font-bold group-hover:text-primary transition-colors">{service.title}</h4>
-                    <span className="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
-                      Internships Available
-                    </span>
                   </div>
                   
                   <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl">
