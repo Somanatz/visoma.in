@@ -4,6 +4,7 @@
 import { Button } from '@/components/ui/button';
 import { UserPlus, Globe, Award, Banknote } from 'lucide-react';
 import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
 
 export default function FreelancerCTA() {
   return (
@@ -46,26 +47,55 @@ export default function FreelancerCTA() {
               </Link>
             </div>
             
-            <div className="hidden lg:block">
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary/20 blur-[60px] rounded-full" />
-                <div className="glass p-8 rounded-3xl border-primary/30 relative animate-float">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-full bg-white/10" />
-                    <div>
-                      <div className="h-4 w-32 bg-white/10 rounded mb-2" />
-                      <div className="h-3 w-20 bg-white/5 rounded" />
+            <div className="hidden lg:block relative min-h-[450px]">
+              <div className="absolute inset-0 bg-primary/10 blur-[120px] rounded-full -z-10" />
+              
+              {/* Opportunities Stack */}
+              <div className="relative h-full flex items-center justify-center">
+                {/* Card 1 - Main Active Opportunity */}
+                <div className="absolute top-0 right-0 w-80 glass p-8 rounded-[2.5rem] border-primary/30 animate-float z-30 shadow-2xl gold-glow">
+                  <div className="flex justify-between items-start mb-6">
+                    <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-bold">
+                      Active Now
+                    </Badge>
+                    <span className="text-sm font-bold text-primary font-mono">$95/hr</span>
+                  </div>
+                  <h4 className="text-xl font-bold mb-3">Senior LLM Engineer</h4>
+                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                    Architecting RAG pipelines for Enterprise-scale Knowledge Bases.
+                  </p>
+                  <div className="flex items-center justify-between border-t border-white/5 pt-6">
+                    <div className="flex -space-x-2">
+                      {[1, 2, 3].map((i) => (
+                        <div key={i} className="w-8 h-8 rounded-full border-2 border-[#0B0F0E] bg-white/10" />
+                      ))}
+                    </div>
+                    <div className="text-[10px] font-bold text-primary uppercase tracking-widest">
+                      12 Applicants
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="h-4 w-full bg-white/5 rounded" />
-                    <div className="h-4 w-[90%] bg-white/5 rounded" />
-                    <div className="h-4 w-[75%] bg-white/5 rounded" />
+                </div>
+
+                {/* Card 2 - Upcoming Opportunity */}
+                <div className="absolute top-16 right-16 w-80 glass p-8 rounded-[2.5rem] border-white/10 opacity-60 scale-95 -z-10 animate-float [animation-delay:1.5s]">
+                  <div className="flex justify-between items-start mb-6">
+                    <Badge variant="outline" className="bg-white/5 text-muted-foreground border-white/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-bold">
+                      Upcoming
+                    </Badge>
+                    <span className="text-sm font-bold text-muted-foreground font-mono">$65/hr</span>
                   </div>
-                  <div className="mt-8 flex justify-between items-center">
-                    <div className="h-8 w-24 bg-primary/20 rounded-full" />
-                    <div className="text-primary font-bold">Active Opportunity</div>
-                  </div>
+                  <h4 className="text-xl font-bold mb-3">Data Scientist</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Predictive Risk Modeling for Global FinTech platforms.
+                  </p>
+                </div>
+
+                {/* Card 3 - Background Opportunity */}
+                <div className="absolute top-32 right-32 w-80 glass p-8 rounded-[2.5rem] border-white/5 opacity-30 scale-90 -z-20 animate-float [animation-delay:3s]">
+                  <h4 className="text-xl font-bold mb-3">Legal Tech Specialist</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    AI Contract Discovery and Analysis systems.
+                  </p>
                 </div>
               </div>
             </div>
