@@ -49,7 +49,7 @@ export default function Testimonials() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000); // Slightly slower transition for better readability
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -62,61 +62,63 @@ export default function Testimonials() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] opacity-20" />
       </div>
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="mb-20">
           <h2 className="text-sm font-bold tracking-[0.4em] uppercase text-primary mb-4">Success Stories</h2>
           <h3 className="text-4xl md:text-5xl font-headline font-bold text-gradient-gold">Global Intelligence Impact</h3>
         </div>
 
-        <div className="relative min-h-[500px] flex items-center justify-center">
+        <div className="relative min-h-[400px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, scale: 0.98, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 1.02, y: -10 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="text-center space-y-12"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="flex flex-col md:flex-row items-start gap-12 md:gap-20"
             >
-              <div className="flex flex-col items-center gap-10">
-                {/* Larger Profile Image */}
-                <div className="relative w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-primary/20 p-1.5 bg-white/5 shadow-2xl gold-glow">
-                  <Image 
-                    src={t.image} 
-                    alt={t.name}
-                    fill
-                    className="object-cover rounded-full"
-                    data-ai-hint="professional portrait"
-                  />
-                </div>
+              {/* Profile Image - Left Side, Square with Curved Corners */}
+              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-[2.5rem] overflow-hidden border-2 border-primary/20 p-1.5 bg-white/5 shadow-2xl gold-glow shrink-0">
+                <Image 
+                  src={t.image} 
+                  alt={t.name}
+                  fill
+                  className="object-cover rounded-[2rem]"
+                  data-ai-hint="professional portrait"
+                />
+              </div>
 
-                <div className="relative">
-                  <Quote className="w-12 h-12 text-primary/10 absolute -top-8 -left-6 -z-10" />
-                  {/* Smaller, more premium quote text */}
-                  <blockquote className="text-xl md:text-2xl lg:text-3xl font-headline font-medium leading-[1.5] max-w-3xl mx-auto italic text-foreground/90">
-                    "{t.quote}"
-                  </blockquote>
-                </div>
+              {/* Story Text - Right Side */}
+              <div className="flex-1 pt-4 space-y-8 relative">
+                <Quote className="w-16 h-16 text-primary/10 absolute -top-12 -left-8 -z-10" />
+                
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-headline font-medium leading-[1.4] italic text-foreground/90">
+                  "{t.quote}"
+                </blockquote>
 
-                <div className="space-y-2">
-                  <h4 className="text-2xl font-bold tracking-tight">{t.name}</h4>
-                  <p className="text-sm uppercase tracking-[0.3em] text-primary font-bold">
-                    {t.role} <span className="text-muted-foreground/40 mx-2">|</span> {t.company}
-                  </p>
+                <div className="space-y-3">
+                  <h4 className="text-3xl font-bold tracking-tight">{t.name}</h4>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-[1px] bg-primary/50" />
+                    <p className="text-sm uppercase tracking-[0.3em] text-primary font-bold">
+                      {t.role} <span className="text-muted-foreground/40 mx-2">|</span> {t.company}
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Carousel Indicators */}
-        <div className="flex justify-center gap-3 mt-12">
+        {/* Carousel Indicators - Aligned to the bottom right for the new layout */}
+        <div className="flex justify-start md:justify-end gap-3 mt-16">
           {testimonials.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
               className={`h-1.5 transition-all duration-700 rounded-full ${
-                currentIndex === idx ? "w-10 bg-primary shadow-[0_0_10px_rgba(199,164,90,0.5)]" : "w-2 bg-white/10"
+                currentIndex === idx ? "w-12 bg-primary shadow-[0_0_10px_rgba(199,164,90,0.5)]" : "w-3 bg-white/10"
               }`}
               aria-label={`Go to testimonial ${idx + 1}`}
             />
