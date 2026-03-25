@@ -41,7 +41,12 @@
 }
 
 .glass {
-  @apply bg-white/70 backdrop-blur-md border border-primary/10 shadow-sm;
+  @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-sm;
+}
+
+.glossy-badge {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.2) 100%);
+  @apply shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-white/60 backdrop-blur-md;
 }
 
 .gold-glow {

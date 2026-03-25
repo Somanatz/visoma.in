@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useMemo } from 'react';
@@ -63,7 +62,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full mb-8 animate-float">
+        <div className="inline-flex items-center space-x-2 glossy-badge px-5 py-2.5 rounded-full mb-10 animate-float">
           <Sparkles className="w-4 h-4 text-primary" />
           <span className="text-xs font-semibold tracking-widest uppercase text-muted-foreground">
             Transforming Intelligence into Action
