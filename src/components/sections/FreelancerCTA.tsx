@@ -110,7 +110,7 @@ export default function FreelancerCTA() {
               </Link>
             </div>
             
-            <div className="relative h-[450px] flex items-center justify-center lg:justify-end">
+            <div className="relative h-[400px] md:h-[450px] flex items-center justify-center lg:justify-end">
               <div className="relative w-full max-w-[400px] h-[280px]">
                 <AnimatePresence mode="popLayout">
                   {opportunities.map((opp, i) => {
@@ -133,7 +133,7 @@ export default function FreelancerCTA() {
                         }}
                         exit={{ opacity: 0, scale: 0.8, x: -100, rotateY: -20 }}
                         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                        className={`absolute inset-0 bg-[#102826] p-10 rounded-[2.5rem] border ${opp.color} shadow-2xl flex flex-col justify-between overflow-hidden`}
+                        className={`absolute inset-0 bg-[#0B211F] p-8 md:p-10 rounded-[2.5rem] border ${opp.color} shadow-2xl flex flex-col justify-between overflow-hidden`}
                         style={{
                           boxShadow: isActive ? `0 20px 50px -10px ${opp.glow}` : 'none'
                         }}
@@ -142,15 +142,15 @@ export default function FreelancerCTA() {
                         <div className="absolute inset-0 bg-white/[0.02] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
                         
                         <div className="flex justify-between items-start relative z-10">
-                          <Badge className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-white/10 text-muted-foreground'} px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none`}>
+                          <Badge className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-white/10 text-gray-400'} px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none`}>
                             {opp.status}
                           </Badge>
-                          <span className="text-2xl font-bold text-primary font-mono tracking-tight">{opp.rate}</span>
+                          <span className="text-xl md:text-2xl font-bold text-primary font-mono tracking-tight">{opp.rate}</span>
                         </div>
                         
                         <div className="relative z-10">
-                          <h4 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight">{opp.title}</h4>
-                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-medium">
+                          <h4 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight text-white">{opp.title}</h4>
+                          <p className="text-sm md:text-base text-gray-300 leading-relaxed font-medium">
                             {opp.desc}
                           </p>
                         </div>
