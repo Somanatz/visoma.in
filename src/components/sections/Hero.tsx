@@ -86,14 +86,21 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
           <Link href="/contact">
-            <Button size="lg" className="relative overflow-hidden bg-primary text-primary-foreground border-none gold-glow px-8 h-14 text-lg group rounded-xl">
-              {/* Static Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary opacity-100" />
-              <span className="relative z-10 flex items-center font-bold">
-                Start Your Project
-                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Button>
+            <div className="relative p-[2px] rounded-xl overflow-hidden group gold-glow transition-all duration-300 hover:scale-[1.02]">
+              {/* Live Animated Gradient Border */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift" />
+              
+              {/* Inner Button Content */}
+              <div className="relative px-10 h-14 bg-background rounded-[calc(var(--radius)-2px)] flex items-center justify-center z-10 transition-colors group-hover:bg-background/95">
+                <span className="relative z-30 flex items-center font-bold text-foreground text-lg">
+                  Start Your Project
+                  <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </span>
+                
+                {/* Shining Effect Overlay */}
+                <div className="absolute top-0 -left-[100%] w-full h-full z-20 block transform -skew-x-[25deg] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shine" />
+              </div>
+            </div>
           </Link>
           <Link href="/services">
             <Button size="lg" variant="outline" className="border-border hover:bg-white/50 px-8 h-14 text-lg font-semibold backdrop-blur-sm">
