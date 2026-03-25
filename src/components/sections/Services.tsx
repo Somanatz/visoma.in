@@ -203,17 +203,6 @@ export default function Services() {
           <p className="text-xl text-muted-foreground max-w-2xl mb-6">
             Technical foundations for high-impact intelligence across every sector.
           </p>
-          
-          <div className="flex flex-wrap gap-x-6 gap-y-3">
-            {services.map((service, idx) => (
-              <div key={idx} className="flex items-center gap-2">
-                <div className="w-1 h-1 rounded-full bg-primary" />
-                <span className="text-sm font-bold uppercase tracking-widest text-foreground/80">
-                  {service.title}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="flex flex-col gap-12">
