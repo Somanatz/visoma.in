@@ -111,8 +111,8 @@ export default function FreelancerCTA() {
               </Link>
             </div>
             
-            <div className="relative h-[380px] md:h-[420px] flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-[420px] h-full">
+            <div className="relative h-[280px] md:h-[320px] flex items-center justify-center lg:justify-end">
+              <div className="relative w-full max-w-[450px] h-full">
                 <AnimatePresence mode="wait">
                   {opportunities.map((opp, i) => {
                     const isActive = i === index;
@@ -127,37 +127,37 @@ export default function FreelancerCTA() {
                         exit={{ opacity: 0, x: -40 }}
                         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                         className={cn(
-                          "absolute inset-0 p-10 rounded-[2.5rem] border shadow-2xl flex flex-col justify-between overflow-hidden",
-                          "bg-[#0B0F0E] bg-gradient-to-br from-black/40 via-primary/5 to-black/40 animate-gradient-shift",
+                          "absolute inset-0 p-8 rounded-[2rem] border shadow-2xl flex flex-col justify-between overflow-hidden",
+                          "bg-[#0B0F0E] bg-gradient-to-br from-black/80 via-primary/10 to-black/80",
                           opp.color
                         )}
                         style={{
-                          boxShadow: `0 30px 60px -15px ${opp.glow}`
+                          boxShadow: `0 20px 40px -10px ${opp.glow}`
                         }}
                       >
                         {/* Subtle Card Background Pattern */}
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,164,90,0.08),transparent)] pointer-events-none" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,164,90,0.1),transparent)] pointer-events-none" />
                         
                         <div className="flex justify-between items-start relative z-10">
-                          <Badge className="bg-primary text-primary-foreground px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none shadow-[0_0_20px_rgba(199,164,90,0.3)]">
+                          <Badge className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none">
                             {opp.status}
                           </Badge>
-                          <span className="text-2xl font-bold font-mono tracking-tight text-white drop-shadow-sm">
+                          <span className="text-xl font-bold font-mono text-primary">
                             {opp.rate}
                           </span>
                         </div>
                         
                         <div className="relative z-10">
-                          <h4 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight text-white">
+                          <h4 className="text-2xl font-bold mb-3 tracking-tight text-white">
                             {opp.title}
                           </h4>
-                          <p className="text-sm md:text-base leading-relaxed font-medium text-gray-300">
+                          <p className="text-sm md:text-base leading-relaxed text-white/70">
                             {opp.desc}
                           </p>
                         </div>
 
                         {/* Visual flourish: animated accent line */}
-                        <div className="absolute bottom-0 left-0 h-1 bg-primary w-full origin-left animate-flow-horizontal opacity-30" />
+                        <div className="absolute bottom-0 left-0 h-1 bg-primary w-full origin-left opacity-30" />
                       </motion.div>
                     );
                   })}
