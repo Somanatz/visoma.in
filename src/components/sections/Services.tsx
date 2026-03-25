@@ -200,9 +200,20 @@ export default function Services() {
         <div className="mb-20">
           <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Our Expertise</h2>
           <h3 className="text-4xl md:text-5xl font-headline font-bold mb-6 text-gradient-gold">Comprehensive Service Hierarchy</h3>
-          <p className="text-xl text-muted-foreground max-w-2xl">
+          <p className="text-xl text-muted-foreground max-w-2xl mb-6">
             Technical foundations for high-impact intelligence across every sector.
           </p>
+          
+          <div className="flex flex-wrap gap-x-6 gap-y-3">
+            {services.map((service, idx) => (
+              <div key={idx} className="flex items-center gap-2">
+                <div className="w-1 h-1 rounded-full bg-primary" />
+                <span className="text-sm font-bold uppercase tracking-widest text-foreground/80">
+                  {service.title}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-col gap-12">
