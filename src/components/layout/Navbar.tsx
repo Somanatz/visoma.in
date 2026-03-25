@@ -67,7 +67,7 @@ export default function Navbar() {
 
         <Link href="/contact">
           <Button 
-            className="relative overflow-hidden bg-primary text-primary-foreground border-none gold-glow hidden sm:inline-flex px-8 h-11 font-bold group transition-all duration-300 rounded-full"
+            className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow hidden sm:inline-flex px-8 h-11 font-bold group transition-all duration-300 rounded-full"
           >
             {/* Animated Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift opacity-100 group-hover:scale-110 transition-transform duration-500" />
