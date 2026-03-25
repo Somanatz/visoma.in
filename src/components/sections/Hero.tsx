@@ -13,6 +13,7 @@ export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
   const [showEmoji, setShowEmoji] = useState(false);
+  const [showServicesEmoji, setShowServicesEmoji] = useState(false);
 
   const words = useMemo(() => ['Modern Businesses', 'Startups', 'Individuals'], []);
 
@@ -45,6 +46,11 @@ export default function Hero() {
   const handleButtonClick = () => {
     setShowEmoji(true);
     setTimeout(() => setShowEmoji(false), 1500);
+  };
+
+  const handleServicesButtonClick = () => {
+    setShowServicesEmoji(true);
+    setTimeout(() => setShowServicesEmoji(false), 1500);
   };
 
   return (
@@ -123,14 +129,39 @@ export default function Hero() {
             </div>
           </Link>
 
-          <Link href="/services">
+          <Link href="/services" onClick={handleServicesButtonClick}>
             <div className="relative p-[2px] rounded-xl overflow-hidden group transition-all duration-300 hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-[#e0c080]/40 to-primary/40 bg-[length:200%_auto] animate-gradient-shift group-hover:from-primary group-hover:via-[#e0c080] group-hover:to-primary" />
               
-              <div className="relative px-10 h-14 bg-background rounded-[calc(var(--radius)-2px)] flex items-center justify-center z-10 transition-colors group-hover:bg-background/95">
+              <div className="relative px-10 h-14 bg-background rounded-[calc(var(--radius)-2px)] flex items-center justify-center z-10 transition-colors group-hover:bg-background/95 overflow-hidden">
                 <span className="relative z-30 flex items-center font-bold text-foreground text-lg">
                   Explore Services
-                  <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  <div className="relative flex items-center justify-center ml-2 w-6 h-6">
+                    <AnimatePresence mode="wait">
+                      {showServicesEmoji ? (
+                        <motion.span
+                          key="emoji"
+                          initial={{ y: 20, opacity: 0, scale: 0.5 }}
+                          animate={{ y: 0, opacity: 1, scale: 1.2 }}
+                          exit={{ y: -20, opacity: 0, scale: 0.5 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                          className="absolute"
+                        >
+                          🛠️
+                        </motion.span>
+                      ) : (
+                        <motion.span
+                          key="arrow"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 10 }}
+                          className="absolute"
+                        >
+                          <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </span>
                 <div className="absolute top-0 -left-[100%] w-full h-full z-20 block transform -skew-x-[25deg] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shine" />
               </div>
