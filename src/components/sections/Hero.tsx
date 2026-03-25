@@ -95,10 +95,10 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 relative">
           <Link href="/contact" onClick={handleButtonClick}>
-            <div className="relative p-[2px] rounded-xl overflow-hidden group transition-all duration-300 hover:scale-[1.02]">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-[#e0c080]/40 to-primary/40 bg-[length:200%_auto] animate-gradient-shift group-hover:from-primary group-hover:via-[#e0c080] group-hover:to-primary" />
+            <div className="relative p-[2px] rounded-full overflow-hidden group transition-all duration-300 hover:scale-[1.02]">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift" />
               
-              <div className="relative px-10 h-14 bg-background rounded-[calc(var(--radius)-2px)] flex items-center justify-center z-10 transition-colors group-hover:bg-background/95 overflow-hidden">
+              <div className="relative px-10 h-16 bg-background rounded-full flex items-center justify-center z-10 transition-colors group-hover:bg-background/95 overflow-hidden">
                 <span className="relative z-30 flex items-center font-bold text-foreground text-lg">
                   Start Your Project
                   <div className="relative flex items-center justify-center ml-2 w-6 h-6">
@@ -134,10 +134,10 @@ export default function Hero() {
           </Link>
 
           <Link href="/services" onClick={handleServicesButtonClick}>
-            <div className="relative p-[2px] rounded-xl overflow-hidden group transition-all duration-300 hover:scale-[1.02]">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-[#e0c080]/40 to-primary/40 bg-[length:200%_auto] animate-gradient-shift group-hover:from-primary group-hover:via-[#e0c080] group-hover:to-primary" />
+            <div className="relative p-[2px] rounded-full overflow-hidden group transition-all duration-300 hover:scale-[1.02]">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift" />
               
-              <div className="relative px-10 h-14 bg-background rounded-[calc(var(--radius)-2px)] flex items-center justify-center z-10 transition-colors group-hover:bg-background/95 overflow-hidden">
+              <div className="relative px-10 h-16 bg-background rounded-full flex items-center justify-center z-10 transition-colors group-hover:bg-background/95 overflow-hidden">
                 <span className="relative z-30 flex items-center font-bold text-foreground text-lg">
                   Explore Services
                   <div className="relative flex items-center justify-center ml-2 w-6 h-6">
