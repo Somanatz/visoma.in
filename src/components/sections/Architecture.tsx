@@ -131,7 +131,7 @@ export default function Architecture() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-24">
           <h2 className="text-sm font-bold tracking-[0.4em] uppercase text-primary mb-4">The AI Blueprint</h2>
-          <h3 className="text-4xl md:text-6xl font-headline font-bold text-gradient-gold mb-6">
+          <h3 className="text-4xl md:text-6xl font-headline font-bold text-gradient-gold mb-6 py-2 leading-tight">
             End-to-End System Intelligence
           </h3>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
