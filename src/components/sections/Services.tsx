@@ -200,7 +200,7 @@ export default function Services() {
         <div className="mb-20">
           <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Our Expertise</h2>
           <h3 className="text-4xl md:text-5xl font-headline font-bold mb-6 text-gradient-gold">Comprehensive Service Hierarchy</h3>
-          <p className="text-xl text-muted-foreground max-w-2xl mb-6">
+          <p className="text-xl text-muted-foreground max-w-2xl">
             Technical foundations for high-impact intelligence across every sector.
           </p>
         </div>
@@ -221,9 +221,23 @@ export default function Services() {
                     </div>
                     <div>
                       <h4 className="text-3xl font-bold group-hover:text-primary transition-colors">{service.title}</h4>
-                      <p className="text-muted-foreground leading-relaxed mt-1">
-                        {service.description}
-                      </p>
+                      <div className="space-y-6 mt-1">
+                        <p className="text-muted-foreground leading-relaxed">
+                          {service.description}
+                        </p>
+                        
+                        {/* Tabular List of Sub-Services */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 border-t border-white/10 pt-6">
+                          {service.items.map((item, i) => (
+                            <div key={i} className="flex items-center gap-2 group/item">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors" />
+                              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground group-hover/item:text-foreground transition-colors">
+                                {item.title}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <Link href={`/services/${service.slug === 'scraping' ? 'it-services' : service.slug}`} className="shrink-0">
@@ -233,8 +247,8 @@ export default function Services() {
                   </Link>
                 </div>
 
-                {/* Infinite Marquee Scroll Section */}
-                <div className="relative overflow-hidden w-full">
+                {/* Marquee Section */}
+                <div className="relative overflow-hidden w-full pt-8">
                   <div className={cn(
                     "flex w-fit gap-6",
                     idx % 2 === 0 ? "animate-infinite-scroll" : "animate-infinite-scroll-reverse"
