@@ -18,8 +18,12 @@ export default function CTA() {
         </p>
         <div className="relative z-10">
           <Link href="/contact">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent px-12 h-16 text-xl font-bold rounded-xl gold-glow">
-              Book Consultation
+            <Button 
+              className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow px-12 h-16 text-xl font-bold group transition-all duration-300 rounded-full"
+            >
+              {/* Animated Gradient Overlay to match Navbar */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift opacity-100 group-hover:scale-110 transition-transform duration-500" />
+              <span className="relative z-10">Book Consultation</span>
             </Button>
           </Link>
         </div>
