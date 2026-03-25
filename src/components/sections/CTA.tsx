@@ -1,4 +1,6 @@
 
+"use client";
+
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -21,8 +23,12 @@ export default function CTA() {
             <Button 
               className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow px-12 h-16 text-xl font-bold group transition-all duration-300 rounded-full"
             >
-              {/* Animated Gradient Overlay to match Navbar */}
+              {/* Animated Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift opacity-100 group-hover:scale-110 transition-transform duration-500" />
+              
+              {/* Shine Animation */}
+              <div className="absolute top-0 -left-[100%] w-full h-full z-20 block transform -skew-x-[25deg] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shine" />
+
               <span className="relative z-10">Book Consultation</span>
             </Button>
           </Link>

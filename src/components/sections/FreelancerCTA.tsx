@@ -66,7 +66,7 @@ export default function FreelancerCTA() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % opportunities.length);
-    }, 3000); // Increased transition interval to 3 seconds
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
@@ -104,9 +104,19 @@ export default function FreelancerCTA() {
               </div>
 
               <Link href="https://forms.gle/m4WZn8wdb1X3XuMZ8" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-primary text-primary-foreground gold-glow px-12 h-16 text-xl font-bold rounded-2xl">
-                  <UserPlus className="w-6 h-6 mr-3" />
-                  Join Our Talent Network
+                <Button 
+                  className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow px-12 h-16 text-xl font-bold group transition-all duration-300 rounded-full"
+                >
+                  {/* Animated Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift opacity-100 group-hover:scale-110 transition-transform duration-500" />
+                  
+                  {/* Shine Effect */}
+                  <div className="absolute top-0 -left-[100%] w-full h-full z-20 block transform -skew-x-[25deg] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shine" />
+
+                  <span className="relative z-10 flex items-center">
+                    <UserPlus className="w-6 h-6 mr-3" />
+                    Join Our Talent Network
+                  </span>
                 </Button>
               </Link>
             </div>
@@ -116,7 +126,6 @@ export default function FreelancerCTA() {
                 <AnimatePresence mode="wait">
                   {opportunities.map((opp, i) => {
                     const isActive = i === index;
-                    
                     if (!isActive) return null;
 
                     return (
@@ -135,9 +144,7 @@ export default function FreelancerCTA() {
                           boxShadow: `0 15px 30px -10px ${opp.glow}`
                         }}
                       >
-                        {/* Subtle Card Background Pattern */}
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,164,90,0.05),transparent)] pointer-events-none" />
-                        
                         <div className="flex justify-between items-start relative z-10">
                           <Badge className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-primary/20">
                             {opp.status}
@@ -146,17 +153,14 @@ export default function FreelancerCTA() {
                             {opp.rate}
                           </span>
                         </div>
-                        
                         <div className="relative z-10">
                           <h4 className="text-xl font-bold mb-2 tracking-tight text-foreground">
                             {opp.title}
                           </h4>
-                          <p className="text-sm leading-relaxed text-muted-foreground">
+                          <p className="text-sm leading-relaxed text-muted-foreground font-medium">
                             {opp.desc}
                           </p>
                         </div>
-
-                        {/* Visual flourish: animated accent line */}
                         <div className="absolute bottom-0 left-0 h-1 bg-primary/20 w-full origin-left" />
                       </motion.div>
                     );
