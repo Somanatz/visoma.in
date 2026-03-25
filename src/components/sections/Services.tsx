@@ -220,14 +220,14 @@ export default function Services() {
                       <service.icon className="w-8 h-8" />
                     </div>
                     <div className="space-y-4">
-                      <h4 className="text-3xl md:text-4xl font-headline font-bold group-hover:text-primary transition-colors">{service.title}</h4>
+                      <h4 className="text-3xl md:text-4xl font-headline font-bold transition-colors">{service.title}</h4>
                       <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mt-1">
                         {service.description}
                       </p>
                     </div>
                   </div>
                   <Link href={`/services/${service.slug === 'scraping' ? 'it-services' : service.slug}`} className="shrink-0">
-                    <div className="px-8 py-4 rounded-2xl border border-foreground/20 flex items-center justify-center gap-2 bg-background/50 backdrop-blur-sm hover:border-primary transition-all duration-300 gold-glow text-xs font-bold uppercase tracking-[0.2em]">
+                    <div className="px-8 py-4 rounded-2xl border border-foreground/20 flex items-center justify-center gap-2 bg-background/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 gold-glow text-xs font-bold uppercase tracking-[0.2em]">
                       More Details <ArrowRight className="w-4 h-4" />
                     </div>
                   </Link>
@@ -238,7 +238,7 @@ export default function Services() {
                     <div key={i} className="space-y-3 group/item p-4 rounded-2xl hover:bg-white/5 transition-colors">
                       <div className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors" />
-                        <h5 className="text-sm font-bold uppercase tracking-[0.1em] text-foreground group-hover/item:text-primary transition-colors">
+                        <h5 className="text-sm font-bold uppercase tracking-[0.1em] text-foreground transition-colors">
                           {item.title}
                         </h5>
                       </div>
