@@ -30,9 +30,10 @@
 @layer base {
   * {
     @apply border-border;
+    caret-color: hsl(var(--foreground));
   }
   body {
-    @apply bg-background text-foreground selection:bg-primary/30;
+    @apply bg-background text-foreground selection:bg-foreground/20;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline;
