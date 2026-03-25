@@ -55,17 +55,21 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 px-6">
+      {/* Live light gradient background layer */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 via-background to-accent/10 animate-gradient-shift opacity-60 pointer-events-none" />
+
       <div className="lens-bg">
         <div className="lens-blob blob-1" />
         <div className="lens-blob blob-2" />
         <div className="lens-blob blob-3" />
       </div>
 
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] opacity-10" />
       </div>
 
-      <div className="absolute inset-0 z-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none" />
+      {/* Subtle stardust texture */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         <div className="inline-flex items-center space-x-2 glossy-badge px-5 py-2.5 rounded-full mb-10 animate-float">
