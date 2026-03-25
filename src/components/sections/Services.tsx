@@ -1,6 +1,6 @@
 "use client";
 
-import { Cpu, Search, BarChart3, Gavel, Database } from 'lucide-react';
+import { Cpu, Search, BarChart3, Gavel, Database, Rocket, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,43 +8,33 @@ import Image from 'next/image';
 const services = [
   {
     slug: 'it-services',
-    title: 'IT Services',
-    description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems.',
+    title: 'IT Services & AI Infrastructure',
+    description: 'Bespoke AI infrastructure, robust data pipelines, and intelligent automation systems architected for the machine era.',
     items: [
       { 
         title: 'GenAI Integrations', 
-        desc: 'Seamlessly embedding generative models into your existing enterprise workflows.',
+        desc: 'Scaling foundation models into production environments with seamless enterprise connectivity.',
         img: 'https://picsum.photos/seed/it-genai/600/400'
       },
       { 
-        title: 'Prompt Design', 
-        desc: 'Engineering precise instructions to extract maximum performance from LLMs.',
+        title: 'Prompt Architecture', 
+        desc: 'Designing precise logic flows and instructions to extract maximum performance from LLMs.',
         img: 'https://picsum.photos/seed/it-prompt/600/400'
       },
       { 
-        title: 'Automation', 
-        desc: 'End-to-end process automation reducing manual overhead by up to 80%.',
+        title: 'Workflow Automation', 
+        desc: 'Converting manual business bottlenecks into autonomous, high-throughput workflows.',
         img: 'https://picsum.photos/seed/it-auto/600/400'
       },
       { 
-        title: 'Static Business Page', 
-        desc: 'Blazing fast, high-performance web presences optimized for conversion.',
+        title: 'Neural Web Design', 
+        desc: 'Futuristic, high-performance web presences optimized for conversion and AI agents.',
         img: 'https://picsum.photos/seed/it-web/600/400'
       },
       { 
-        title: 'Web Design', 
-        desc: 'Futuristic, minimal UI/UX tailored for high-trust technology brands.',
-        img: 'https://picsum.photos/seed/it-design/600/400'
-      },
-      { 
-        title: 'Chatbot', 
-        desc: 'Custom RAG-powered assistants with deep knowledge-base integration.',
+        title: 'Custom RAG Systems', 
+        desc: 'Deploying private knowledge bases for precision information retrieval and contextual accuracy.',
         img: 'https://picsum.photos/seed/it-chat/600/400'
-      },
-      { 
-        title: 'AI Services', 
-        desc: 'Bespoke machine learning solutions from computer vision to predictive analytics.',
-        img: 'https://picsum.photos/seed/it-ml/600/400'
       }
     ],
     icon: Cpu,
@@ -53,28 +43,28 @@ const services = [
   },
   {
     slug: 'data-services',
-    title: 'Data Services',
-    description: 'High-precision data acquisition and preparation. Fueling your models with quality.',
+    title: 'Data Services & Preparation',
+    description: 'High-precision data acquisition and expert preparation to fuel state-of-the-art models with quality.',
     items: [
       { 
-        title: 'Data Contributions', 
-        desc: 'Expert-verified data gathering across diverse domains and languages.',
-        img: 'https://picsum.photos/seed/data-glob/600/400'
-      },
-      { 
-        title: 'Data Labeling', 
-        desc: 'High-accuracy classification and semantic segmentation for vision and NLP models.',
+        title: 'Precision Labeling', 
+        desc: 'High-fidelity annotation and semantic segmentation for computer vision and NLP tasks.',
         img: 'https://picsum.photos/seed/data-label/600/400'
       },
       { 
-        title: 'Image Collections', 
-        desc: 'Bespoke datasets tailored to specific edge-case scenarios and environments.',
-        img: 'https://picsum.photos/seed/data-photo/600/400'
+        title: 'Dataset Curation', 
+        desc: 'Gathering diverse, high-quality data across domains to ensure model diversity and accuracy.',
+        img: 'https://picsum.photos/seed/data-glob/600/400'
       },
       { 
-        title: 'Manual Annotation', 
-        desc: 'Precision multi-layered labeling and specialist verification loops.',
+        title: 'RLHF Pipelines', 
+        desc: 'Human-in-the-loop feedback systems designed for advanced model alignment and safety.',
         img: 'https://picsum.photos/seed/data-annot/600/400'
+      },
+      { 
+        title: 'Bespoke Collections', 
+        desc: 'Creating custom visual and textual datasets for unique edge-case training scenarios.',
+        img: 'https://picsum.photos/seed/data-photo/600/400'
       }
     ],
     icon: Database,
@@ -82,38 +72,58 @@ const services = [
     bg: 'bg-purple-400/10'
   },
   {
-    slug: 'seo-services',
-    title: 'SEO & Growth Intelligence',
-    description: 'Data-driven search optimization, brand elevation, and high-conversion strategies.',
+    slug: 'scraping',
+    title: 'Web Scraping & Intelligence',
+    description: 'Robust, enterprise-grade data extraction from any web source at massive scale with anti-bot resilience.',
     items: [
       { 
-        title: 'Semantic Clusters', 
-        desc: 'Mapping the entire topical authority of your niche to dominate search intent.',
+        title: 'Enterprise Scraping', 
+        desc: 'Extracting millions of data points daily from complex, dynamic web applications.',
+        img: 'https://picsum.photos/seed/scrap-ent/600/400'
+      },
+      { 
+        title: 'Anti-Bot Resilience', 
+        desc: 'Sophisticated evasion techniques to navigate modern web security and rate limits.',
+        img: 'https://picsum.photos/seed/scrap-bot/600/400'
+      },
+      { 
+        title: 'Real-time Monitoring', 
+        desc: 'Automated alerts for data shifts, source structure changes, and market trends.',
+        img: 'https://picsum.photos/seed/scrap-monitor/600/400'
+      },
+      { 
+        title: 'Structured Delivery', 
+        desc: 'Transforming raw web data into clean, ready-to-use insights for analytical pipelines.',
+        img: 'https://picsum.photos/seed/scrap-data/600/400'
+      }
+    ],
+    icon: Rocket,
+    color: 'text-cyan-400',
+    bg: 'bg-cyan-400/10'
+  },
+  {
+    slug: 'seo-services',
+    title: 'SEO & Growth Intelligence',
+    description: 'Data-driven search optimization and brand elevation strategies for the next generation of AI search.',
+    items: [
+      { 
+        title: 'Semantic Clustering', 
+        desc: 'Dominating search intent by mapping topical authority across entire industry niches.',
         img: 'https://picsum.photos/seed/seo-sem/600/400'
       },
       { 
-        title: 'Generative Ad Copy', 
-        desc: 'Dynamic, high-conversion creative powered by fine-tuned language models.',
+        title: 'Generative Growth', 
+        desc: 'Dynamic, high-conversion ad creative and content powered by fine-tuned language models.',
         img: 'https://picsum.photos/seed/seo-copy/600/400'
       },
       { 
-        title: 'Technical SEO', 
-        desc: 'Optimizing site architecture for maximum crawl efficiency and performance.',
+        title: 'LLM Optimization', 
+        desc: 'Ensuring your brand is correctly referenced and cited by AI search assistants and agents.',
         img: 'https://picsum.photos/seed/seo-tech/600/400'
       },
       { 
-        title: 'Social Media Management', 
-        desc: 'Intelligent scheduling and growth strategies for modern digital presences.',
-        img: 'https://picsum.photos/seed/seo-social/600/400'
-      },
-      { 
-        title: 'Profile Promotions', 
-        desc: 'Targeted visibility campaigns to establish authority in your specific industry.',
-        img: 'https://picsum.photos/seed/seo-prom/600/400'
-      },
-      { 
-        title: 'Brand Creation', 
-        desc: 'Futuristic visual identities and brand voices designed for the AI-first world.',
+        title: 'Brand Architecting', 
+        desc: 'Crafting futuristic visual identities designed for the digital-first, machine era.',
         img: 'https://picsum.photos/seed/seo-brand/600/400'
       }
     ],
@@ -123,37 +133,27 @@ const services = [
   },
   {
     slug: 'financial-services',
-    title: 'Financial Services',
-    description: 'Advanced market analysis and predictive risk assessment for enterprise portfolios.',
+    title: 'Financial Intelligence',
+    description: 'Precision risk modeling and predictive analytics tools for enterprise financial portfolios.',
     items: [
       { 
-        title: 'Portfolio Intelligence', 
-        desc: 'Automated auditing and stress-testing for complex portfolios.',
-        img: 'https://picsum.photos/seed/fin-port/600/400'
-      },
-      { 
-        title: 'Risk Auditing', 
-        desc: 'Real-time monitoring systems to ensure all operations meet regulatory standards.',
+        title: 'Risk Modeling', 
+        desc: 'Automated stress-testing and auditing systems for complex financial asset classes.',
         img: 'https://picsum.photos/seed/fin-risk/600/400'
       },
       { 
-        title: 'Market Modeling', 
-        desc: 'Machine learning models designed to forecast asset performance.',
+        title: 'Market Intelligence', 
+        desc: 'Real-time sentiment and trend analysis across global financial data streams.',
         img: 'https://picsum.photos/seed/fin-market/600/400'
       },
       { 
-        title: 'Investment Strategy', 
-        desc: 'Bespoke capital allocation models for long-term growth and stability.',
+        title: 'Predictive ROI', 
+        desc: 'Forecasting asset performance through custom machine learning model ensembles.',
         img: 'https://picsum.photos/seed/fin-invest/600/400'
       },
       { 
-        title: 'Crypto Analytics', 
-        desc: 'Real-time on-chain analysis and predictive modeling for digital assets.',
-        img: 'https://picsum.photos/seed/fin-crypto/600/400'
-      },
-      { 
-        title: 'Algorithmic Trading', 
-        desc: 'High-speed execution systems built on precision machine learning models.',
+        title: 'Algo Trading', 
+        desc: 'High-speed execution frameworks built on precision data and low-latency architecture.',
         img: 'https://picsum.photos/seed/fin-algo/600/400'
       }
     ],
@@ -163,12 +163,12 @@ const services = [
   },
   {
     slug: 'legal-services',
-    title: 'Legal Tech',
-    description: 'Secure LLM-based contract analysis and precision legal research.',
+    title: 'Legal Tech & Compliance',
+    description: 'Secure AI-driven contract analysis and automated regulatory compliance systems.',
     items: [
       { 
-        title: 'Contract Intelligence', 
-        desc: 'High-speed parsing of thousands of documents to identify risks.',
+        title: 'Contract Analysis', 
+        desc: 'High-speed parsing of massive document pools to identify risk and deviations.',
         img: 'https://picsum.photos/seed/legal-cont/600/400'
       },
       { 
@@ -178,27 +178,12 @@ const services = [
       },
       { 
         title: 'Compliance Agents', 
-        desc: 'AI agents that track regulatory changes and flag internal conflicts.',
+        desc: 'Autonomous agents tracking regulatory shifts and flagging potential internal conflicts.',
         img: 'https://picsum.photos/seed/legal-comp/600/400'
       },
       { 
-        title: 'Digital Notary', 
-        desc: 'Secure and verified electronic notarization for official documentation.',
-        img: 'https://picsum.photos/seed/legal-notary/600/400'
-      },
-      { 
-        title: 'Lawyer Appointments', 
-        desc: 'Direct scheduling with specialized legal experts in our global network.',
-        img: 'https://picsum.photos/seed/legal-appoint/600/400'
-      },
-      { 
-        title: 'Legal Support', 
-        desc: '24/7 technical and administrative support for law firms and litigants.',
-        img: 'https://picsum.photos/seed/legal-support/600/400'
-      },
-      { 
-        title: 'Lawyer Consultation', 
-        desc: 'High-level strategic consultation for complex legal frameworks.',
+        title: 'Secure Consulting', 
+        desc: 'High-level strategic guidance on AI ethics and regulatory framework implementation.',
         img: 'https://picsum.photos/seed/legal-consult/600/400'
       }
     ],
@@ -241,7 +226,7 @@ export default function Services() {
                       </p>
                     </div>
                   </div>
-                  <Link href={`/services/${service.slug}`} className="shrink-0">
+                  <Link href={`/services/${service.slug === 'scraping' ? 'it-services' : service.slug}`} className="shrink-0">
                     <div className="px-8 py-3 rounded-xl border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow text-xs font-bold uppercase tracking-[0.2em]">
                       More Details
                     </div>
