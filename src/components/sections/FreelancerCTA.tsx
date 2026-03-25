@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
 
 const opportunities = [
   {
@@ -111,7 +112,7 @@ export default function FreelancerCTA() {
             </div>
             
             <div className="relative h-[400px] md:h-[450px] flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-[400px] h-[280px]">
+              <div className="relative w-full max-w-[400px] h-[320px]">
                 <AnimatePresence mode="popLayout">
                   {opportunities.map((opp, i) => {
                     const isActive = i === index;
@@ -133,7 +134,11 @@ export default function FreelancerCTA() {
                         }}
                         exit={{ opacity: 0, scale: 0.8, x: -100, rotateY: -20 }}
                         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                        className={`absolute inset-0 bg-[#0B211F] p-8 md:p-10 rounded-[2.5rem] border ${opp.color} shadow-2xl flex flex-col justify-between overflow-hidden`}
+                        className={cn(
+                          "absolute inset-0 p-8 md:p-10 rounded-[2.5rem] border shadow-2xl flex flex-col justify-between overflow-hidden transition-all duration-700",
+                          "bg-gradient-to-br from-[#0B211F] via-[#c7a45a]/20 to-[#0B211F] animate-gradient-shift",
+                          opp.color
+                        )}
                         style={{
                           boxShadow: isActive ? `0 20px 50px -10px ${opp.glow}` : 'none'
                         }}
@@ -142,17 +147,33 @@ export default function FreelancerCTA() {
                         <div className="absolute inset-0 bg-white/[0.02] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
                         
                         <div className="flex justify-between items-start relative z-10">
-                          <Badge className={`${isActive ? 'bg-primary text-primary-foreground' : 'bg-white/10 text-gray-400'} px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none`}>
+                          <Badge className={cn(
+                            "px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none transition-all duration-500",
+                            isActive ? 'bg-primary text-primary-foreground shadow-[0_0_20px_rgba(199,164,90,0.5)]' : 'bg-white/10 text-gray-500'
+                          )}>
                             {opp.status}
                           </Badge>
-                          <span className="text-xl md:text-2xl font-bold text-primary font-mono tracking-tight">{opp.rate}</span>
+                          <span className={cn(
+                            "text-xl md:text-2xl font-bold font-mono tracking-tight transition-colors duration-500 drop-shadow-md",
+                            isActive ? "text-white" : "text-gray-500"
+                          )}>
+                            {opp.rate}
+                          </span>
                         </div>
                         
                         <div className="relative z-10">
-                          <h4 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight text-white">{opp.title}</h4>
-                          <p className="text-sm md:text-base text-gray-300 leading-relaxed font-medium">
+                          <motion.h4 
+                            animate={{ color: isActive ? '#ffffff' : '#9ca3af' }}
+                            className="text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight drop-shadow-lg"
+                          >
+                            {opp.title}
+                          </motion.h4>
+                          <motion.p 
+                            animate={{ color: isActive ? 'rgba(255,255,255,0.9)' : '#6b7280' }}
+                            className="text-sm md:text-base leading-relaxed font-medium drop-shadow-md"
+                          >
                             {opp.desc}
-                          </p>
+                          </motion.p>
                         </div>
                       </motion.div>
                     );
