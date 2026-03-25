@@ -75,7 +75,7 @@ export default function Hero() {
           <span className="text-gradient-gold">AI Systems</span> for <br />
           <span className="text-gradient-gold relative">
             {displayText}
-            <span className="inline-block w-[4px] h-[0.8em] bg-white ml-2 animate-pulse align-middle" />
+            <span className="inline-block w-[4px] h-[0.8em] bg-foreground ml-2 animate-pulse align-middle" />
           </span>
         </h1>
 
