@@ -127,7 +127,7 @@ const FlowConnector = ({ orientation = 'horizontal' }: { orientation?: 'horizont
 
 export default function Architecture() {
   return (
-    <section className="py-32 px-6 bg-background relative overflow-hidden">
+    <section className="pt-20 pb-32 px-6 bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-24">
           <h2 className="text-sm font-bold tracking-[0.4em] uppercase text-primary mb-4">The AI Blueprint</h2>
