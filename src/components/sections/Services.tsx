@@ -227,7 +227,7 @@ export default function Services() {
                     </div>
                   </div>
                   <Link href={`/services/${service.slug === 'scraping' ? 'it-services' : service.slug}`} className="shrink-0">
-                    <div className="px-8 py-4 rounded-2xl border border-foreground/20 flex items-center justify-center gap-2 bg-background/50 backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow text-xs font-bold uppercase tracking-[0.2em]">
+                    <div className="px-8 py-4 rounded-2xl border border-foreground/20 flex items-center justify-center gap-2 bg-background/50 backdrop-blur-sm hover:border-primary transition-all duration-300 gold-glow text-xs font-bold uppercase tracking-[0.2em]">
                       More Details <ArrowRight className="w-4 h-4" />
                     </div>
                   </Link>
