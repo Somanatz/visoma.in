@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -34,7 +33,7 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-white/5 py-3" : "bg-transparent"
+        isScrolled ? "bg-background/90 backdrop-blur-md border-b border-primary/10 py-3" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -49,7 +48,7 @@ export default function Navbar() {
               unoptimized
             />
           </div>
-          <span className="text-2xl font-headline font-bold tracking-wider text-gradient-gold">
+          <span className="text-2xl font-headline font-bold tracking-wider text-foreground">
             VISOMA
           </span>
         </Link>

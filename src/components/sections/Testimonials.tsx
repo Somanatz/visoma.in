@@ -56,12 +56,7 @@ export default function Testimonials() {
   const t = testimonials[currentIndex];
 
   return (
-    <section className="py-32 px-6 bg-[#0B0F0E] relative overflow-hidden">
-      {/* Background Glows */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] opacity-20" />
-      </div>
-
+    <section className="py-32 px-6 bg-background relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-20">
           <h2 className="text-sm font-bold tracking-[0.4em] uppercase text-primary mb-4">Success Stories</h2>
@@ -78,8 +73,7 @@ export default function Testimonials() {
               transition={{ duration: 0.8, ease: "easeInOut" }}
               className="flex flex-col md:flex-row items-start gap-12 md:gap-20"
             >
-              {/* Profile Image - Left Side, Square with Curved Corners */}
-              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-[2.5rem] overflow-hidden border-2 border-primary/20 p-1.5 bg-white/5 shadow-2xl gold-glow shrink-0">
+              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-[2.5rem] overflow-hidden border-2 border-primary/20 p-1.5 bg-white shadow-xl gold-glow shrink-0">
                 <Image 
                   src={t.image} 
                   alt={t.name}
@@ -89,7 +83,6 @@ export default function Testimonials() {
                 />
               </div>
 
-              {/* Story Text - Right Side */}
               <div className="flex-1 pt-4 space-y-8 relative">
                 <Quote className="w-16 h-16 text-primary/10 absolute -top-12 -left-8 -z-10" />
                 
@@ -98,7 +91,7 @@ export default function Testimonials() {
                 </blockquote>
 
                 <div className="space-y-3">
-                  <h4 className="text-3xl font-bold tracking-tight">{t.name}</h4>
+                  <h4 className="text-3xl font-bold tracking-tight text-foreground">{t.name}</h4>
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-[1px] bg-primary/50" />
                     <p className="text-sm uppercase tracking-[0.3em] text-primary font-bold">
@@ -111,14 +104,13 @@ export default function Testimonials() {
           </AnimatePresence>
         </div>
 
-        {/* Carousel Indicators - Aligned to the bottom right for the new layout */}
         <div className="flex justify-start md:justify-end gap-3 mt-16">
           {testimonials.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
               className={`h-1.5 transition-all duration-700 rounded-full ${
-                currentIndex === idx ? "w-12 bg-primary shadow-[0_0_10px_rgba(199,164,90,0.5)]" : "w-3 bg-white/10"
+                currentIndex === idx ? "w-12 bg-primary shadow-[0_0_10px_rgba(199,164,90,0.3)]" : "w-3 bg-primary/20"
               }`}
               aria-label={`Go to testimonial ${idx + 1}`}
             />

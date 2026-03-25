@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 165 18% 5%;
-    --foreground: 0 0% 90%;
-    --card: 173 43% 11%;
-    --card-foreground: 0 0% 90%;
-    --popover: 165 18% 5%;
-    --popover-foreground: 0 0% 90%;
-    --primary: 41 48% 57%;
-    --primary-foreground: 0 0% 10%;
-    --secondary: 173 43% 15%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 168 8% 57%;
-    --muted-foreground: 168 8% 57%;
-    --accent: 41 100% 74%;
-    --accent-foreground: 0 0% 10%;
+    --background: 72 12% 97%; /* Light off-white from image background */
+    --foreground: 180 27% 24%; /* Dark Teal from VISOMA text */
+    --card: 0 0% 100%;
+    --card-foreground: 180 27% 24%;
+    --popover: 72 12% 97%;
+    --popover-foreground: 180 27% 24%;
+    --primary: 41 48% 57%; /* Gold from the symbol */
+    --primary-foreground: 72 12% 97%;
+    --secondary: 180 15% 92%;
+    --secondary-foreground: 180 27% 24%;
+    --muted: 180 10% 92%;
+    --muted-foreground: 180 20% 45%;
+    --accent: 41 48% 92%;
+    --accent-foreground: 180 27% 24%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 173 43% 20%;
-    --input: 173 43% 20%;
+    --border: 180 15% 88%;
+    --input: 180 15% 88%;
     --ring: 41 48% 57%;
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 }
 
@@ -40,15 +40,15 @@
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-md border border-white/10;
+  @apply bg-white/70 backdrop-blur-md border border-primary/10 shadow-sm;
 }
 
 .gold-glow {
-  box-shadow: 0 0 20px rgba(199, 164, 90, 0.2);
+  box-shadow: 0 10px 30px rgba(199, 164, 90, 0.15);
 }
 
 .text-gradient-gold {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#C7A45A] to-[#FFD47A];
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#c7a45a] to-[#e0c080];
 }
 
 @keyframes float {
@@ -86,9 +86,9 @@
 
 /* Google Lens Dynamic Background Effect */
 @keyframes mesh-pulse {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-  33% { transform: translate(10%, 15%) scale(1.2); opacity: 0.5; }
-  66% { transform: translate(-15%, 10%) scale(0.8); opacity: 0.4; }
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.15; }
+  33% { transform: translate(10%, 15%) scale(1.1); opacity: 0.25; }
+  66% { transform: translate(-15%, 10%) scale(0.9); opacity: 0.2; }
 }
 
 .lens-bg {
@@ -106,13 +106,13 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
 }
 
 .blob-1 {
   width: 60%;
   height: 60%;
-  background: radial-gradient(circle, hsla(41, 48%, 57%, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, hsla(41, 48%, 57%, 0.15) 0%, transparent 70%);
   top: -10%;
   left: -10%;
   animation: mesh-pulse 15s ease-in-out infinite alternate;
@@ -121,7 +121,7 @@
 .blob-2 {
   width: 50%;
   height: 50%;
-  background: radial-gradient(circle, hsla(173, 43%, 15%, 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, hsla(180, 27%, 24%, 0.1) 0%, transparent 70%);
   bottom: -5%;
   right: -5%;
   animation: mesh-pulse 18s ease-in-out infinite alternate-reverse;
@@ -130,7 +130,7 @@
 .blob-3 {
   width: 40%;
   height: 40%;
-  background: radial-gradient(circle, hsla(41, 100%, 74%, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, hsla(41, 100%, 74%, 0.1) 0%, transparent 70%);
   top: 30%;
   right: 15%;
   animation: mesh-pulse 12s ease-in-out infinite alternate;

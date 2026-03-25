@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -44,10 +43,10 @@ export default function AdminRefinePage() {
   };
 
   return (
-    <div className="pt-32 pb-24 px-6 bg-[#0B0F0E]">
+    <div className="pt-32 pb-24 px-6 bg-background">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-4xl font-headline font-bold mb-4 flex items-center gap-3">
+          <h1 className="text-4xl font-headline font-bold mb-4 flex items-center gap-3 text-foreground">
             <Sparkles className="text-primary w-8 h-8" />
             Visoma Refiner
           </h1>
@@ -57,7 +56,7 @@ export default function AdminRefinePage() {
         </div>
 
         <div className="grid grid-cols-1 gap-8">
-          <Card className="glass border-white/10">
+          <Card className="glass border-primary/10">
             <CardHeader>
               <CardTitle className="text-xl">Raw Content</CardTitle>
               <CardDescription>Paste your draft or notes here.</CardDescription>
@@ -65,8 +64,8 @@ export default function AdminRefinePage() {
             <CardContent className="space-y-6">
               <div className="space-y-2">
                 <Textarea 
-                  placeholder="E.g., We build automated chatbots for banks. It uses GPT and helps them reduce human call time by 50%. It's secure and fast."
-                  className="min-h-[200px] bg-white/5 border-white/10"
+                  placeholder="E.g., We build automated chatbots for banks. It uses GPT and helps them reduce human call time by 50%."
+                  className="min-h-[200px] bg-white border-border"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                 />
@@ -84,7 +83,7 @@ export default function AdminRefinePage() {
 
           {result && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <Card className="glass border-primary/30 gold-glow">
+              <Card className="glass border-primary/30 gold-glow bg-white shadow-xl">
                 <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle className="text-xl text-primary">Generated Summary</CardTitle>
                   <Button 
@@ -103,7 +102,7 @@ export default function AdminRefinePage() {
                 </CardContent>
               </Card>
 
-              <Card className="glass border-accent/30">
+              <Card className="glass border-accent/30 bg-white shadow-xl">
                 <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle className="text-xl text-accent">Compelling Tagline</CardTitle>
                   <Button 

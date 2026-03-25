@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
@@ -36,7 +35,7 @@ const footerSections = [
 
 export default function Footer() {
   return (
-    <footer className="bg-background pt-16 pb-8 px-6 border-t border-white/5">
+    <footer className="bg-background pt-16 pb-8 px-6 border-t border-primary/10">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-2">
@@ -50,7 +49,7 @@ export default function Footer() {
                   unoptimized
                 />
               </div>
-              <span className="text-3xl font-headline font-bold tracking-wider text-gradient-gold">
+              <span className="text-3xl font-headline font-bold tracking-wider text-foreground">
                 VISOMA
               </span>
             </Link>
@@ -80,7 +79,7 @@ export default function Footer() {
           ))}
         </div>
         
-        <Separator className="bg-white/5 mb-8" />
+        <Separator className="bg-primary/10 mb-8" />
         
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Visoma. All rights reserved.</p>

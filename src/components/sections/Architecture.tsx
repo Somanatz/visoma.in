@@ -10,32 +10,36 @@ const pipelineNodes = [
     title: 'Applications',
     desc: 'Custom user-facing AI interfaces and business logic.',
     icon: Zap,
-    color: 'from-blue-500 to-cyan-400',
-    glow: 'rgba(59, 130, 246, 0.5)',
+    color: 'from-blue-500/20 to-cyan-400/20',
+    iconColor: 'text-blue-600',
+    glow: 'rgba(59, 130, 246, 0.15)',
   },
   {
     id: 'models',
     title: 'AI Models',
     desc: 'Specialized LLMs and fine-tuned predictive models.',
     icon: Cpu,
-    color: 'from-purple-500 to-blue-400',
-    glow: 'rgba(168, 85, 247, 0.5)',
+    color: 'from-purple-500/20 to-blue-400/20',
+    iconColor: 'text-purple-600',
+    glow: 'rgba(168, 85, 247, 0.15)',
   },
   {
     id: 'data',
     title: 'Data Pipelines',
     desc: 'Scalable data streams and real-time processing.',
     icon: Database,
-    color: 'from-cyan-500 to-emerald-400',
-    glow: 'rgba(16, 185, 129, 0.5)',
+    color: 'from-cyan-500/20 to-emerald-400/20',
+    iconColor: 'text-cyan-600',
+    glow: 'rgba(16, 185, 129, 0.15)',
   },
   {
     id: 'infra',
     title: 'Infrastructure',
     desc: 'Secure, high-availability cloud architecture.',
     icon: Cloud,
-    color: 'from-blue-600 to-indigo-500',
-    glow: 'rgba(37, 99, 235, 0.5)',
+    color: 'from-primary/20 to-primary/10',
+    iconColor: 'text-primary',
+    glow: 'rgba(199, 164, 90, 0.15)',
   },
 ];
 
@@ -72,37 +76,30 @@ const NodeCard = ({ node }: { node: typeof pipelineNodes[0] }) => {
     >
       <div
         className={cn(
-          "relative p-8 rounded-[2.5rem] bg-gradient-to-br from-card to-secondary/40 border border-white/5 transition-all duration-300 ease-out flex flex-col items-center text-center",
-          isHovered ? "shadow-2xl scale-105" : "shadow-xl"
+          "relative p-8 rounded-[2.5rem] bg-white border border-primary/10 transition-all duration-300 ease-out flex flex-col items-center text-center shadow-sm",
+          isHovered ? "shadow-2xl scale-105" : ""
         )}
         style={{
           transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
           boxShadow: isHovered ? `0 20px 50px -10px ${node.glow}` : 'none',
-          borderColor: isHovered ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.05)',
+          borderColor: isHovered ? 'rgba(199, 164, 90, 0.3)' : 'rgba(199, 164, 90, 0.1)',
         }}
       >
         <div className={cn(
-          "w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 transition-transform bg-gradient-to-br",
-          node.color
+          "w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform bg-gradient-to-br",
+          node.color,
+          node.iconColor
         )}>
-          <node.icon className="w-8 h-8 text-white" />
+          <node.icon className="w-8 h-8" />
         </div>
         
-        <h4 className="text-xl font-bold uppercase tracking-wider mb-2 text-white">{node.title}</h4>
+        <h4 className="text-xl font-bold uppercase tracking-wider mb-2 text-foreground">{node.title}</h4>
         
         <div className={cn(
           "text-sm text-muted-foreground transition-opacity duration-300",
-          isHovered ? "opacity-100" : "opacity-60"
+          isHovered ? "opacity-100" : "opacity-70"
         )}>
           {node.desc}
-        </div>
-
-        {/* Gloss Effect */}
-        <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
-          <div className={cn(
-            "absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent transition-opacity duration-500",
-            isHovered ? "opacity-20" : "opacity-0"
-          )} style={{ transform: `translate(${rotate.y * 2}px, ${rotate.x * 2}px)` }} />
         </div>
       </div>
     </div>
@@ -116,11 +113,11 @@ const FlowConnector = ({ orientation = 'horizontal' }: { orientation?: 'horizont
       orientation === 'horizontal' ? "w-12 xl:w-24 h-[2px]" : "w-[2px] h-12"
     )}>
       {orientation === 'horizontal' ? (
-        <div className="w-full h-full bg-white/10 relative">
+        <div className="w-full h-full bg-primary/10 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent w-full animate-flow-horizontal" />
         </div>
       ) : (
-        <div className="w-full h-full bg-white/10 relative">
+        <div className="w-full h-full bg-primary/10 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary to-transparent h-full animate-flow-vertical" />
         </div>
       )}
@@ -130,13 +127,7 @@ const FlowConnector = ({ orientation = 'horizontal' }: { orientation?: 'horizont
 
 export default function Architecture() {
   return (
-    <section className="py-32 px-6 bg-[#020617] relative overflow-hidden">
-      {/* Background Animated Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] animate-pulse delay-1000" />
-      </div>
-
+    <section className="py-32 px-6 bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-24">
           <h2 className="text-sm font-bold tracking-[0.4em] uppercase text-primary mb-4">The AI Blueprint</h2>
@@ -148,7 +139,6 @@ export default function Architecture() {
           </p>
         </div>
 
-        {/* Desktop Pipeline Flow */}
         <div className="hidden lg:flex items-center justify-center">
           {pipelineNodes.map((node, index) => (
             <React.Fragment key={node.id}>
@@ -158,7 +148,6 @@ export default function Architecture() {
           ))}
         </div>
 
-        {/* Mobile Pipeline Flow */}
         <div className="lg:hidden flex flex-col items-center justify-center">
           {pipelineNodes.map((node, index) => (
             <React.Fragment key={node.id}>
@@ -171,13 +160,13 @@ export default function Architecture() {
         <div className="mt-24 text-center">
           <p className="text-sm font-bold tracking-[0.2em] text-muted-foreground uppercase mb-8">System Status: Fully Operational</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <div className="px-6 py-2 rounded-full border border-white/5 bg-white/5 flex items-center gap-3">
+            <div className="px-6 py-2 rounded-full border border-primary/10 bg-white shadow-sm flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest text-white">Real-time Data Flowing</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-foreground">Real-time Data Flowing</span>
             </div>
-            <div className="px-6 py-2 rounded-full border border-white/5 bg-white/5 flex items-center gap-3">
+            <div className="px-6 py-2 rounded-full border border-primary/10 bg-white shadow-sm flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest text-white">Global Scale Optimized</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-foreground">Global Scale Optimized</span>
             </div>
           </div>
         </div>
