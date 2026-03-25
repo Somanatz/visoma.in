@@ -5,12 +5,14 @@ import { useState, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
+  const [showEmoji, setShowEmoji] = useState(false);
 
   const words = useMemo(() => ['Modern Businesses', 'Startups', 'Individuals'], []);
 
@@ -19,25 +21,20 @@ export default function Hero() {
       const currentWord = words[wordIndex];
       
       if (isDeleting) {
-        // Backspacing
         setDisplayText(currentWord.substring(0, displayText.length - 1));
-        setTypingSpeed(50); // Faster deletion
+        setTypingSpeed(50);
       } else {
-        // Typing
         setDisplayText(currentWord.substring(0, displayText.length + 1));
-        setTypingSpeed(150); // Natural typing speed
+        setTypingSpeed(150);
       }
 
-      // Handle transitions
       if (!isDeleting && displayText === currentWord) {
-        // Word completed: hold for 2 seconds
         setTypingSpeed(2000);
         setIsDeleting(true);
       } else if (isDeleting && displayText === '') {
-        // Deletion completed: move to next word
         setIsDeleting(false);
         setWordIndex((prev) => (prev + 1) % words.length);
-        setTypingSpeed(500); // Small pause before starting next word
+        setTypingSpeed(500);
       }
     };
 
@@ -45,21 +42,23 @@ export default function Hero() {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, wordIndex, typingSpeed, words]);
 
+  const handleButtonClick = () => {
+    setShowEmoji(true);
+    setTimeout(() => setShowEmoji(false), 1000);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 px-6">
-      {/* Google Lens Style Dynamic Background */}
       <div className="lens-bg">
         <div className="lens-blob blob-1" />
         <div className="lens-blob blob-2" />
         <div className="lens-blob blob-3" />
       </div>
 
-      {/* Static Glows */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] opacity-10" />
       </div>
 
-      {/* Grid Pattern overlay */}
       <div className="absolute inset-0 z-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
@@ -84,37 +83,43 @@ export default function Hero() {
           and scalable machine learning systems that drive real business impact.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-          <Link href="/contact">
-            <div className="relative p-[2px] rounded-xl overflow-hidden group gold-glow transition-all duration-300 hover:scale-[1.02]">
-              {/* Live Animated Gradient Border */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift" />
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 relative">
+          <Link href="/contact" onClick={handleButtonClick}>
+            <div className="relative p-[2px] rounded-xl overflow-hidden group transition-all duration-300 hover:scale-[1.02]">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-[#e0c080]/40 to-primary/40 bg-[length:200%_auto] animate-gradient-shift group-hover:from-primary group-hover:via-[#e0c080] group-hover:to-primary" />
               
-              {/* Inner Button Content */}
               <div className="relative px-10 h-14 bg-background rounded-[calc(var(--radius)-2px)] flex items-center justify-center z-10 transition-colors group-hover:bg-background/95">
                 <span className="relative z-30 flex items-center font-bold text-foreground text-lg">
                   Start Your Project
                   <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </span>
-                
-                {/* Shining Effect Overlay */}
                 <div className="absolute top-0 -left-[100%] w-full h-full z-20 block transform -skew-x-[25deg] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shine" />
               </div>
             </div>
           </Link>
+
+          <AnimatePresence>
+            {showEmoji && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0, y: 0 }}
+                animate={{ opacity: 1, scale: 1.5, y: -80 }}
+                exit={{ opacity: 0, scale: 0.5, y: -120 }}
+                className="absolute top-0 pointer-events-none text-4xl"
+              >
+                🚀✨
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <Link href="/services">
             <div className="relative p-[2px] rounded-xl overflow-hidden group transition-all duration-300 hover:scale-[1.02]">
-              {/* Live Animated Gradient Border */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-[#e0c080]/40 to-primary/40 bg-[length:200%_auto] animate-gradient-shift group-hover:from-primary group-hover:via-[#e0c080] group-hover:to-primary" />
               
-              {/* Inner Button Content */}
               <div className="relative px-10 h-14 bg-background rounded-[calc(var(--radius)-2px)] flex items-center justify-center z-10 transition-colors group-hover:bg-background/95">
                 <span className="relative z-30 flex items-center font-bold text-foreground text-lg">
                   Explore Services
                   <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </span>
-                
-                {/* Shining Effect Overlay */}
                 <div className="absolute top-0 -left-[100%] w-full h-full z-20 block transform -skew-x-[25deg] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shine" />
               </div>
             </div>
