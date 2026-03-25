@@ -1,6 +1,6 @@
 "use client";
 
-import { Cpu, Search, BarChart3, Gavel, Database, Rocket, Zap } from 'lucide-react';
+import { Cpu, Search, BarChart3, Gavel, Database, Rocket, Zap, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -199,7 +199,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Our Expertise</h2>
-          <h3 className="text-4xl md:text-5xl font-headline font-bold mb-6 text-gradient-gold">Comprehensive Service Hierarchy</h3>
+          <h3 className="text-4xl md:text-5xl font-headline font-bold mb-6 text-gradient-gold py-1">Comprehensive Service Hierarchy</h3>
           <p className="text-xl text-muted-foreground max-w-2xl">
             Technical foundations for high-impact intelligence across every sector.
           </p>
@@ -221,22 +221,21 @@ export default function Services() {
                     </div>
                     <div className="space-y-4">
                       <h4 className="text-3xl md:text-4xl font-headline font-bold group-hover:text-primary transition-colors">{service.title}</h4>
-                      <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                      <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mt-1">
                         {service.description}
                       </p>
                     </div>
                   </div>
                   <Link href={`/services/${service.slug === 'scraping' ? 'it-services' : service.slug}`} className="shrink-0">
-                    <div className="px-8 py-4 rounded-2xl border border-white/10 flex items-center justify-center bg-background/50 backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow text-xs font-bold uppercase tracking-[0.2em]">
-                      Explore Full Pipeline
+                    <div className="px-8 py-4 rounded-2xl border border-foreground/20 flex items-center justify-center gap-2 bg-background/50 backdrop-blur-sm group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 gold-glow text-xs font-bold uppercase tracking-[0.2em]">
+                      More Details <ArrowRight className="w-4 h-4" />
                     </div>
                   </Link>
                 </div>
 
-                {/* Tabular List of Sub-Services with Detailed Matter */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 border-t border-white/10 pt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 border-t border-white/10 pt-10">
                   {service.items.map((item, i) => (
-                    <div key={i} className="space-y-3 group/item">
+                    <div key={i} className="space-y-3 group/item p-4 rounded-2xl hover:bg-white/5 transition-colors">
                       <div className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors" />
                         <h5 className="text-sm font-bold uppercase tracking-[0.1em] text-foreground group-hover/item:text-primary transition-colors">
@@ -250,7 +249,6 @@ export default function Services() {
                   ))}
                 </div>
 
-                {/* Visual Marquee Section */}
                 <div className="relative overflow-hidden w-full pt-4">
                   <div className={cn(
                     "flex w-fit gap-6",
