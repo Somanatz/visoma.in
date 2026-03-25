@@ -60,7 +60,9 @@ export default function Testimonials() {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-20">
           <h2 className="text-sm font-bold tracking-[0.4em] uppercase text-primary mb-4">Success Stories</h2>
-          <h3 className="text-4xl md:text-5xl font-headline font-bold text-gradient-gold">Global Intelligence Impact</h3>
+          <h3 className="text-4xl md:text-5xl font-headline font-bold text-gradient-gold py-2 leading-tight">
+            Global Intelligence Impact
+          </h3>
         </div>
 
         <div className="relative min-h-[400px]">
