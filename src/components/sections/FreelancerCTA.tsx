@@ -16,7 +16,7 @@ const opportunities = [
     title: 'Senior LLM Engineer',
     desc: 'Architecting RAG pipelines for Enterprise-scale Knowledge Bases.',
     color: 'border-primary/40',
-    glow: 'rgba(199, 164, 90, 0.3)',
+    glow: 'rgba(199, 164, 90, 0.2)',
   },
   {
     status: 'Upcoming',
@@ -24,7 +24,7 @@ const opportunities = [
     title: 'Data Science Specialist',
     desc: 'Predictive Risk Modeling for Global FinTech platforms.',
     color: 'border-blue-400/40',
-    glow: 'rgba(96, 165, 250, 0.3)',
+    glow: 'rgba(96, 165, 250, 0.2)',
   },
   {
     status: 'High Demand',
@@ -32,7 +32,7 @@ const opportunities = [
     title: 'Legal Tech Consultant',
     desc: 'Automating Discovery and Analysis for specialized law firms.',
     color: 'border-purple-400/40',
-    glow: 'rgba(192, 132, 252, 0.3)',
+    glow: 'rgba(192, 132, 252, 0.2)',
   },
   {
     status: 'New Role',
@@ -40,7 +40,7 @@ const opportunities = [
     title: 'SEO Growth Strategist',
     desc: 'Optimizing semantic content clusters for AI-driven search.',
     color: 'border-orange-400/40',
-    glow: 'rgba(251, 146, 60, 0.3)',
+    glow: 'rgba(251, 146, 60, 0.2)',
   },
   {
     status: 'Active Now',
@@ -48,7 +48,7 @@ const opportunities = [
     title: 'Data Annotation Expert',
     desc: 'Precision labeling for medical imagery and NLP training sets.',
     color: 'border-emerald-400/40',
-    glow: 'rgba(52, 211, 153, 0.3)',
+    glow: 'rgba(52, 211, 153, 0.2)',
   },
   {
     status: 'Upcoming',
@@ -56,7 +56,7 @@ const opportunities = [
     title: 'Financial Intelligence Analyst',
     desc: 'Building automated portfolio auditing systems for modern assets.',
     color: 'border-cyan-400/40',
-    glow: 'rgba(34, 211, 238, 0.3)',
+    glow: 'rgba(34, 211, 238, 0.2)',
   }
 ];
 
@@ -66,7 +66,7 @@ export default function FreelancerCTA() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % opportunities.length);
-    }, 4000);
+    }, 3000); // Increased transition interval to 3 seconds
     return () => clearInterval(timer);
   }, []);
 
@@ -111,8 +111,8 @@ export default function FreelancerCTA() {
               </Link>
             </div>
             
-            <div className="relative h-[280px] md:h-[320px] flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-[450px] h-full">
+            <div className="relative h-[220px] md:h-[260px] flex items-center justify-center lg:justify-end">
+              <div className="relative w-full max-w-[420px] h-full">
                 <AnimatePresence mode="wait">
                   {opportunities.map((opp, i) => {
                     const isActive = i === index;
@@ -122,24 +122,24 @@ export default function FreelancerCTA() {
                     return (
                       <motion.div
                         key={opp.title}
-                        initial={{ opacity: 0, x: 40 }}
+                        initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -40 }}
-                        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
                         className={cn(
-                          "absolute inset-0 p-8 rounded-[2rem] border shadow-2xl flex flex-col justify-between overflow-hidden",
-                          "bg-[#0B0F0E] bg-gradient-to-br from-black/80 via-primary/10 to-black/80",
+                          "absolute inset-0 p-6 rounded-[2rem] border shadow-xl flex flex-col justify-between overflow-hidden",
+                          "bg-white/95 bg-gradient-to-br from-white via-primary/5 to-white/95 animate-gradient-shift",
                           opp.color
                         )}
                         style={{
-                          boxShadow: `0 20px 40px -10px ${opp.glow}`
+                          boxShadow: `0 15px 30px -10px ${opp.glow}`
                         }}
                       >
                         {/* Subtle Card Background Pattern */}
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,164,90,0.1),transparent)] pointer-events-none" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,164,90,0.05),transparent)] pointer-events-none" />
                         
                         <div className="flex justify-between items-start relative z-10">
-                          <Badge className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none">
+                          <Badge className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-primary/20">
                             {opp.status}
                           </Badge>
                           <span className="text-xl font-bold font-mono text-primary">
@@ -148,16 +148,16 @@ export default function FreelancerCTA() {
                         </div>
                         
                         <div className="relative z-10">
-                          <h4 className="text-2xl font-bold mb-3 tracking-tight text-white">
+                          <h4 className="text-xl font-bold mb-2 tracking-tight text-foreground">
                             {opp.title}
                           </h4>
-                          <p className="text-sm md:text-base leading-relaxed text-white/70">
+                          <p className="text-sm leading-relaxed text-muted-foreground">
                             {opp.desc}
                           </p>
                         </div>
 
                         {/* Visual flourish: animated accent line */}
-                        <div className="absolute bottom-0 left-0 h-1 bg-primary w-full origin-left opacity-30" />
+                        <div className="absolute bottom-0 left-0 h-1 bg-primary/20 w-full origin-left" />
                       </motion.div>
                     );
                   })}

@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -106,7 +107,7 @@
 
 .animate-gradient-shift {
   background-size: 200% auto;
-  animation: gradient-shift 6s ease infinite;
+  animation: gradient-shift 12s ease infinite; /* Adjusted speed to 12s for smoother transition */
 }
 
 .lens-bg {
