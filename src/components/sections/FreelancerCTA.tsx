@@ -111,70 +111,53 @@ export default function FreelancerCTA() {
               </Link>
             </div>
             
-            <div className="relative h-[400px] md:h-[450px] flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-[400px] h-[320px]">
-                <AnimatePresence mode="popLayout">
+            <div className="relative h-[380px] md:h-[420px] flex items-center justify-center lg:justify-end">
+              <div className="relative w-full max-w-[420px] h-full">
+                <AnimatePresence mode="wait">
                   {opportunities.map((opp, i) => {
                     const isActive = i === index;
-                    const isNext = i === (index + 1) % opportunities.length;
                     
-                    if (!isActive && !isNext) return null;
+                    if (!isActive) return null;
 
                     return (
                       <motion.div
                         key={opp.title}
-                        initial={{ opacity: 0, scale: 0.8, x: 100, rotateY: 20 }}
-                        animate={{ 
-                          opacity: isActive ? 1 : 0.6, 
-                          scale: isActive ? 1 : 0.9,
-                          x: isActive ? 0 : 40,
-                          y: isActive ? 0 : 50,
-                          rotateY: isActive ? 0 : 10,
-                          zIndex: isActive ? 30 : 10,
-                        }}
-                        exit={{ opacity: 0, scale: 0.8, x: -100, rotateY: -20 }}
-                        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+                        initial={{ opacity: 0, x: 40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -40 }}
+                        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                         className={cn(
-                          "absolute inset-0 p-8 md:p-10 rounded-[2.5rem] border shadow-2xl flex flex-col justify-between overflow-hidden transition-all duration-700",
-                          "bg-gradient-to-br from-[#0B211F] via-[#c7a45a]/20 to-[#0B211F] animate-gradient-shift",
+                          "absolute inset-0 p-10 rounded-[2.5rem] border shadow-2xl flex flex-col justify-between overflow-hidden",
+                          "bg-[#0B0F0E] bg-gradient-to-br from-black/40 via-primary/5 to-black/40 animate-gradient-shift",
                           opp.color
                         )}
                         style={{
-                          boxShadow: isActive ? `0 20px 50px -10px ${opp.glow}` : 'none'
+                          boxShadow: `0 30px 60px -15px ${opp.glow}`
                         }}
                       >
                         {/* Subtle Card Background Pattern */}
-                        <div className="absolute inset-0 bg-white/[0.02] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,164,90,0.08),transparent)] pointer-events-none" />
                         
                         <div className="flex justify-between items-start relative z-10">
-                          <Badge className={cn(
-                            "px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none transition-all duration-500",
-                            isActive ? 'bg-primary text-primary-foreground shadow-[0_0_20px_rgba(199,164,90,0.5)]' : 'bg-white/10 text-gray-500'
-                          )}>
+                          <Badge className="bg-primary text-primary-foreground px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-black border-none shadow-[0_0_20px_rgba(199,164,90,0.3)]">
                             {opp.status}
                           </Badge>
-                          <span className={cn(
-                            "text-xl md:text-2xl font-bold font-mono tracking-tight transition-colors duration-500 drop-shadow-md",
-                            isActive ? "text-white" : "text-gray-500"
-                          )}>
+                          <span className="text-2xl font-bold font-mono tracking-tight text-white drop-shadow-sm">
                             {opp.rate}
                           </span>
                         </div>
                         
                         <div className="relative z-10">
-                          <motion.h4 
-                            animate={{ color: isActive ? '#ffffff' : '#9ca3af' }}
-                            className="text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight drop-shadow-lg"
-                          >
+                          <h4 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight text-white">
                             {opp.title}
-                          </motion.h4>
-                          <motion.p 
-                            animate={{ color: isActive ? 'rgba(255,255,255,0.9)' : '#6b7280' }}
-                            className="text-sm md:text-base leading-relaxed font-medium drop-shadow-md"
-                          >
+                          </h4>
+                          <p className="text-sm md:text-base leading-relaxed font-medium text-gray-300">
                             {opp.desc}
-                          </motion.p>
+                          </p>
                         </div>
+
+                        {/* Visual flourish: animated accent line */}
+                        <div className="absolute bottom-0 left-0 h-1 bg-primary w-full origin-left animate-flow-horizontal opacity-30" />
                       </motion.div>
                     );
                   })}
