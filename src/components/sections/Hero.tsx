@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo } from 'react';
@@ -85,13 +86,17 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
           <Link href="/contact">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent gold-glow px-8 h-14 text-lg">
-              Start Your Project
-              <ArrowRight className="ml-2 w-5 h-5" />
+            <Button size="lg" className="relative overflow-hidden bg-primary text-primary-foreground border-none gold-glow px-8 h-14 text-lg group rounded-xl">
+              {/* Static Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary opacity-100" />
+              <span className="relative z-10 flex items-center font-bold">
+                Start Your Project
+                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </span>
             </Button>
           </Link>
           <Link href="/services">
-            <Button size="lg" variant="outline" className="border-white/10 hover:bg-white/5 px-8 h-14 text-lg">
+            <Button size="lg" variant="outline" className="border-border hover:bg-white/50 px-8 h-14 text-lg font-semibold backdrop-blur-sm">
               Explore Services
             </Button>
           </Link>
