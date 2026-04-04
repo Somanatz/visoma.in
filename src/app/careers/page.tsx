@@ -4,7 +4,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Briefcase, MapPin, Clock, Sparkles, GraduationCap } from 'lucide-react';
+import { Briefcase, MapPin, Clock, Sparkles, GraduationCap, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 const jobs = [
@@ -33,6 +33,8 @@ const jobs = [
     category: 'Internships',
   },
 ];
+
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdh_3mYrH9cgGtFdR6FyI5DeioPeW1-Lh7U1KQLMHKF39pcJw/viewform";
 
 export default function CareersPage() {
   return (
@@ -70,7 +72,7 @@ export default function CareersPage() {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 mb-32">
           <h2 className="text-3xl font-headline font-bold mb-8">Open Roles</h2>
           <div className="grid grid-cols-1 gap-4">
             {jobs.map((job, idx) => (
@@ -89,14 +91,42 @@ export default function CareersPage() {
                       </div>
                     </div>
                   </div>
-                  <Link href="/contact" className="w-full md:w-auto">
-                    <Button className="w-full md:w-auto bg-primary text-primary-foreground gold-glow">Apply Now</Button>
+                  <Link href={FORM_URL} target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
+                    <Button className="w-full md:w-auto bg-primary text-primary-foreground gold-glow font-bold rounded-full px-8">Apply Now</Button>
                   </Link>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
+
+        {/* Join Talent Pool Section */}
+        <section className="glass p-12 md:p-20 rounded-[3rem] border-primary/20 text-center relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -z-10" />
+          <div className="relative z-10">
+            <h2 className="text-4xl md:text-5xl font-headline font-bold mb-6">Don't see a perfect fit?</h2>
+            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+              We're always looking for elite AI engineers, data specialists, and innovators. Join our talent pool for upcoming roles at Visoma.
+            </p>
+            <Link 
+              href={FORM_URL} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <Button size="lg" className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow px-12 h-16 text-xl font-bold group transition-all duration-300 rounded-full">
+                {/* Animated Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift opacity-100 group-hover:scale-110 transition-transform duration-500" />
+                
+                {/* Shine Animation */}
+                <div className="absolute top-0 -left-[100%] w-full h-full z-20 block transform -skew-x-[25deg] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shine" />
+
+                <span className="relative z-10 flex items-center">
+                  Join Talent Pool <ArrowRight className="ml-2 w-6 h-6 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   );
