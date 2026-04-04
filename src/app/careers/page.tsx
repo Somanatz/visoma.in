@@ -92,7 +92,19 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <Link href={FORM_URL} target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
-                    <Button className="w-full md:w-auto bg-primary text-primary-foreground gold-glow font-bold rounded-full px-8">Apply Now</Button>
+                    <Button 
+                      className="relative overflow-hidden w-full md:w-auto bg-primary text-[#0B0F0E] border-none gold-glow h-12 px-8 font-bold group transition-all duration-300 rounded-full"
+                    >
+                      {/* Animated Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift opacity-100 group-hover:scale-110 transition-transform duration-500" />
+                      
+                      {/* Shine Animation */}
+                      <div className="absolute top-0 -left-[100%] w-full h-full z-20 block transform -skew-x-[25deg] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shine" />
+
+                      <span className="relative z-10 flex items-center">
+                        Apply Now <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </Button>
                   </Link>
                 </CardContent>
               </Card>
