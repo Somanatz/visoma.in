@@ -33,12 +33,12 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-        isScrolled ? "bg-background/90 backdrop-blur-md border-b border-primary/10 py-3" : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-6",
+        isScrolled ? "bg-background/90 backdrop-blur-md border-b border-primary/10 py-4" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group shrink-0">
           <div className="relative h-10 w-10">
             <Image 
               src="/logo.png" 
@@ -54,19 +54,19 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center gap-x-2">
           {mounted && navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-primary/5 px-4 py-2 rounded-full transition-all duration-300"
             >
               {link.name}
             </Link>
           ))}
         </div>
 
-        <Link href="/contact">
+        <Link href="/contact" className="shrink-0">
           <Button 
             className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow hidden sm:inline-flex px-8 h-11 font-bold group transition-all duration-300 rounded-full"
           >
