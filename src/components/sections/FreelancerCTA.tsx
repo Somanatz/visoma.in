@@ -71,41 +71,41 @@ export default function FreelancerCTA() {
   }, []);
 
   return (
-    <section className="py-24 px-6 bg-secondary/10 border-y border-white/5">
+    <section className="py-12 sm:py-24 px-4 sm:px-6 bg-secondary/10 border-y border-white/5">
       <div className="max-w-7xl mx-auto">
-        <div className="glass p-12 md:p-20 rounded-[3rem] border-primary/20 relative overflow-hidden">
+        <div className="glass p-5 sm:p-12 md:p-20 rounded-2xl sm:rounded-[3rem] border-primary/20 relative overflow-hidden">
           {/* Ambient Background Glow */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
             <div className="relative z-10">
-              <h2 className="text-4xl md:text-6xl font-headline font-bold mb-8">
+              <h2 className="text-2xl sm:text-4xl md:text-6xl font-headline font-bold mb-4 sm:mb-8">
                 Work Remotely. <br />
                 <span className="text-gradient-gold">Earn Globally.</span>
               </h2>
-              <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-xl">
+              <p className="text-sm sm:text-xl text-muted-foreground mb-6 sm:mb-12 leading-normal sm:leading-relaxed max-w-xl">
                 Join our network of experts to work on high-impact remote projects and earn competitive rates. 
                 Partner with us to architect the future of intelligence.
               </p>
               
-              <div className="space-y-6 mb-12">
-                <div className="flex items-center gap-5">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20">
+              <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-12">
+                <div className="flex items-center gap-3 sm:gap-5">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20">
                     <Globe className="w-6 h-6 text-primary" />
                   </div>
-                  <span className="text-lg font-bold">Global Remote Opportunities</span>
+                  <span className="text-base sm:text-lg font-bold">Global Remote Opportunities</span>
                 </div>
-                <div className="flex items-center gap-5">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                <div className="flex items-center gap-3 sm:gap-5">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20">
                     <Banknote className="w-6 h-6 text-primary" />
                   </div>
-                  <span className="text-lg font-bold">Consistent High-Value Payouts</span>
+                  <span className="text-base sm:text-lg font-bold">Consistent High-Value Payouts</span>
                 </div>
               </div>
 
               <Link href="https://forms.gle/m4WZn8wdb1X3XuMZ8" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow px-12 h-16 text-xl font-bold group transition-all duration-300 rounded-full"
+                  className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow px-6 sm:px-12 h-12 sm:h-16 text-sm sm:text-xl font-bold group transition-all duration-300 rounded-full"
                 >
                   {/* Animated Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift opacity-100 group-hover:scale-110 transition-transform duration-500" />

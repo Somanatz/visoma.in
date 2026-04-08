@@ -110,6 +110,47 @@
   animation: gradient-shift 12s ease infinite; /* Adjusted speed to 12s for smoother transition */
 }
 
+/* Premium Button Architecture implemented as CSS pseudo components */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  font-weight: 700;
+  border: none;
+  z-index: 1;
+}
+
+.btn-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, hsl(var(--primary)), #e0c080, hsl(var(--primary)));
+  background-size: 200% auto;
+  animation: gradient-shift 8s linear infinite;
+  z-index: -1;
+  transition: transform 0.5s;
+}
+
+.btn-premium:hover::before {
+  transform: scale(1.1);
+}
+
+.btn-premium::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transform: skewX(-25deg);
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+  z-index: 0;
+}
+
+.btn-premium:hover::after {
+  animation: shine 0.8s ease-in-out forwards;
+}
+
 .lens-bg {
   position: absolute;
   width: 100%;
@@ -182,4 +223,112 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ─── Performance & Smooth Scrolling ─────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeSpeed;
+}
+
+/* Passive scrolling — prevent touch delay */
+html, body {
+  overscroll-behavior-y: none;
+  touch-action: manipulation;
+}
+
+/* GPU-accelerate animated elements */
+.glass,
+.animate-gradient-shift,
+.animate-float,
+.lens-blob,
+.gold-glow {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Isolate paint to glass cards — prevents full-page repaints */
+.glass {
+  contain: layout style;
+}
+
+/* Off-screen sections: skip rendering until visible */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Mobile & Tablet Performance: disable expensive effects ─────── */
+@media (max-width: 768px) {
+  /* Remove heavy backdrop-blur (major GPU drain) */
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Kill mesh blob animations entirely */
+  .lens-blob {
+    animation: none !important;
+    display: none !important;
+  }
+
+  /* Flatten all decorative blur layers */
+  [class*="blur-[120px]"],
+  [class*="blur-[100px]"],
+  [class*="blur-[80px]"] {
+    filter: blur(30px);
+    opacity: 0.06;
+  }
+
+  /* Simplify gold-glow shadow */
+  .gold-glow {
+    box-shadow: 0 2px 8px rgba(199, 164, 90, 0.08);
+  }
+
+  /* Slow gradient-shift to reduce paint cycles */
+  .animate-gradient-shift {
+    animation-duration: 30s;
+  }
+
+  /* Kill float, flow, pulse animations */
+  .animate-float,
+  .animate-flow-horizontal,
+  .animate-flow-vertical {
+    animation: none !important;
+  }
+
+  /* Disable infinite-scroll animations (carousels) when not in view */
+  .animate-infinite-scroll,
+  .animate-infinite-scroll-reverse {
+    animation-play-state: paused;
+  }
+
+  /* Simplify mesh-pulse keyframes */
+  .blob-1, .blob-2, .blob-3 {
+    display: none !important;
+  }
+
+  /* Reduce box-shadow complexity on cards */
+  [class*="shadow-2xl"] {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Disable hover scale transforms that trigger layout shifts */
+  [class*="hover:scale-"] {
+    transform: none !important;
+  }
 }

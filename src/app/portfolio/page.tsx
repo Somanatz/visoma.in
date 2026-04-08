@@ -12,7 +12,8 @@ const caseStudies = [
     solution: 'Implemented a custom RAG-based chatbot with direct knowledge-base integration.',
     tech: 'GPT-4, Pinecone, LangChain, FastAPI',
     results: '65% reduction in response time, 40% of tickets resolved autonomously.',
-    image: 'https://picsum.photos/seed/visoma-case-1/800/600'
+    image: '/services/img-25.jpg',
+    video: '/services/img-25.mp4'
   },
   {
     title: 'Real-time Lead Intelligence',
@@ -21,7 +22,8 @@ const caseStudies = [
     solution: 'Built an automated scraping and enrichment pipeline using GenAI for classification.',
     tech: 'Python, OpenAI, PostgreSQL, AWS Lambda',
     results: '300% increase in qualified leads per month, 10x faster lead processing.',
-    image: 'https://picsum.photos/seed/visoma-case-2/800/600'
+    image: '/services/img-26.jpg',
+    video: '/services/img-26.mp4'
   },
   {
     title: 'Medical Data Annotation',
@@ -30,7 +32,8 @@ const caseStudies = [
     solution: 'Established a secure annotation pipeline with specialist verification loops.',
     tech: 'Custom Annotation Tool, Python, Docker',
     results: '99.2% labeling accuracy across 100k+ images, accelerating research by 6 months.',
-    image: 'https://picsum.photos/seed/visoma-case-3/800/600'
+    image: '/services/img-27.jpg',
+    video: '/services/img-27.mp4'
   }
 ];
 
@@ -39,25 +42,39 @@ export default function PortfolioPage() {
     <div className="pt-32 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-24 text-center">
-          <h1 className="text-5xl md:text-7xl font-headline font-bold mb-8">Real Impact With <br /> <span className="text-gradient-gold">AI Solutions</span></h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-headline font-bold mb-6 sm:mb-8">Real Impact With <br /> <span className="text-gradient-gold">AI Solutions</span></h1>
+          <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-normal sm:leading-relaxed">
             Explore how Visoma partners with organizations to solve complex data 
             and automation challenges through innovative AI infrastructure.
           </p>
         </div>
 
-        <div className="space-y-32">
+        <div className="space-y-16 sm:space-y-32">
           {caseStudies.map((study, idx) => (
-            <div key={idx} className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-center`}>
+            <div key={idx} className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 sm:gap-16 items-center`}>
               <div className="flex-1 w-full">
-                <div className="relative group overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
-                  <Image 
-                    src={study.image} 
-                    alt={study.title}
-                    width={800}
-                    height={600}
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                <div className="relative group overflow-hidden rounded-2xl sm:rounded-[2rem] border border-white/10 shadow-2xl">
+                  {study.video ? (
+                    <video 
+                      src={study.video} 
+                      className="object-cover w-full aspect-[4/3] transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+                      autoPlay
+                      muted
+                      playsInline
+                      disablePictureInPicture
+                      preload="metadata"
+                      controlsList="nodownload noplaybackrate"
+                    />
+                  ) : study.image ? (
+                    <Image 
+                      src={study.image} 
+                      alt={study.title}
+                      width={800}
+                      height={600}
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  ) : null}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60" />
                 </div>
               </div>
@@ -87,9 +104,9 @@ export default function PortfolioPage() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-primary/5 border border-primary/20 rounded-2xl gold-glow">
+                <div className="p-4 sm:p-6 bg-primary/5 border border-primary/20 rounded-xl sm:rounded-2xl gold-glow">
                   <h4 className="font-bold text-primary mb-2 uppercase tracking-widest text-xs">The Results</h4>
-                  <p className="text-xl font-headline font-bold">{study.results}</p>
+                  <p className="text-base sm:text-xl font-headline font-bold">{study.results}</p>
                 </div>
 
                 <Link href="/contact" className="inline-block mt-4">

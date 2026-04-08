@@ -1,4 +1,5 @@
-'use server';
+// Server action disabled for static export - requires Node.js runtime
+// 'use server';
 /**
  * @fileOverview An internal AI tool for content creators to generate concise summaries and compelling taglines for service offerings and case studies.
  *

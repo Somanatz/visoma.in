@@ -34,7 +34,7 @@ export default function BlogPage() {
       authorName: 'Visoma Team',
       publicationDate: new Date().toISOString(),
       slug: 'agentic-workflows',
-      thumbnailUrl: 'https://picsum.photos/seed/visoma-blog-1/800/500'
+      thumbnailUrl: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%231a1f1e'/%3E%3Ctext x='400' y='260' text-anchor='middle' font-size='60' font-family='Arial' font-weight='700' fill='%23c7a45a'%3EAgentic AI%3C/text%3E%3C/svg%3E"
     },
     {
       id: 'fall-2',
@@ -43,7 +43,7 @@ export default function BlogPage() {
       authorName: 'Data Engineering',
       publicationDate: new Date().toISOString(),
       slug: 'scaling-pipelines',
-      thumbnailUrl: 'https://picsum.photos/seed/visoma-blog-2/800/500'
+      thumbnailUrl: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%232a4a47'/%3E%3Ctext x='400' y='260' text-anchor='middle' font-size='60' font-family='Arial' font-weight='700' fill='%23e0c080'%3EData Pipelines%3C/text%3E%3C/svg%3E"
     }
   ];
 
@@ -58,8 +58,8 @@ export default function BlogPage() {
     <div className="pt-32 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
-          <h1 className="text-5xl md:text-6xl font-headline font-bold mb-6">Insights & <br /><span className="text-gradient-gold">Intelligence</span></h1>
-          <p className="text-xl text-muted-foreground max-w-2xl">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold mb-4 sm:mb-6">Insights & <br /><span className="text-gradient-gold">Intelligence</span></h1>
+          <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl leading-normal sm:leading-relaxed">
             Thought leadership on AI automation, data strategy, and the future of work in the machine era.
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function BlogPage() {
                 <article className="space-y-6">
                   <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/10">
                     <Image
-                      src={post.thumbnailUrl || `https://picsum.photos/seed/${post.id}/800/500`}
+                      src={post.thumbnailUrl || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%231a1f1e'/%3E%3Ctext x='400' y='260' text-anchor='middle' font-size='48' font-family='Arial' font-weight='700' fill='%23c7a45a'%3EVisoma%3C/text%3E%3C/svg%3E"}
                       alt={post.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"

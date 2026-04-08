@@ -26,9 +26,9 @@ const footerSections = [
   {
     title: 'Resources',
     links: [
-      { name: 'Case Studies', href: '/portfolio' },
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
+      { name: 'Case Studies', href: '/case-studies' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Terms of Service', href: '/terms-of-service' },
     ],
   },
 ];
@@ -37,32 +37,32 @@ export default function Footer() {
   return (
     <footer className="bg-background pt-16 pb-8 px-6 border-t border-primary/10">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12 mb-12">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6 group">
               <div className="relative h-12 w-12">
-                <Image 
-                  src="/logo.png" 
-                  alt="Visoma Logo" 
+                <Image
+                  src="/logo.png"
+                  alt="Visoma Logo"
                   fill
                   className="object-contain"
                   unoptimized
                 />
               </div>
-              <span className="text-3xl font-headline font-bold tracking-wider text-foreground">
+              <span className="text-xl sm:text-3xl font-headline font-bold tracking-wider text-foreground">
                 VISOMA
               </span>
             </Link>
             <p className="text-muted-foreground max-w-sm mb-6 mt-4">
-              Building the future of AI infrastructure. Specializing in data pipelines, 
+              Building the future of AI infrastructure. Specializing in data pipelines,
               automation systems, and scalable machine learning for modern enterprises.
             </p>
             <div className="text-sm font-medium">
               <span className="text-muted-foreground">Email: </span>
-              <a href="mailto:info@visoma.in" className="text-primary hover:underline">info@visoma.in</a>
+              <a href="mailto:info.visoma@gmail.com" className="text-primary hover:underline">info.visoma@gmail.com</a>
             </div>
           </div>
-          
+
           {footerSections.map((section) => (
             <div key={section.title}>
               <h4 className="font-headline font-semibold mb-6">{section.title}</h4>
@@ -78,9 +78,9 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        
+
         <Separator className="bg-primary/10 mb-8" />
-        
+
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Visoma. All rights reserved.</p>
           <p className="mt-4 md:mt-0 font-medium tracking-wide">visoma.in</p>

@@ -90,8 +90,8 @@ export default function SolutionsPage() {
     <div className="pt-32 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
-          <h1 className="text-5xl md:text-7xl font-headline font-bold mb-8">Industry <br /> <span className="text-gradient-gold">Solutions</span></h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-headline font-bold mb-6 sm:mb-8">Industry <br /> <span className="text-gradient-gold">Solutions</span></h1>
+          <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-normal sm:leading-relaxed">
             Specialized AI architectures designed for high-impact sectors. 
             We bridge the gap between complex technology and practical business value.
           </p>
@@ -108,7 +108,7 @@ export default function SolutionsPage() {
                 <div className={`w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 ${sol.color}`}>
                   <sol.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">{sol.name || sol.title}</h3>
+                <h3 className="text-base sm:text-xl font-bold mb-3 sm:mb-4">{sol.name || sol.title}</h3>
                 <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
                   {sol.description}
                 </p>

@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useUser, useDoc, useMemoFirebase, setDocumentNonBlocking, useCollection } from '@/firebase';
 import { doc, collection } from 'firebase/firestore';
 import { useFirestore } from '@/firebase';
@@ -16,7 +16,15 @@ import { toast } from '@/hooks/use-toast';
 import { Loader2, Save, User, Briefcase, GraduationCap, Code, FolderGit2 } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function ProfileManagementPage() {
+export default function ProfileManagementPageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen pt-32 px-6 flex justify-center">Loading settings...</div>}>
+      <ProfileManagementPage />
+    </Suspense>
+  );
+}
+
+function ProfileManagementPage() {
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
   const searchParams = useSearchParams();

@@ -10,21 +10,21 @@ const detailedServices = [
     id: 'it-services',
     title: 'IT Services',
     description: 'Transform manual workflows into intelligent, automated systems that learn and adapt.',
-    features: ['AI Infrastructure', 'Custom Workflow Mapping', 'Data Pipeline Scaling'],
+    features: ['GenAI Integrations', 'AI Infrastructure', 'Web Development', 'Automation Scripts', 'Custom Workflow Mapping', 'Data Pipeline Scaling'],
     icon: Cpu
   },
   {
     id: 'data-services',
     title: 'Data Services',
     description: 'High-quality datasets for training and fine-tuning state-of-the-art AI models.',
-    features: ['Data Contributions', 'Precision Labeling', 'Image Collections', 'Manual Annotation'],
+    features: ['Data Contributions', 'Precision Labeling', 'Image Collections', 'Manual Annotation', 'Crowd Sourcing'],
     icon: Database
   },
   {
     id: 'seo-services',
     title: 'SEO Services',
     description: 'High-conversion, modern landing pages for AI products that communicate value clearly.',
-    features: ['Generative Ad Copy', 'SEO Optimization', 'Performance Monitoring'],
+    features: ['Generative Ad Copy', 'SEO Optimization', 'Performance Monitoring', 'Social Media Management', 'Content Creation'],
     icon: Search
   },
   {
@@ -55,24 +55,24 @@ export default function ServicesPage() {
     <div className="pt-32 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
-          <h1 className="text-5xl md:text-7xl font-headline font-bold mb-8">Our Specialized <br /> <span className="text-gradient-gold">Services</span></h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From data acquisition to high-level automation, we provide the technical foundation 
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-headline font-bold mb-6 sm:mb-8">Our Specialized <br /> <span className="text-gradient-gold">Services</span></h1>
+          <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-normal sm:leading-relaxed">
+            From data acquisition to high-level automation, we provide the technical foundation
             your strategy needs to succeed.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {detailedServices.map((service) => (
-            <div key={service.id} id={service.id} className="glass p-10 rounded-3xl border-white/5 hover:border-primary/30 transition-all group">
+            <div key={service.id} id={service.id} className="glass p-6 sm:p-10 rounded-2xl sm:rounded-3xl border-white/5 hover:border-primary/30 transition-all group">
               <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                 <service.icon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 leading-normal sm:leading-relaxed">
                 {service.description}
               </p>
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-3 sm:space-y-4 mb-8 sm:mb-10">
                 {service.features.map((feat, i) => (
                   <li key={i} className="flex items-center text-sm text-muted-foreground">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary/50 mr-3" />
@@ -89,14 +89,14 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        <div className="text-center p-16 rounded-[3rem] bg-secondary/20 border border-white/5">
-          <h3 className="text-3xl font-headline font-bold mb-6">Need a custom solution?</h3>
-          <p className="text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Our technical team specializes in bespoke architecture tailored to 
+        <div className="text-center p-8 sm:p-16 rounded-2xl sm:rounded-[3rem] bg-secondary/20 border border-white/5">
+          <h3 className="text-2xl sm:text-3xl font-headline font-bold mb-4 sm:mb-6">Need a custom solution?</h3>
+          <p className="text-sm sm:text-base text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto leading-normal sm:leading-relaxed">
+            Our technical team specializes in bespoke architecture tailored to
             unique business challenges. Let's discuss your requirements.
           </p>
           <Link href="/contact">
-            <Button size="lg" className="bg-primary text-primary-foreground gold-glow px-12 h-14 text-lg">
+            <Button size="lg" className="bg-primary text-primary-foreground gold-glow px-8 sm:px-12 h-12 sm:h-14 text-base sm:text-lg">
               Talk to an Expert
             </Button>
           </Link>

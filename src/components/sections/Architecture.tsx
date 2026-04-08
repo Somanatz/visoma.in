@@ -93,7 +93,7 @@ const NodeCard = ({ node }: { node: typeof pipelineNodes[0] }) => {
           <node.icon className="w-8 h-8" />
         </div>
         
-        <h4 className="text-xl font-bold uppercase tracking-wider mb-2 text-foreground">{node.title}</h4>
+        <h4 className="text-base sm:text-xl font-bold uppercase tracking-wider mb-2 text-foreground">{node.title}</h4>
         
         <div className={cn(
           "text-sm text-muted-foreground transition-opacity duration-300",
@@ -127,14 +127,14 @@ const FlowConnector = ({ orientation = 'horizontal' }: { orientation?: 'horizont
 
 export default function Architecture() {
   return (
-    <section className="pt-20 pb-32 px-6 bg-background relative overflow-hidden">
+    <section className="pt-10 sm:pt-20 pb-16 sm:pb-32 px-4 sm:px-6 bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-24">
+        <div className="text-center mb-12 sm:mb-24">
           <h2 className="text-sm font-bold tracking-[0.4em] uppercase text-primary mb-4">The AI Blueprint</h2>
           <h3 className="text-4xl md:text-6xl font-headline font-bold text-gradient-gold mb-6 py-2 leading-tight">
             End-to-End System Intelligence
           </h3>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl mx-auto leading-normal sm:leading-relaxed">
             Experience the flow of high-performance architecture, from the raw power of infrastructure to intelligent user applications.
           </p>
         </div>
@@ -157,7 +157,7 @@ export default function Architecture() {
           ))}
         </div>
 
-        <div className="mt-24 text-center">
+        <div className="mt-12 sm:mt-24 text-center">
           <p className="text-sm font-bold tracking-[0.2em] text-muted-foreground uppercase mb-8">System Status: Fully Operational</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <div className="px-6 py-2 rounded-full border border-primary/10 bg-white shadow-sm flex items-center gap-3">

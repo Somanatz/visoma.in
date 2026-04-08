@@ -21,7 +21,7 @@ export default function AboutPage() {
     missionStatement: "To empower organizations by building the most reliable and intelligent AI infrastructure in the world.",
     visionStatement: "A future where human potential is amplified by seamless, high-trust automated systems.",
     whyVisomaDescription: "Visoma combines deep technical expertise with a minimal, performance-first approach to solve the toughest data and automation challenges.",
-    expertiseHighlights: ["Generative AI Pipelines", "Large-scale Web Scraping", "Precision Data Annotation", "Enterprise Automation"]
+    expertiseHighlights: ["Generative AI Pipelines", "Web Development", "Data Annotation", "Enterprise Automation", "Finance & Trading", "Legal Tech & Support", "SEO & Content Creation", "Google & Meta Ads"]
   };
 
   const displayInfo = info || defaultInfo;
@@ -29,9 +29,9 @@ export default function AboutPage() {
   return (
     <div className="pt-32 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-24 items-center mb-16 sm:mb-32">
           <div>
-            <h1 className="text-5xl md:text-7xl font-headline font-bold mb-8">Architecting <br /> <span className="text-gradient-gold">Intelligence</span></h1>
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-headline font-bold mb-6 sm:mb-8">Architecting <br /> <span className="text-gradient-gold">Intelligence</span></h1>
             <div className="space-y-8">
               <section>
                 <h3 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Our Mission</h3>
@@ -41,7 +41,7 @@ export default function AboutPage() {
               </section>
               <section>
                 <h3 className="text-sm font-bold tracking-[0.3em] uppercase text-primary mb-4">Our Vision</h3>
-                <p className="text-xl text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-base md:text-xl text-muted-foreground leading-normal sm:leading-relaxed">
                   {displayInfo.visionStatement}
                 </p>
               </section>
@@ -50,11 +50,11 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full -z-10" />
             <div className="rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
-              <Image 
-                src="https://picsum.photos/seed/visoma-vision/800/1000" 
-                alt="Visoma Office" 
-                width={800} 
-                height={1000} 
+              <Image
+                src="/services/about.png"
+                alt="Visoma Office"
+                width={800}
+                height={800}
                 className="object-cover"
                 data-ai-hint="futuristic office"
               />
@@ -63,9 +63,9 @@ export default function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="md:col-span-2 glass p-12 rounded-[3rem]">
+          <div className="md:col-span-2 glass p-6 sm:p-12 rounded-2xl sm:rounded-[3rem]">
             <h3 className="text-3xl font-headline font-bold mb-6">Why Visoma?</h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-normal sm:leading-relaxed mb-8">
               {displayInfo.whyVisomaDescription}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -77,7 +77,7 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-          <div className="glass p-12 rounded-[3rem] flex flex-col justify-center text-center">
+          <div className="glass p-6 sm:p-12 rounded-2xl sm:rounded-[3rem] flex flex-col justify-center text-center">
             <div className="text-5xl font-headline font-bold text-primary mb-2">99.9%</div>
             <div className="text-sm uppercase tracking-widest text-muted-foreground">Pipeline Uptime</div>
             <div className="mt-8 text-5xl font-headline font-bold text-primary mb-2">10M+</div>

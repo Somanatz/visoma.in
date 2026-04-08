@@ -41,38 +41,38 @@ export default function CareersPage() {
     <div className="pt-32 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
-          <h1 className="text-5xl md:text-7xl font-headline font-bold mb-8">Join the <br /> <span className="text-gradient-gold">Visoma Team</span></h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-headline font-bold mb-6 sm:mb-8">Join the <br /> <span className="text-gradient-gold">Visoma Team</span></h1>
+          <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-normal sm:leading-relaxed">
             We are looking for builders, dreamers, and technical experts to architect the next 
             generation of intelligent systems.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-12 mb-16 sm:mb-24">
           <div className="glass p-8 rounded-3xl text-center">
             <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
               <Sparkles className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Innovation First</h3>
+            <h3 className="text-base sm:text-xl font-bold mb-2">Innovation First</h3>
             <p className="text-sm text-muted-foreground">Work on cutting-edge AI pipelines and RAG architectures.</p>
           </div>
           <div className="glass p-8 rounded-3xl text-center">
             <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
               <MapPin className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Remote-First Culture</h3>
+            <h3 className="text-base sm:text-xl font-bold mb-2">Remote-First Culture</h3>
             <p className="text-sm text-muted-foreground">Join a global team of elite engineers and data scientists.</p>
           </div>
           <div className="glass p-8 rounded-3xl text-center">
             <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
               <GraduationCap className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Internship Program</h3>
+            <h3 className="text-base sm:text-xl font-bold mb-2">Internship Program</h3>
             <p className="text-sm text-muted-foreground">Kickstart your career with hands-on exposure to real AI projects.</p>
           </div>
         </div>
 
-        <div className="space-y-6 mb-32">
+        <div className="space-y-6 mb-16 sm:mb-32">
           <h2 className="text-3xl font-headline font-bold mb-8">Open Roles</h2>
           <div className="grid grid-cols-1 gap-4">
             {jobs.map((job, idx) => (
@@ -83,7 +83,7 @@ export default function CareersPage() {
                       <Briefcase className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold">{job.title}</h4>
+                      <h4 className="text-base sm:text-xl font-bold">{job.title}</h4>
                       <div className="flex flex-wrap items-center gap-4 mt-1 text-sm text-muted-foreground">
                         <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> {job.location}</span>
                         <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {job.type}</span>
@@ -113,11 +113,11 @@ export default function CareersPage() {
         </div>
 
         {/* Join Talent Pool Section */}
-        <section className="glass p-12 md:p-20 rounded-[3rem] border-primary/20 text-center relative overflow-hidden shadow-2xl">
+        <section className="glass p-8 sm:p-12 md:p-20 rounded-2xl sm:rounded-[3rem] border-primary/20 text-center relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -z-10" />
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-headline font-bold mb-6">Don't see a perfect fit?</h2>
-            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-headline font-bold mb-4 sm:mb-6">Don't see a perfect fit?</h2>
+            <p className="text-sm sm:text-base md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto leading-normal sm:leading-relaxed">
               We're always looking for elite AI engineers, data specialists, and innovators. Join our talent pool for upcoming roles at Visoma.
             </p>
             <Link 
@@ -125,7 +125,7 @@ export default function CareersPage() {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <Button size="lg" className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow px-12 h-16 text-xl font-bold group transition-all duration-300 rounded-full">
+              <Button size="lg" className="relative overflow-hidden bg-primary text-[#0B0F0E] border-none gold-glow px-8 sm:px-12 h-12 sm:h-16 text-base sm:text-xl font-bold group transition-all duration-300 rounded-full">
                 {/* Animated Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift opacity-100 group-hover:scale-110 transition-transform duration-500" />
                 

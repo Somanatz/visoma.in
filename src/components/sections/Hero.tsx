@@ -54,9 +54,23 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 px-6">
-      {/* Live light gradient background layer */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 via-background to-accent/10 animate-gradient-shift opacity-60 pointer-events-none" />
+    <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 px-4 sm:px-6">
+      {/* Live background video layer */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          preload="none"
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 opacity-[0.3]"
+        >
+          {/* Please place an mp4 file named "hero-bg.mp4" in your 'public' folder */}
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        {/* Gradient overlay adjusted to ensure video visibility and text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background/40 to-accent/10 animate-gradient-shift" />
+      </div>
 
       <div className="lens-bg">
         <div className="lens-blob blob-1" />
@@ -68,8 +82,8 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] opacity-10" />
       </div>
 
-      {/* Subtle stardust texture */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none" />
+      {/* Subtle noise texture — CSS-only, no external request */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%270 0 200 200%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.65%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E")' }} />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         <div className="inline-flex items-center space-x-2 glossy-badge px-5 py-2.5 rounded-full mb-10 animate-float">
@@ -79,16 +93,16 @@ export default function Hero() {
           </span>
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-headline font-bold mb-8 leading-[1.1] tracking-tight min-h-[3.3em] md:min-h-[auto]">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-headline font-bold mb-6 sm:mb-8 leading-[1.1] tracking-tight min-h-[4.5em] sm:min-h-[3.3em] md:min-h-[auto]">
           Build Intelligent <br />
           <span className="text-gradient-gold">AI Systems</span> for <br />
           <span className="text-gradient-gold relative">
             {displayText}
-            <span className="inline-block w-[4px] h-[0.8em] bg-foreground ml-2 animate-pulse align-middle" />
+            <span className="inline-block w-[3px] sm:w-[4px] h-[0.8em] bg-foreground ml-1 sm:ml-2 animate-pulse align-middle" />
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+        <p className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed">
           Visoma helps organizations build AI automation, data pipelines, 
           and scalable machine learning systems that drive real business impact.
         </p>
@@ -98,8 +112,8 @@ export default function Hero() {
             <div className="relative p-[2px] rounded-full overflow-hidden group transition-all duration-300 hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift" />
               
-              <div className="relative px-10 h-16 bg-background rounded-full flex items-center justify-center z-10 transition-colors group-hover:bg-background/95 overflow-hidden">
-                <span className="relative z-30 flex items-center font-bold text-foreground text-lg">
+              <div className="relative px-6 sm:px-10 h-12 sm:h-16 bg-background rounded-full flex items-center justify-center z-10 transition-colors group-hover:bg-background/95 overflow-hidden">
+                <span className="relative z-30 flex items-center font-bold text-foreground text-sm sm:text-lg">
                   Start Your Project
                   <div className="relative flex items-center justify-center ml-2 w-6 h-6">
                     <AnimatePresence mode="wait">
@@ -137,8 +151,8 @@ export default function Hero() {
             <div className="relative p-[2px] rounded-full overflow-hidden group transition-all duration-300 hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#e0c080] to-primary bg-[length:200%_auto] animate-gradient-shift" />
               
-              <div className="relative px-10 h-16 bg-background rounded-full flex items-center justify-center z-10 transition-colors group-hover:bg-background/95 overflow-hidden">
-                <span className="relative z-30 flex items-center font-bold text-foreground text-lg">
+              <div className="relative px-6 sm:px-10 h-12 sm:h-16 bg-background rounded-full flex items-center justify-center z-10 transition-colors group-hover:bg-background/95 overflow-hidden">
+                <span className="relative z-30 flex items-center font-bold text-foreground text-sm sm:text-lg">
                   Explore Services
                   <div className="relative flex items-center justify-center ml-2 w-6 h-6">
                     <AnimatePresence mode="wait">

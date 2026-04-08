@@ -45,7 +45,7 @@ export default function DashboardPage() {
               </AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-3xl font-headline font-bold">Welcome back, {profile?.firstName || 'Innovator'}</h1>
+              <h1 className="text-2xl sm:text-3xl font-headline font-bold">Welcome back, {profile?.firstName || 'Innovator'}</h1>
               <p className="text-muted-foreground">{profile?.headline || 'AI Freelancer at Visoma'}</p>
             </div>
           </div>

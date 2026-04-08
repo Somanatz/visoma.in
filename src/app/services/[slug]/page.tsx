@@ -1,7 +1,4 @@
 
-"use client";
-
-import { useParams } from 'next/navigation';
 import { Cpu, Search, BarChart3, Gavel, Database, CheckCircle2, ArrowLeft, Layers, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -85,9 +82,13 @@ const servicesData: Record<string, any> = {
   }
 };
 
-export default function ServiceDetailPage() {
-  const { slug } = useParams();
-  const service = servicesData[slug as string];
+export function generateStaticParams() {
+  return Object.keys(servicesData).map((slug) => ({ slug }));
+}
+
+export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const service = servicesData[slug];
 
   if (!service) {
     return (
@@ -115,15 +116,15 @@ export default function ServiceDetailPage() {
             <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10", service.color)}>
               <Icon className="w-8 h-8" />
             </div>
-            <h1 className="text-5xl md:text-6xl font-headline font-bold leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold leading-tight">
               {service.title}
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-base md:text-xl text-muted-foreground leading-normal sm:leading-relaxed">
               {service.description}
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/contact">
-                <Button size="lg" className="bg-primary text-primary-foreground gold-glow px-8 h-14 text-lg font-bold">
+                <Button size="lg" className="bg-primary text-primary-foreground gold-glow px-6 sm:px-8 h-12 sm:h-14 text-base sm:text-lg font-bold">
                   Request Technical Consultation
                 </Button>
               </Link>
@@ -131,13 +132,13 @@ export default function ServiceDetailPage() {
           </div>
           <div className="relative">
             <div className={cn("absolute inset-0 blur-[120px] opacity-20 rounded-full", service.bg)} />
-            <div className="glass p-12 rounded-[3rem] border-white/10 relative overflow-hidden">
+            <div className="glass p-8 sm:p-12 rounded-2xl sm:rounded-[3rem] border-white/10 relative overflow-hidden">
                <div className="space-y-8">
                  <div className="flex items-center gap-4">
                    <Layers className="w-6 h-6 text-primary" />
-                   <h3 className="text-xl font-bold">Architected Excellence</h3>
+                   <h3 className="text-base sm:text-xl font-bold">Architected Excellence</h3>
                  </div>
-                 <p className="text-muted-foreground leading-relaxed italic text-lg">
+                 <p className="text-muted-foreground leading-normal sm:leading-relaxed italic text-sm sm:text-base md:text-lg">
                    "{service.longDescription}"
                  </p>
                  <div className="grid grid-cols-2 gap-8 pt-4">
@@ -163,7 +164,7 @@ export default function ServiceDetailPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {service.features.map((feature: any, idx: number) => (
-              <div key={idx} className="glass p-10 rounded-[2.5rem] border-white/5 hover:border-primary/20 transition-all group">
+              <div key={idx} className="glass p-6 sm:p-10 rounded-2xl sm:rounded-[2.5rem] border-white/5 hover:border-primary/20 transition-all group">
                 <div className="flex items-start gap-6">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 text-primary">
                     <Zap className="w-6 h-6" />
@@ -178,7 +179,7 @@ export default function ServiceDetailPage() {
           </div>
         </div>
 
-        <div className="glass p-12 rounded-[3rem] border-primary/20 relative overflow-hidden">
+        <div className="glass p-6 sm:p-12 rounded-2xl sm:rounded-[3rem] border-primary/20 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
             <div className="max-w-2xl">
@@ -186,7 +187,7 @@ export default function ServiceDetailPage() {
                 Talent Pipeline
               </div>
               <h3 className="text-3xl font-headline font-bold mb-6">Internship Opportunities</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-normal sm:leading-relaxed">
                 {service.internshipInfo}
               </p>
             </div>
