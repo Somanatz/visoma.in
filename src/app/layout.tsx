@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: '%s | Visoma',
   },
   description:
-    'Visoma helps organizations build AI automation, data pipelines,SEO Services, Digital Marketing, Crowdsourcing, and Legal Support.',
+    'Visoma helps organizations build AI Automation, Data Pipelines, SEO Services, Digital Marketing, Crowdsourcing, and Legal Support.',
   keywords: [
     'AI Services',
     'Chatbot Development',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: 'Visoma',
     title: 'Visoma | Build Intelligent AI Systems and Solutions',
     description:
-      'Visoma helps organizations build AI automation, data pipelines,SEO Services, Digital Marketing, Crowdsourcing, and Legal Support.',
+      'Visoma helps organizations build AI Automation, Data Pipelines, SEO Services, Digital Marketing, Crowdsourcing, and Legal Support.',
     images: [
       {
         url: 'https://visoma.in/logo.png', // 🔥 IMPORTANT
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Visoma | Build Intelligent AI Systems and Solutions',
     description:
-      'Visoma helps organizations build AI automation, data pipelines,SEO Services, Digital Marketing, Crowdsourcing, and Legal Support.',
+      'Visoma helps organizations build AI Automation, Data Pipelines, SEO Services, Digital Marketing, Crowdsourcing, and Legal Support.',
     images: ['https://visoma.in/logo.png'], // 🔥 IMPORTANT
   },
 
